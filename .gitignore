@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Django
+*.log
+db.sqlite3
+staticfiles/
+media/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker
+*.override.yml
+
+# VS Code
+.vscode/
+
+# PyCharm / IntelliJ
+.idea/
+
+# macOS
+.DS_Store
+
+# Node (se usar algum tooling JS)
+node_modules/
+
+# Coverage
+.coverage
+htmlcov/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/

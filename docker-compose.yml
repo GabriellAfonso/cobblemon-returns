@@ -1,0 +1,22 @@
+services:
+  cobblemon_returns:
+    container_name: cobblemon_returns
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - sqlite_data:/data
+      - static_data:/data/static
+      - ~/.ssh/id_rsa:/run/secrets/sftp_key:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:
+  static_data:

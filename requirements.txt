@@ -1,0 +1,10 @@
+django>=5.0
+paramiko>=3.0
+apscheduler>=3.10
+playwright>=1.40
+mistune>=3.0
+python-dotenv>=1.0
+gunicorn>=21.0
+requests>=2.31
+Pillow>=10.0
+nbtlib>=2.0
