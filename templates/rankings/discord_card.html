@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Orbitron:wght@700;900&display=swap');
+
+:root {
+  --purple: #C850F0;
+  --purple-dim: #8B35A8;
+  --cyan: #00B4D8;
+  --cyan-dim: #007A96;
+  --bg: #0d0d18;
+  --surface: #13131f;
+  --surface2: #1a1a2a;
+  --border: rgba(255,255,255,0.08);
+  --white: #ffffff;
+  --text: #e2e2f0;
+  --muted: #5a5a7a;
+  --gold: #FFD700;
+  --silver: #C0C8D8;
+  --bronze: #CD8B5A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Rajdhani', sans-serif;
+  width: 500px;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(200,80,240,0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  display: block; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple), var(--cyan), var(--purple), transparent);
+}
+
+.card::after {
+  content: '';
+  position: absolute; top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 120px;
+  background: radial-gradient(ellipse, rgba(200,80,240,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.card-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px 16px;
+  background: rgba(200,80,240,0.06);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+.icon-wrap { width: 44px; height: 44px; flex-shrink: 0; }
+
+.header-text { flex: 1; }
+
+.header-category {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--purple); margin-bottom: 3px;
+}
+
+.header-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 15px; font-weight: 900;
+  color: var(--white); letter-spacing: 0.5px; line-height: 1.2;
+}
+
+.header-date { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.3px; white-space: nowrap; }
+
+.rows { padding: 10px 14px 14px; display: flex; flex-direction: column; gap: 4px; }
+
+.row {
+  display: grid; grid-template-columns: 44px 1fr auto;
+  align-items: center; gap: 12px;
+  padding: 10px 12px; border-radius: 10px;
+  border: 1px solid transparent;
+}
+.row.gold   { background: rgba(255,215,0,0.07);    border-color: rgba(255,215,0,0.15); }
+.row.silver { background: rgba(192,200,216,0.05);  border-color: rgba(192,200,216,0.12); }
+.row.bronze { background: rgba(205,139,90,0.05);   border-color: rgba(205,139,90,0.12); }
+.row.normal { background: rgba(255,255,255,0.025); border-color: rgba(255,255,255,0.05); }
+
+.row-num  { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; color: var(--muted); text-align: center; }
+.row-medal { font-size: 22px; text-align: center; line-height: 1; }
+
+.row-name { font-weight: 700; font-size: 15px; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row.gold   .row-name { color: var(--gold); }
+.row.silver .row-name { color: var(--silver); }
+.row.bronze .row-name { color: var(--bronze); }
+
+.row-val { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; color: var(--cyan); white-space: nowrap; }
+.row.gold   .row-val { color: var(--gold); }
+.row.silver .row-val { color: var(--silver); }
+.row.bronze .row-val { color: var(--bronze); }
+
+.card-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 22px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.015);
+}
+.footer-brand { font-family: 'Orbitron', sans-serif; font-size: 9px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+.footer-brand span { color: var(--purple); }
+.footer-url { font-size: 11px; color: var(--cyan-dim); font-weight: 600; letter-spacing: 0.3px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+        <path d="M22 4L37 13V31L22 40L7 31V13L22 4Z" fill="#111122" stroke="rgba(200,80,240,0.3)" stroke-width="0.8"/>
+        <path d="M22 6L35 14V22H9V14L22 6Z" fill="#C850F0" opacity="0.9"/>
+        <path d="M9 22V30L22 38L35 30V22H9Z" fill="#8890A8" opacity="0.8"/>
+        <rect x="8" y="20.5" width="28" height="3" fill="#0a0a15" rx="0.5"/>
+        <circle cx="22" cy="22" r="5" fill="#0a0a15" stroke="#111" stroke-width="1"/>
+        <circle cx="22" cy="22" r="2.8" fill="#C850F0" opacity="0.75"/>
+        <path d="M5 16 Q3 22 5 28" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M39 16 Q41 22 39 28" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <polygon points="4,13 8,16 4,19" fill="#00B4D8"/>
+        <polygon points="40,25 36,28 40,31" fill="#00B4D8"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <div class="header-category">🏆 {{ ranking.icon }} RANKING</div>
+      <div class="header-title">{{ ranking.label|upper }}</div>
+    </div>
+    <div class="header-date">{{ date }}</div>
+  </div>
+
+  <div class="rows">
+    {% for player in players %}
+    {% with pos=forloop.counter %}
+    <div class="row {% if pos == 1 %}gold{% elif pos == 2 %}silver{% elif pos == 3 %}bronze{% else %}normal{% endif %}">
+      {% if pos == 1 %}<div class="row-medal">🥇</div>
+      {% elif pos == 2 %}<div class="row-medal">🥈</div>
+      {% elif pos == 3 %}<div class="row-medal">🥉</div>
+      {% else %}<div class="row-num">{{ pos }}</div>{% endif %}
+      <span class="row-name">{{ player.name }}</span>
+      <span class="row-val">{{ player.value }}</span>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+
+  <div class="card-footer">
+    <div class="footer-brand">COBBLEMON <span>RETURNS</span></div>
+    <div class="footer-url">{{ SERVER_HOST }}/rankings</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% block dashboard_css %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrap">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-section">Overview</div>
+    <a href="{% url 'dashboard-home' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-home' %}active{% endif %}">
+      <span class="s-icon">🏠</span> Home
+    </a>
+    <a href="{% url 'dashboard-players' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-players' %}active{% endif %}">
+      <span class="s-icon">👾</span> Players
+    </a>
+    <a href="{% url 'dashboard-logs' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-logs' %}active{% endif %}">
+      <span class="s-icon">📋</span> Collection Logs
+    </a>
+
+    <div class="sidebar-section">Wiki</div>
+    <a href="{% url 'dashboard-wiki-list' %}" class="sidebar-link {% if 'dashboard-wiki' in request.resolver_match.url_name %}active{% endif %}">
+      <span class="s-icon">📖</span> Manage Pages
+    </a>
+    <a href="{% url 'dashboard-wiki-create' %}" class="sidebar-link">
+      <span class="s-icon">✏️</span> New Page
+    </a>
+
+    <div class="sidebar-section">Collector</div>
+    <form method="post" action="{% url 'dashboard-trigger' %}" style="margin: 1px 8px;">
+      {% csrf_token %}
+      <button type="submit" class="sidebar-link" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;">
+        <span class="s-icon">⚡</span> Run Now
+      </button>
+    </form>
+
+    <div class="sidebar-user">
+      Staff Panel
+      <strong>{{ request.user.username }}</strong>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    {% if messages %}
+    <div class="flash-messages">
+      {% for message in messages %}
+      <div class="flash flash-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block dashboard_content %}{% endblock %}
+  </main>
+
+</div>
+{% endblock %}

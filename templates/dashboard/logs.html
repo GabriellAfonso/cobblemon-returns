@@ -1,0 +1,48 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block title %}Collection Logs — Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="dash-header" style="display:flex;align-items:center;justify-content:space-between">
+  <div>
+    <div class="dash-title">Collection Logs</div>
+    <div class="dash-subtitle">Last 50 entries</div>
+  </div>
+  <form method="post" action="{% url 'dashboard-trigger' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn-dash btn-dash-primary">⚡ Run Collection Now</button>
+  </form>
+</div>
+
+<div class="dash-table-wrap">
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Status</th>
+        <th>Players Updated</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in logs %}
+      <tr>
+        <td style="font-size:13px;white-space:nowrap">{{ log.timestamp|date:"d M Y · H:i:s" }}</td>
+        <td>
+          <span class="badge badge-{{ log.status }}">
+            <span class="badge-dot"></span>
+            {{ log.get_status_display }}
+          </span>
+        </td>
+        <td>{{ log.players_updated }}</td>
+        <td style="font-size:13px;color:var(--muted);max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+          {{ log.message|default:"—" }}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" style="text-align:center;color:var(--muted);padding:40px">No logs yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

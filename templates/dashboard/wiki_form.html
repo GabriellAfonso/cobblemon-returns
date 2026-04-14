@@ -1,0 +1,83 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block title %}{{ form_title }} — Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="dash-header" style="display:flex;align-items:center;justify-content:space-between">
+  <div>
+    <div class="dash-title">{{ form_title }}</div>
+    <div class="dash-subtitle">Write Markdown content below</div>
+  </div>
+  <a href="{% url 'dashboard-wiki-list' %}" class="btn-dash btn-dash-secondary">← Back to list</a>
+</div>
+
+<div class="dash-form">
+  <form method="post" id="wiki-form">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label class="form-label" for="{{ form.title.id_for_label }}">Title</label>
+      <input type="text" name="title" id="{{ form.title.id_for_label }}"
+             value="{{ form.title.value|default:'' }}"
+             class="form-input" autocomplete="off"
+             oninput="autoSlug(this.value)">
+      {% if form.title.errors %}
+      <div style="color:#FF4D6A;font-size:13px;margin-top:4px">{{ form.title.errors.0 }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="{{ form.slug.id_for_label }}">Slug</label>
+      <input type="text" name="slug" id="{{ form.slug.id_for_label }}"
+             value="{{ form.slug.value|default:'' }}"
+             class="form-input" autocomplete="off">
+      {% if form.slug.errors %}
+      <div style="color:#FF4D6A;font-size:13px;margin-top:4px">{{ form.slug.errors.0 }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="{{ form.content.id_for_label }}">Content (Markdown)</label>
+      <textarea name="content" id="{{ form.content.id_for_label }}"
+                class="form-textarea">{{ form.content.value|default:'' }}</textarea>
+      {% if form.content.errors %}
+      <div style="color:#FF4D6A;font-size:13px;margin-top:4px">{{ form.content.errors.0 }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-dash btn-dash-primary">💾 Save Page</button>
+      <button type="submit" name="_preview" value="1" class="btn-dash btn-dash-secondary">👁 Save & Preview</button>
+      <a href="{% url 'dashboard-wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
+    </div>
+  </form>
+
+  {% if preview_html %}
+  <div class="preview-wrap">
+    <div class="preview-label">Preview</div>
+    <div class="preview-body">{{ preview_html|safe }}</div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+function autoSlug(title) {
+  const slugField = document.querySelector('input[name="slug"]');
+  // Only auto-fill if slug is empty or was auto-generated (matches a previous auto-fill)
+  if (!slugField._manualEdit) {
+    slugField.value = title
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  }
+}
+document.querySelector('input[name="slug"]').addEventListener('input', function() {
+  this._manualEdit = true;
+});
+</script>
+{% endblock %}

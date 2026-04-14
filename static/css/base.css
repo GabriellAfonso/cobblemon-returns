@@ -1,0 +1,147 @@
+:root {
+  --purple: #C850F0;
+  --purple-dim: #8B35A8;
+  --purple-glow: rgba(200,80,240,0.25);
+  --cyan: #00B4D8;
+  --cyan-dim: #007A96;
+  --cyan-glow: rgba(0,180,216,0.2);
+  --green: #3DDB85;
+  --red: #FF4D6A;
+  --bg: #0a0a0f;
+  --bg2: #0f0f1a;
+  --surface: rgba(255,255,255,0.04);
+  --surface2: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --border-bright: rgba(255,255,255,0.15);
+  --white: #ffffff;
+  --text: #e2e2f0;
+  --muted: #6b6b8a;
+  --gold: #FFD700;
+  --silver: #C0C8D8;
+  --bronze: #CD8B5A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(200,80,240,0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 100%, rgba(0,180,216,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 40%, rgba(200,80,240,0.04) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff' fill-opacity='0.015'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1140px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center; height: 64px; gap: 0;
+}
+
+.logo-icon { width: 36px; height: 36px; flex-shrink: 0; margin-right: 12px; }
+
+.logo-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px; font-weight: 900;
+  letter-spacing: 1px; color: var(--white); white-space: nowrap;
+}
+.logo-text span { color: var(--purple); }
+
+.nav-divider { width: 1px; height: 32px; background: var(--border); margin: 0 28px; }
+
+.nav-links { display: flex; list-style: none; gap: 4px; flex: 1; }
+
+.nav-links a {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  font-family: 'Rajdhani', sans-serif; font-weight: 600;
+  font-size: 14px; letter-spacing: 0.5px;
+  color: var(--muted); text-decoration: none;
+  border-radius: 8px; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--white); background: var(--surface); }
+.nav-links a.active { color: var(--purple); background: rgba(200,80,240,0.1); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+
+.discord-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  background: rgba(88,101,242,0.15);
+  border: 1px solid rgba(88,101,242,0.35);
+  border-radius: 10px;
+  color: #7289da; text-decoration: none;
+  transition: all 0.2s; cursor: pointer;
+}
+.discord-btn:hover {
+  background: rgba(88,101,242,0.28);
+  border-color: rgba(88,101,242,0.6);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(88,101,242,0.3);
+}
+.discord-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  text-align: center; padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 14px; letter-spacing: 0.3px;
+}
+footer span { color: var(--purple); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple-dim); border-radius: 10px; }
+
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 16px;
+    gap: 0;
+  }
+  .nav-divider { display: none; }
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0 4px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  .nav-links a { padding: 7px 10px; font-size: 13px; }
+  .nav-actions { margin-left: auto; }
+  .logo-text { font-size: 11px; }
+}

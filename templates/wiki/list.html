@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Wiki — Cobblemon Returns{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/wiki.css' %}">{% endblock %}
+
+{% block content %}
+<div class="wiki-hero">
+  <div class="wiki-hero-eyebrow">📖 Knowledge Base</div>
+  <h1>Server <span class="accent">Wiki</span></h1>
+  <p>Guides, mechanics, and everything you need to know.</p>
+</div>
+
+<div class="wiki-body">
+  {% if pages %}
+  <div class="wiki-grid">
+    {% for page in pages %}
+    <a href="{% url 'wiki-detail' page.slug %}" class="wiki-card">
+      <div class="wiki-card-title">{{ page.title }}</div>
+      <div class="wiki-card-meta">Updated {{ page.updated_at|date:"d M Y" }}</div>
+      <div class="wiki-card-arrow">→</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="wiki-empty">No wiki pages yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

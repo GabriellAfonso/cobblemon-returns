@@ -1,0 +1,73 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block title %}Players — Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="dash-header">
+  <div class="dash-title">Players</div>
+  <div class="dash-subtitle">{{ players|length }} player{{ players|length|pluralize }} — click a column to sort</div>
+</div>
+
+<div class="dash-table-wrap">
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Last Seen</th>
+        <th>
+          <a href="?sort=play_time_ticks" class="sort-link {% if current_sort == 'play_time_ticks' %}active{% endif %}">
+            ⏱ Hours
+          </a>
+        </th>
+        <th>
+          <a href="?sort=pokemons_caught" class="sort-link {% if current_sort == 'pokemons_caught' %}active{% endif %}">
+            🔴 Caught
+          </a>
+        </th>
+        <th>
+          <a href="?sort=pokedex_registered" class="sort-link {% if current_sort == 'pokedex_registered' %}active{% endif %}">
+            📕 Pokédex
+          </a>
+        </th>
+        <th>
+          <a href="?sort=battles_won" class="sort-link {% if current_sort == 'battles_won' %}active{% endif %}">
+            ⚔️ Battles
+          </a>
+        </th>
+        <th>
+          <a href="?sort=cobbletcg_cards" class="sort-link {% if current_sort == 'cobbletcg_cards' %}active{% endif %}">
+            🃏 Cards
+          </a>
+        </th>
+        <th>
+          <a href="?sort=cobbledollars" class="sort-link {% if current_sort == 'cobbledollars' %}active{% endif %}">
+            💰 $$$
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+      <tr>
+        <td style="font-weight:700;color:var(--white)">{{ player.username }}</td>
+        <td style="font-size:13px;color:var(--muted)">
+          {% if player.last_seen %}{{ player.last_seen|date:"d M Y" }}{% else %}—{% endif %}
+        </td>
+        {% if player.stats %}
+        <td>{{ player.stats.play_time_ticks|default:0 }}</td>
+        <td>{{ player.stats.pokemons_caught }}</td>
+        <td>{{ player.stats.pokedex_registered }}</td>
+        <td>{{ player.stats.battles_won }}</td>
+        <td>{{ player.stats.cobbletcg_cards }}</td>
+        <td>{{ player.stats.cobbledollars }}</td>
+        {% else %}
+        <td colspan="6" style="color:var(--muted);font-size:13px">No stats</td>
+        {% endif %}
+      </tr>
+      {% empty %}
+      <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:40px">No players yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

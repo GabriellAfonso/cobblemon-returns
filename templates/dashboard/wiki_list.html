@@ -1,0 +1,53 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block title %}Wiki Pages — Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="dash-header" style="display:flex;align-items:center;justify-content:space-between">
+  <div>
+    <div class="dash-title">Wiki Pages</div>
+    <div class="dash-subtitle">{{ paginator.count }} page{{ paginator.count|pluralize }}</div>
+  </div>
+  <a href="{% url 'dashboard-wiki-create' %}" class="btn-dash btn-dash-primary">✏️ New Page</a>
+</div>
+
+<div class="dash-table-wrap">
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Slug</th>
+        <th>Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for page in pages %}
+      <tr>
+        <td><a href="{% url 'wiki-detail' page.slug %}">{{ page.title }}</a></td>
+        <td style="color:var(--muted);font-size:13px">{{ page.slug }}</td>
+        <td style="color:var(--muted);font-size:13px">{{ page.updated_at|date:"d M Y" }}</td>
+        <td style="white-space:nowrap">
+          <a href="{% url 'dashboard-wiki-edit' page.slug %}" class="btn-dash btn-dash-secondary" style="padding:5px 10px;font-size:12px">Edit</a>
+          <a href="{% url 'dashboard-wiki-delete' page.slug %}" class="btn-dash btn-dash-danger" style="padding:5px 10px;font-size:12px;margin-left:4px">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" style="text-align:center;color:var(--muted);padding:40px">No wiki pages yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if is_paginated %}
+<div class="pagination">
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}" class="page-link">← Prev</a>
+  {% endif %}
+  <span class="page-link current">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next →</a>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

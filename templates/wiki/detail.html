@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ object.title }} — Wiki{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/wiki.css' %}">{% endblock %}
+
+{% block content %}
+<div class="wiki-detail-wrap">
+  <a href="{% url 'wiki-list' %}" class="wiki-back">← Back to Wiki</a>
+
+  <div class="wiki-header">
+    <h1>{{ object.title }}</h1>
+    <div class="wiki-header-meta">Last updated: {{ object.updated_at|date:"d M Y · H:i" }}</div>
+  </div>
+
+  <article class="wiki-content">
+    {{ content_html|safe }}
+  </article>
+</div>
+{% endblock %}

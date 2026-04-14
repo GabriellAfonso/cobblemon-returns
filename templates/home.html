@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cobblemon Returns{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+
+{% block content %}
+<!-- ── HERO ── -->
+<div class="hero">
+  <img class="hero-bg-logo" src="{% static 'images/favicon.ico' %}" alt="">
+
+  <div class="hero-eyebrow">Cobblemon Fabric Server</div>
+
+  <div class="hero-logo-wrap">
+    <img class="hero-logo-icon" src="{% static 'images/favicon.ico' %}" alt="Cobblemon Returns">
+    <div class="hero-logo-text">COBBLEMON <span class="accent">RETURNS</span></div>
+  </div>
+
+  <p class="hero-sub">Adventure, battles, and Pokémon in a Minecraft server built for the community.</p>
+
+  <div class="hero-ctas">
+    <button class="btn-primary" onclick="openModal()">
+      <span>⬇️</span> Install Modpack
+    </button>
+    <a href="{% url 'rankings' %}" class="btn-secondary">
+      <span>🏆</span> View Rankings
+    </a>
+    <a href="{{ DISCORD_INVITE_URL }}" target="_blank" class="btn-discord-hero">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.053a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+      </svg>
+      Join Discord
+    </a>
+  </div>
+
+  <!-- SERVER STATUS -->
+  <div class="server-status-card">
+    <div class="status-block">
+      <span class="status-label">Status</span>
+      <div class="status-dot-wrap">
+        <div class="status-dot" id="srv-dot"></div>
+        <span class="status-text" id="srv-status">Loading...</span>
+      </div>
+    </div>
+    <div class="status-sep"></div>
+    <div class="status-block">
+      <span class="status-label">Players</span>
+      <span class="status-value" id="srv-players">—</span>
+    </div>
+    <div class="status-sep"></div>
+    <div class="status-block">
+      <span class="status-label">Version</span>
+      <span class="status-value" id="srv-version">—</span>
+    </div>
+    <div class="status-sep"></div>
+    <div class="status-block">
+      <span class="status-label">IP</span>
+      <span class="status-value" style="font-size:12px" id="srv-ip">{{ SERVER_HOST }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOP LEADERS ── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">🏆 Current Leaders</div>
+    <a href="{% url 'rankings' %}" class="section-link">View all rankings →</a>
+  </div>
+  <div class="leaders-grid">
+    {% for leader in leaders %}
+    <a href="{% url 'rankings' %}" class="leader-card">
+      <div class="leader-cat"><span class="cat-icon">{{ leader.icon }}</span>{{ leader.label }}</div>
+      <div class="leader-name">{{ leader.player_name }}</div>
+      <div class="leader-value">{{ leader.value }}</div>
+      <div class="leader-badge">🥇</div>
+    </a>
+    {% empty %}
+    <p style="color:var(--muted);font-size:14px">No data yet — collector hasn't run.</p>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- ── QUICK ACCESS ── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">⚡ Quick Access</div>
+  </div>
+  <div class="quick-grid">
+    <a href="{% url 'rankings' %}" class="quick-card">
+      <div class="quick-icon purple">🏆</div>
+      <div class="quick-info">
+        <div class="quick-title">Rankings</div>
+        <div class="quick-desc">See who leads the server</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+    <a href="{% url 'wiki-list' %}" class="quick-card">
+      <div class="quick-icon cyan">📖</div>
+      <div class="quick-info">
+        <div class="quick-title">Wiki</div>
+        <div class="quick-desc">Guides, items, and info</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+    <a href="{{ DISCORD_INVITE_URL }}" target="_blank" class="quick-card">
+      <div class="quick-icon discord">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7289da"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.053a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      </div>
+      <div class="quick-info">
+        <div class="quick-title">Discord</div>
+        <div class="quick-desc">Join our community</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </a>
+    <button class="quick-card" onclick="openModal()" style="text-align:left;cursor:pointer;border:1px solid var(--border);background:var(--surface)">
+      <div class="quick-icon green">⬇️</div>
+      <div class="quick-info">
+        <div class="quick-title">Install Modpack</div>
+        <div class="quick-desc">Step-by-step install guide</div>
+      </div>
+      <span class="quick-arrow">→</span>
+    </button>
+  </div>
+</div>
+
+<!-- ── MODPACK INSTALL MODAL ── -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">⬇️ Install Modpack</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-tabs">
+        <button class="mtab active" onclick="switchMTab('windows', this)">🪟 Windows</button>
+        <button class="mtab" onclick="switchMTab('linux', this)">🐧 Linux</button>
+      </div>
+
+      <div class="mtab-content active" id="mtab-windows">
+        <div class="modal-section-title">Installer Download</div>
+        <a href="https://drive.google.com/file/d/1YubnvZa_IhUA7XSm12IHP4hN0abe69zb/view?usp=sharing" target="_blank" class="dl-btn">
+          <span class="dl-icon">📦</span>
+          <div class="dl-info">
+            <div class="dl-name">Windows Installer</div>
+            <div class="dl-desc">Google Drive · .exe</div>
+          </div>
+          <span class="dl-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="mtab-content" id="mtab-linux">
+        <div class="modal-section-title">Installer Download</div>
+        <a href="https://drive.google.com/file/d/1LEBOKNWibQDcUyyIGvrrLbGZmhvtG6yB/view?usp=drive_link" target="_blank" class="dl-btn">
+          <span class="dl-icon">📦</span>
+          <div class="dl-info">
+            <div class="dl-name">Linux Installer</div>
+            <div class="dl-desc">Google Drive · .sh / .AppImage</div>
+          </div>
+          <span class="dl-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="modal-section-title">Recommended Launchers</div>
+      <div class="launcher-row">
+        <a href="https://www.minecraft.net/download" target="_blank" class="launcher-btn">
+          <span class="l-icon">🎮</span> Official Launcher
+        </a>
+        <a href="https://drive.google.com/file/d/1B3hAs0oky-mz6TTi_JyF-Wi-8SCodCEO/view?usp=drive_link" target="_blank" class="launcher-btn">
+          <span class="l-icon">🚀</span> SK Launcher
+        </a>
+      </div>
+
+      <div class="modal-section-title">Step by Step</div>
+      <div class="steps">
+        <div class="step"><span class="step-num">01</span><span class="step-text">Download and open the installer.</span></div>
+        <div class="step"><span class="step-num">02</span><span class="step-text">Click <b>Install Modpack</b>.</span></div>
+        <div class="step"><span class="step-num">03</span><span class="step-text">Choose the desired <b>installation profile</b>.</span></div>
+        <div class="step"><span class="step-num">04</span><span class="step-text">Click <b>Confirm</b> and wait.</span></div>
+        <div class="step"><span class="step-num">05</span><span class="step-text">After installation, open <b>Minecraft</b> through your <b>configured launcher</b>.</span></div>
+      </div>
+
+      <div class="warning-box">
+        <span class="w-icon">⚠️</span>
+        <span class="w-text">The installer <b>does not work with TLauncher</b>. Use <b>SK Launcher</b> or the <b>Official Launcher</b>.</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function openModal()  { document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+function handleOverlayClick(e) { if(e.target === document.getElementById('modal-overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+function switchMTab(id, btn) {
+  document.querySelectorAll('.mtab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(el => el.classList.remove('active'));
+  document.getElementById('mtab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const SERVER_HOST = '{{ SERVER_HOST|escapejs }}';
+
+async function fetchStatus() {
+  try {
+    const res = await fetch(`https://api.mcsrvstat.us/3/${SERVER_HOST}`);
+    const data = await res.json();
+    const dot = document.getElementById('srv-dot');
+    const txt = document.getElementById('srv-status');
+    const players = document.getElementById('srv-players');
+    const version = document.getElementById('srv-version');
+    if (data.online) {
+      dot.className = 'status-dot online';
+      txt.className = 'status-text online'; txt.textContent = 'Online';
+      players.textContent = `${data.players?.online ?? 0} / ${data.players?.max ?? '?'}`;
+      version.textContent = data.version ?? '—';
+    } else {
+      dot.className = 'status-dot offline';
+      txt.className = 'status-text offline'; txt.textContent = 'Offline';
+      players.textContent = '0'; version.textContent = '—';
+    }
+  } catch { document.getElementById('srv-status').textContent = 'Error'; }
+}
+fetchStatus();
+setInterval(fetchStatus, 60000);
+</script>
+{% endblock %}
