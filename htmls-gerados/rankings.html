@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobblemon Returns — Rankings</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #C850F0;
+  --purple-dim: #8B35A8;
+  --purple-glow: rgba(200,80,240,0.25);
+  --cyan: #00B4D8;
+  --cyan-dim: #007A96;
+  --cyan-glow: rgba(0,180,216,0.2);
+  --bg: #0a0a0f;
+  --bg2: #0f0f1a;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --border-bright: rgba(255,255,255,0.15);
+  --white: #ffffff;
+  --text: #e2e2f0;
+  --muted: #6b6b8a;
+  --gold: #FFD700;
+  --silver: #C0C8D8;
+  --bronze: #CD8B5A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(200,80,240,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 100%, rgba(0,180,216,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200,80,240,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 0;
+}
+
+/* ── LOGO ICON (SVG isometric pokeball inspired by the uploaded icon) ── */
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.logo-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.logo-text span {
+  color: var(--purple);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+  margin: 0 28px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+  background: var(--surface);
+}
+
+.nav-links a.active {
+  color: var(--purple);
+  background: rgba(200,80,240,0.1);
+}
+
+.nav-links a .nav-icon { font-size: 15px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 64px 24px 40px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(200,80,240,0.1);
+  border: 1px solid rgba(200,80,240,0.3);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: -1px;
+}
+
+.hero h1 .accent { color: var(--purple); }
+
+.hero-sub {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.hero-meta .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #3DDB85;
+  box-shadow: 0 0 6px #3DDB85;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── TABS ── */
+.page-body {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+
+.tab-btn.active {
+  background: rgba(200,80,240,0.12);
+  border-color: rgba(200,80,240,0.5);
+  color: var(--purple);
+  box-shadow: 0 0 20px rgba(200,80,240,0.1);
+}
+
+.tab-btn .tab-emoji { font-size: 16px; }
+
+/* ── RANKING PANEL ── */
+.ranking-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.panel-title .p-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.panel-title .p-label {
+  color: var(--purple);
+}
+
+.panel-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ── TAB CONTENTS ── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── ROWS ── */
+.ranking-list {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  cursor: default;
+  animation: fadeIn 0.3s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rank-row:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
+}
+
+.rank-row.gold {
+  background: rgba(255,215,0,0.06);
+  border-color: rgba(255,215,0,0.15);
+}
+.rank-row.silver {
+  background: rgba(192,200,216,0.05);
+  border-color: rgba(192,200,216,0.12);
+}
+.rank-row.bronze {
+  background: rgba(205,139,90,0.05);
+  border-color: rgba(205,139,90,0.12);
+}
+
+.rank-num-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  width: 32px;
+  text-align: center;
+}
+
+.rank-medal { font-size: 26px; line-height: 1; }
+
+.rank-player { display: flex; flex-direction: column; gap: 3px; }
+
+.rank-player .name {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  letter-spacing: 0.2px;
+}
+
+.rank-row.gold .name { color: var(--gold); }
+.rank-row.silver .name { color: var(--silver); }
+.rank-row.bronze .name { color: var(--bronze); }
+
+.rank-player .sub {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.rank-value-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+
+.rank-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.rank-row.gold   .rank-value { color: var(--gold); }
+.rank-row.silver .rank-value { color: var(--silver); }
+.rank-row.bronze .rank-value { color: var(--bronze); }
+
+.rank-bar-bg {
+  width: 80px;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rank-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--cyan-dim), var(--cyan));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-row.gold .rank-bar-fill { background: linear-gradient(90deg, #B8960A, var(--gold)); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+footer a { color: var(--purple); text-decoration: none; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple-dim); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <!-- Isometric pokeball SVG inspired by the icon -->
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Hexagonal body -->
+      <path d="M18 3L31 10.5V25.5L18 33L5 25.5V10.5L18 3Z" fill="#1a1a2a" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+      <!-- Top half (purple) -->
+      <path d="M18 5L29 11.5V18H7V11.5L18 5Z" fill="#C850F0" opacity="0.9"/>
+      <!-- Bottom half (gray/silver) -->
+      <path d="M7 18V24.5L18 31L29 24.5V18H7Z" fill="#8890A8" opacity="0.85"/>
+      <!-- Middle band -->
+      <rect x="6" y="16.5" width="24" height="3" fill="#111" rx="0.5"/>
+      <!-- Center button -->
+      <circle cx="18" cy="18" r="4" fill="#1a1a2a" stroke="#111" stroke-width="1"/>
+      <circle cx="18" cy="18" r="2.2" fill="#C850F0" opacity="0.7"/>
+      <!-- Cyan arrows (rotation feel) -->
+      <path d="M4 14 Q2 18 4 22" stroke="#00B4D8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M32 14 Q34 18 32 22" stroke="#00B4D8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <polygon points="3,12 6,14 3,16" fill="#00B4D8"/>
+      <polygon points="33,20 30,22 33,24" fill="#00B4D8"/>
+    </svg>
+
+    <div class="logo-text">COBBLEMON <span>RETURNS</span></div>
+
+    <div class="nav-divider"></div>
+
+    <ul class="nav-links">
+      <li><a href="#" class="active"><span class="nav-icon">🏆</span> Rankings</a></li>
+      <li><a href="#"><span class="nav-icon">📖</span> Wiki</a></li>
+      <li><a href="#"><span class="nav-icon">👾</span> Jogadores</a></li>
+      <li><a href="#"><span class="nav-icon">🗺️</span> Mapa</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Hall of Fame</div>
+  <h1>Tabela de <span class="accent">Rankings</span></h1>
+  <p class="hero-sub">Os melhores treinadores do servidor, atualizados em tempo real</p>
+  <div class="hero-meta">
+    <span class="dot"></span>
+    Última atualização: 13/04/2026 às 20:00
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="page-body">
+
+  <div class="tabs-header">
+    <button class="tab-btn active" onclick="switchTab('horas', this)">
+      <span class="tab-emoji">⏱️</span> Horas Jogadas
+    </button>
+    <button class="tab-btn" onclick="switchTab('capturas', this)">
+      <span class="tab-emoji">🔴</span> Capturas
+    </button>
+    <button class="tab-btn" onclick="switchTab('pokedex', this)">
+      <span class="tab-emoji">📕</span> Pokédex
+    </button>
+    <button class="tab-btn" onclick="switchTab('cartas', this)">
+      <span class="tab-emoji">🃏</span> TCG
+    </button>
+    <button class="tab-btn" onclick="switchTab('batalhas', this)">
+      <span class="tab-emoji">⚔️</span> Batalhas
+    </button>
+    <button class="tab-btn" onclick="switchTab('dinheiro', this)">
+      <span class="tab-emoji">💰</span> CobbleDollars
+    </button>
+  </div>
+
+  <div class="ranking-panel">
+
+    <div id="tab-horas" class="tab-content active">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">⏱️</span> <span class="p-label">Horas Jogadas</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-horas"></div>
+    </div>
+
+    <div id="tab-capturas" class="tab-content">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">🔴</span> <span class="p-label">Pokémons Capturados</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-capturas"></div>
+    </div>
+
+    <div id="tab-pokedex" class="tab-content">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">📕</span> <span class="p-label">Pokédex Registrada</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-pokedex"></div>
+    </div>
+
+    <div id="tab-cartas" class="tab-content">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">🃏</span> <span class="p-label">Cartas CobbleTCG</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-cartas"></div>
+    </div>
+
+    <div id="tab-batalhas" class="tab-content">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">⚔️</span> <span class="p-label">Batalhas Vencidas</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-batalhas"></div>
+    </div>
+
+    <div id="tab-dinheiro" class="tab-content">
+      <div class="panel-header">
+        <div class="panel-title"><span class="p-icon">💰</span> <span class="p-label">CobbleDollars</span></div>
+        <span class="panel-count">Top 10 jogadores</span>
+      </div>
+      <div class="ranking-list" id="list-dinheiro"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Cobblemon Returns &bull; Servidor Cobblemon Fabric &bull; Feito com <span style="color:var(--purple)">♥</span> pela comunidade</p>
+</footer>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const medals = ['🥇','🥈','🥉'];
+const classes = ['gold','silver','bronze'];
+
+function renderRanking(listId, players) {
+  const max = players[0]?.rawValue || 1;
+  const ul = document.getElementById(listId);
+  ul.innerHTML = players.map((p, i) => {
+    const cls = i < 3 ? classes[i] : '';
+    const numHtml = i < 3
+      ? `<span class="rank-medal">${medals[i]}</span>`
+      : `<span class="rank-num">${i + 1}</span>`;
+    const pct = Math.round((p.rawValue / max) * 100);
+    return `
+      <div class="rank-row ${cls}" style="animation-delay:${i * 40}ms">
+        <div class="rank-num-wrap">${numHtml}</div>
+        <div class="rank-player">
+          <span class="name">${p.name}</span>
+          <span class="sub">${p.sub || 'Treinador'}</span>
+        </div>
+        <div class="rank-value-wrap">
+          <span class="rank-value">${p.display}</span>
+          <div class="rank-bar-bg">
+            <div class="rank-bar-fill" style="width:${pct}%"></div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+const names = ['AshKetchum','MistyWater','BrockRock','GaryOak','TraceyS','DawnHikari','PaulShinji','BrettMax','IrisKiba','CilanDent'];
+const subs  = ['Líder geral','Treinadora','Treinador','Rival','Treinador','Coordenadora','Treinador','Aventureiro','Campeã','Connoisseur'];
+
+function sampleData(base, fmt) {
+  return names.map((name, i) => {
+    const factor = [1, 0.85, 0.73, 0.61, 0.54, 0.44, 0.37, 0.28, 0.21, 0.13][i];
+    const raw = Math.round(base * factor);
+    return { name, sub: subs[i], rawValue: raw, display: fmt(raw) };
+  });
+}
+
+renderRanking('list-horas',    sampleData(2400, v => Math.round(v / 1) + 'h'));
+renderRanking('list-capturas', sampleData(320, v => v + ' pkm'));
+renderRanking('list-pokedex',  sampleData(251, v => v + ' / 251'));
+renderRanking('list-cartas',   sampleData(180, v => v + ' cartas'));
+renderRanking('list-batalhas', sampleData(95,  v => v + ' vitórias'));
+renderRanking('list-dinheiro', sampleData(85000, v => '₡ ' + v.toLocaleString('pt-BR')));
+</script>
+</body>
+</html>
