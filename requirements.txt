@@ -1,10 +1,14 @@
-django>=5.0
-paramiko>=3.0
-apscheduler>=3.10
-playwright>=1.40
-mistune>=3.0
-python-dotenv>=1.0
-gunicorn>=21.0
-requests>=2.31
-Pillow>=10.0
-nbtlib>=2.0
+django>=5.2
+
+# dev
+ruff>=0.11.4
+pre-commit>=4.2.0
+paramiko==4.0.0
+apscheduler==3.11.2
+playwright==1.58.0
+mistune==3.2.0
+python-dotenv==1.2.1
+gunicorn==25.3.0
+requests==2.33.1
+Pillow==12.2.0
+nbtlib==2.0.4
