@@ -9,7 +9,7 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 
-def get_sftp_client():
+def get_sftp_client() -> paramiko.SFTPClient:
     """Return an authenticated SFTP client using SSH key auth."""
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -22,7 +22,7 @@ def get_sftp_client():
     return ssh.open_sftp()
 
 
-def read_json_file(sftp, path):
+def read_json_file(sftp: paramiko.SFTPClient, path: str) -> dict | None:
     """Read and parse a JSON file from the remote server. Returns dict or None."""
     try:
         with sftp.open(path) as f:
@@ -32,7 +32,7 @@ def read_json_file(sftp, path):
         return None
 
 
-def read_nbt_file(sftp, path):
+def read_nbt_file(sftp: paramiko.SFTPClient, path: str) -> nbtlib.File | None:
     """Read and parse an NBT file from the remote server. Returns nbtlib object or None."""
     try:
         with sftp.open(path) as f:
@@ -46,7 +46,7 @@ def read_nbt_file(sftp, path):
         return None
 
 
-def read_usercache(sftp):
+def read_usercache(sftp: paramiko.SFTPClient) -> dict[str, str]:
     """Read usercache.json and return a {uuid: name} dict."""
     from pathlib import PurePosixPath
     server_path = str(PurePosixPath(settings.MINECRAFT_WORLD_PATH).parent)
@@ -56,7 +56,7 @@ def read_usercache(sftp):
     return {entry['uuid']: entry['name'] for entry in data if 'uuid' in entry and 'name' in entry}
 
 
-def collect_player_data(sftp, uuid):
+def collect_player_data(sftp: paramiko.SFTPClient, uuid: str) -> dict[str, int]:
     """
     Collect all stats for a single player UUID.
     Returns a dict with keys matching PlayerStats fields.
@@ -79,10 +79,14 @@ def collect_player_data(sftp, uuid):
     cobblemon_data = read_json_file(
         sftp, f"{settings.COBBLEMON_DATA_PATH}/{shard}/{uuid}.json"
     )
-    advancement = (cobblemon_data or {}).get('advancementData', {})
+    data['battles_won'] = (cobblemon_data or {}).get('battleWins', 0)
 
-    data['pokemons_caught'] = advancement.get('totalCaptureCount', 0)
-    data['battles_won'] = advancement.get('totalBattleVictoryCount', 0)
+    # Caught pokemon — counted from per-pokemon files in storage directory
+    try:
+        pokemon_dir = f"{settings.COBBLEMON_DATA_PATH}/pokemon/{shard}/{uuid}"
+        data['pokemons_caught'] = len(sftp.listdir(pokemon_dir))
+    except Exception:
+        data['pokemons_caught'] = 0
 
     # Pokédex — sharded NBT: world/pokedex/{shard}/{uuid}.nbt
     # speciesRecords has one entry per species registered

@@ -1,4 +1,4 @@
-def format_value(value, format_type):
+def format_value(value: int, format_type: str) -> str:
     """Convert a raw stat value to a display string."""
     value = int(value)
     if format_type == 'hours':
