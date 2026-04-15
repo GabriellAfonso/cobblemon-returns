@@ -1,5 +1,7 @@
 from .base import *
 
+SECRET_KEY = 'django-insecure-test-only'
+
 DEBUG = True
 DATABASES = {
     'default': {

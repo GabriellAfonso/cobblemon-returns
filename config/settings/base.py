@@ -7,7 +7,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY") or "dev-insecure-key"
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
