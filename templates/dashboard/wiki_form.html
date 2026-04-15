@@ -8,7 +8,7 @@
     <div class="dash-title">{{ form_title }}</div>
     <div class="dash-subtitle">Write Markdown content below</div>
   </div>
-  <a href="{% url 'dashboard-wiki-list' %}" class="btn-dash btn-dash-secondary">← Back to list</a>
+  <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">← Back to list</a>
 </div>
 
 <div class="dash-form">
@@ -48,7 +48,7 @@
     <div class="form-actions">
       <button type="submit" class="btn-dash btn-dash-primary">💾 Save Page</button>
       <button type="submit" name="_preview" value="1" class="btn-dash btn-dash-secondary">👁 Save & Preview</button>
-      <a href="{% url 'dashboard-wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
+      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
     </div>
   </form>
 

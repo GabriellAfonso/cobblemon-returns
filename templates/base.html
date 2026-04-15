@@ -18,9 +18,9 @@
     <div class="logo-text">COBBLEMON <span>RETURNS</span></div>
     <div class="nav-divider"></div>
     <ul class="nav-links">
-      <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>🏠 Home</a></li>
-      <li><a href="{% url 'rankings' %}" {% if 'ranking' in request.resolver_match.url_name %}class="active"{% endif %}>🏆 Rankings</a></li>
-      <li><a href="{% url 'wiki-list' %}" {% if 'wiki' in request.resolver_match.url_name %}class="active"{% endif %}>📖 Wiki</a></li>
+      <li><a href="{% url 'rankings:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>🏠 Home</a></li>
+      <li><a href="{% url 'rankings:rankings' %}" {% if 'ranking' in request.resolver_match.url_name %}class="active"{% endif %}>🏆 Rankings</a></li>
+      <li><a href="{% url 'wiki:wiki-list' %}" {% if request.resolver_match.app_name == 'wiki' %}class="active"{% endif %}>📖 Wiki</a></li>
     </ul>
     <div class="nav-actions">
       <a href="{{ DISCORD_INVITE_URL }}" target="_blank" class="discord-btn" title="Join Discord">

@@ -22,7 +22,7 @@
     {% csrf_token %}
     <div style="display:flex;gap:10px">
       <button type="submit" class="btn-dash btn-dash-danger">Yes, delete it</button>
-      <a href="{% url 'dashboard-wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
+      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
     </div>
   </form>
 </div>

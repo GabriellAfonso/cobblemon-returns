@@ -11,13 +11,15 @@ from .views import (
     WikiManageView,
 )
 
+app_name = 'dashboard'
+
 urlpatterns = [
-    path('', DashboardHomeView.as_view(), name='dashboard-home'),
-    path('wiki/', WikiManageView.as_view(), name='dashboard-wiki-list'),
-    path('wiki/new/', WikiCreateView.as_view(), name='dashboard-wiki-create'),
-    path('wiki/<slug:slug>/edit/', WikiEditView.as_view(), name='dashboard-wiki-edit'),
-    path('wiki/<slug:slug>/delete/', WikiDeleteView.as_view(), name='dashboard-wiki-delete'),
-    path('logs/', CollectionLogView.as_view(), name='dashboard-logs'),
-    path('players/', PlayersListView.as_view(), name='dashboard-players'),
-    path('trigger-collection/', TriggerCollectionView.as_view(), name='dashboard-trigger'),
+    path('', DashboardHomeView.as_view(), name='home'),
+    path('wiki/', WikiManageView.as_view(), name='wiki-list'),
+    path('wiki/new/', WikiCreateView.as_view(), name='wiki-create'),
+    path('wiki/<slug:slug>/edit/', WikiEditView.as_view(), name='wiki-edit'),
+    path('wiki/<slug:slug>/delete/', WikiDeleteView.as_view(), name='wiki-delete'),
+    path('logs/', CollectionLogView.as_view(), name='logs'),
+    path('players/', PlayersListView.as_view(), name='players'),
+    path('trigger-collection/', TriggerCollectionView.as_view(), name='trigger'),
 ]

@@ -12,26 +12,26 @@
   <!-- SIDEBAR -->
   <nav class="sidebar">
     <div class="sidebar-section">Overview</div>
-    <a href="{% url 'dashboard-home' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-home' %}active{% endif %}">
+    <a href="{% url 'dashboard:home' %}" class="sidebar-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
       <span class="s-icon">🏠</span> Home
     </a>
-    <a href="{% url 'dashboard-players' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-players' %}active{% endif %}">
+    <a href="{% url 'dashboard:players' %}" class="sidebar-link {% if request.resolver_match.url_name == 'players' %}active{% endif %}">
       <span class="s-icon">👾</span> Players
     </a>
-    <a href="{% url 'dashboard-logs' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard-logs' %}active{% endif %}">
+    <a href="{% url 'dashboard:logs' %}" class="sidebar-link {% if request.resolver_match.url_name == 'logs' %}active{% endif %}">
       <span class="s-icon">📋</span> Collection Logs
     </a>
 
     <div class="sidebar-section">Wiki</div>
-    <a href="{% url 'dashboard-wiki-list' %}" class="sidebar-link {% if 'dashboard-wiki' in request.resolver_match.url_name %}active{% endif %}">
+    <a href="{% url 'dashboard:wiki-list' %}" class="sidebar-link {% if 'wiki' in request.resolver_match.url_name %}active{% endif %}">
       <span class="s-icon">📖</span> Manage Pages
     </a>
-    <a href="{% url 'dashboard-wiki-create' %}" class="sidebar-link">
+    <a href="{% url 'dashboard:wiki-create' %}" class="sidebar-link">
       <span class="s-icon">✏️</span> New Page
     </a>
 
     <div class="sidebar-section">Collector</div>
-    <form method="post" action="{% url 'dashboard-trigger' %}" style="margin: 1px 8px;">
+    <form method="post" action="{% url 'dashboard:trigger' %}" style="margin: 1px 8px;">
       {% csrf_token %}
       <button type="submit" class="sidebar-link" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;">
         <span class="s-icon">⚡</span> Run Now

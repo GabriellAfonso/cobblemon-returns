@@ -23,7 +23,7 @@
     <button class="btn-primary" onclick="openModal()">
       <span>⬇️</span> Install Modpack
     </button>
-    <a href="{% url 'rankings' %}" class="btn-secondary">
+    <a href="{% url 'rankings:rankings' %}" class="btn-secondary">
       <span>🏆</span> View Rankings
     </a>
     <a href="{{ DISCORD_INVITE_URL }}" target="_blank" class="btn-discord-hero">
@@ -65,11 +65,11 @@
 <div class="section">
   <div class="section-header">
     <div class="section-title">🏆 Current Leaders</div>
-    <a href="{% url 'rankings' %}" class="section-link">View all rankings →</a>
+    <a href="{% url 'rankings:rankings' %}" class="section-link">View all rankings →</a>
   </div>
   <div class="leaders-grid">
     {% for leader in leaders %}
-    <a href="{% url 'rankings' %}" class="leader-card">
+    <a href="{% url 'rankings:rankings' %}" class="leader-card">
       <div class="leader-cat"><span class="cat-icon">{{ leader.icon }}</span>{{ leader.label }}</div>
       <div class="leader-name">{{ leader.player_name }}</div>
       <div class="leader-value">{{ leader.value }}</div>
@@ -87,7 +87,7 @@
     <div class="section-title">⚡ Quick Access</div>
   </div>
   <div class="quick-grid">
-    <a href="{% url 'rankings' %}" class="quick-card">
+    <a href="{% url 'rankings:rankings' %}" class="quick-card">
       <div class="quick-icon purple">🏆</div>
       <div class="quick-info">
         <div class="quick-title">Rankings</div>
@@ -95,7 +95,7 @@
       </div>
       <span class="quick-arrow">→</span>
     </a>
-    <a href="{% url 'wiki-list' %}" class="quick-card">
+    <a href="{% url 'wiki:wiki-list' %}" class="quick-card">
       <div class="quick-icon cyan">📖</div>
       <div class="quick-info">
         <div class="quick-title">Wiki</div>

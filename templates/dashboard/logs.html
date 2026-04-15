@@ -8,7 +8,7 @@
     <div class="dash-title">Collection Logs</div>
     <div class="dash-subtitle">Last 50 entries</div>
   </div>
-  <form method="post" action="{% url 'dashboard-trigger' %}">
+  <form method="post" action="{% url 'dashboard:trigger' %}">
     {% csrf_token %}
     <button type="submit" class="btn-dash btn-dash-primary">⚡ Run Collection Now</button>
   </form>

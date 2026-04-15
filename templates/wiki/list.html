@@ -16,7 +16,7 @@
   {% if pages %}
   <div class="wiki-grid">
     {% for page in pages %}
-    <a href="{% url 'wiki-detail' page.slug %}" class="wiki-card">
+    <a href="{% url 'wiki:wiki-detail' page.slug %}" class="wiki-card">
       <div class="wiki-card-title">{{ page.title }}</div>
       <div class="wiki-card-meta">Updated {{ page.updated_at|date:"d M Y" }}</div>
       <div class="wiki-card-arrow">→</div>

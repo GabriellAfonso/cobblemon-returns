@@ -8,7 +8,7 @@
     <div class="dash-title">Wiki Pages</div>
     <div class="dash-subtitle">{{ paginator.count }} page{{ paginator.count|pluralize }}</div>
   </div>
-  <a href="{% url 'dashboard-wiki-create' %}" class="btn-dash btn-dash-primary">✏️ New Page</a>
+  <a href="{% url 'dashboard:wiki-create' %}" class="btn-dash btn-dash-primary">✏️ New Page</a>
 </div>
 
 <div class="dash-table-wrap">
@@ -24,12 +24,12 @@
     <tbody>
       {% for page in pages %}
       <tr>
-        <td><a href="{% url 'wiki-detail' page.slug %}">{{ page.title }}</a></td>
+        <td><a href="{% url 'wiki:wiki-detail' page.slug %}">{{ page.title }}</a></td>
         <td style="color:var(--muted);font-size:13px">{{ page.slug }}</td>
         <td style="color:var(--muted);font-size:13px">{{ page.updated_at|date:"d M Y" }}</td>
         <td style="white-space:nowrap">
-          <a href="{% url 'dashboard-wiki-edit' page.slug %}" class="btn-dash btn-dash-secondary" style="padding:5px 10px;font-size:12px">Edit</a>
-          <a href="{% url 'dashboard-wiki-delete' page.slug %}" class="btn-dash btn-dash-danger" style="padding:5px 10px;font-size:12px;margin-left:4px">Delete</a>
+          <a href="{% url 'dashboard:wiki-edit' page.slug %}" class="btn-dash btn-dash-secondary" style="padding:5px 10px;font-size:12px">Edit</a>
+          <a href="{% url 'dashboard:wiki-delete' page.slug %}" class="btn-dash btn-dash-danger" style="padding:5px 10px;font-size:12px;margin-left:4px">Delete</a>
         </td>
       </tr>
       {% empty %}
