@@ -9,6 +9,8 @@ class WikiPage(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = 'wiki page'
+        verbose_name_plural = 'wiki pages'
 
     def __str__(self):
         return self.title

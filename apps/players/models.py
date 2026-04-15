@@ -6,6 +6,11 @@ class Player(models.Model):
     username = models.CharField(max_length=32)
     last_seen = models.DateTimeField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['username']
+        verbose_name = 'player'
+        verbose_name_plural = 'players'
+
     def __str__(self):
         return self.username
 
@@ -19,3 +24,11 @@ class PlayerStats(models.Model):
     battles_won = models.IntegerField(default=0)
     cobbledollars = models.IntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['player__username']
+        verbose_name = 'player stats'
+        verbose_name_plural = 'player stats'
+
+    def __str__(self):
+        return f'{self.player} stats'

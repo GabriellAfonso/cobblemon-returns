@@ -13,3 +13,8 @@ class CollectionLog(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
+        verbose_name = 'collection log'
+        verbose_name_plural = 'collection logs'
+
+    def __str__(self):
+        return f'[{self.status.upper()}] {self.timestamp:%Y-%m-%d %H:%M} — {self.players_updated} players'
