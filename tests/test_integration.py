@@ -32,24 +32,24 @@ class PublicViewsTest(TestCase):
         WikiPage.objects.create(slug='guide', title='Guide', content='# Hello\n\nWelcome.')
 
     def test_home_returns_200(self):
-        resp = self.client.get(reverse('home'))
+        resp = self.client.get(reverse('rankings:home'))
         self.assertEqual(resp.status_code, 200)
 
     def test_rankings_returns_200(self):
-        resp = self.client.get(reverse('rankings'))
+        resp = self.client.get(reverse('rankings:rankings'))
         self.assertEqual(resp.status_code, 200)
 
     def test_rankings_has_all_six_sections(self):
-        resp = self.client.get(reverse('rankings'))
+        resp = self.client.get(reverse('rankings:rankings'))
         self.assertEqual(len(resp.context['rankings']), len(RANKINGS))
         self.assertEqual(len(resp.context['rankings']), 6)
 
     def test_wiki_list_returns_200(self):
-        resp = self.client.get(reverse('wiki-list'))
+        resp = self.client.get(reverse('wiki:wiki-list'))
         self.assertEqual(resp.status_code, 200)
 
     def test_wiki_detail_renders_html(self):
-        resp = self.client.get(reverse('wiki-detail', args=['guide']))
+        resp = self.client.get(reverse('wiki:wiki-detail', args=['guide']))
         self.assertEqual(resp.status_code, 200)
         self.assertIn('<h1>', resp.context['content_html'])
 
@@ -80,7 +80,7 @@ class DiscordCardTemplateTest(TestCase):
             'date': datetime.date.today().strftime('%d %b %Y'),
         })
         self.assertIn('TracySketch', html)
-        self.assertIn(ranking['label'], html)
+        self.assertIn(ranking['label'].upper(), html)
 
     def test_discord_card_template_has_all_rankings(self):
         for ranking in RANKINGS:
@@ -89,27 +89,27 @@ class DiscordCardTemplateTest(TestCase):
                 'players': [],
                 'date': '01 Jan 2026',
             })
-            self.assertIn(ranking['label'], html)
+            self.assertIn(ranking['label'].upper(), html)
 
 
 class DashboardAccessTest(TestCase):
 
     def test_dashboard_home_redirects_anonymous(self):
-        resp = self.client.get(reverse('dashboard-home'))
+        resp = self.client.get(reverse('dashboard:home'))
         self.assertIn(resp.status_code, (301, 302))
 
     def test_dashboard_players_redirects_anonymous(self):
-        resp = self.client.get(reverse('dashboard-players'))
+        resp = self.client.get(reverse('dashboard:players'))
         self.assertIn(resp.status_code, (301, 302))
 
     def test_dashboard_accessible_by_staff(self):
         staff = User.objects.create_user('admin', password='pass', is_staff=True)
         self.client.force_login(staff)
-        resp = self.client.get(reverse('dashboard-home'))
+        resp = self.client.get(reverse('dashboard:home'))
         self.assertEqual(resp.status_code, 200)
 
     def test_dashboard_wiki_list_accessible_by_staff(self):
         staff = User.objects.create_user('admin2', password='pass', is_staff=True)
         self.client.force_login(staff)
-        resp = self.client.get(reverse('dashboard-wiki-list'))
+        resp = self.client.get(reverse('dashboard:wiki-list'))
         self.assertEqual(resp.status_code, 200)

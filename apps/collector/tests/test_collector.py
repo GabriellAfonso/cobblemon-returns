@@ -110,8 +110,8 @@ class CollectPlayerDataTest(TestCase):
 @override_settings(**SFTP_SETTINGS)
 class RunCollectionTest(TestCase):
 
-    @patch('apps.collector.tasks.get_sftp_client')
-    @patch('apps.collector.tasks.collect_player_data')
+    @patch('apps.collector.services.collection_service.get_sftp_client')
+    @patch('apps.collector.services.collection_service.collect_player_data')
     def test_creates_ok_log(self, mock_collect, mock_sftp_client):
         mock_sftp = MagicMock()
         mock_sftp.listdir.return_value = ['abc-123.json']
@@ -131,7 +131,7 @@ class RunCollectionTest(TestCase):
         self.assertEqual(log.status, CollectionLog.STATUS_OK)
         self.assertEqual(log.players_updated, 1)
 
-    @patch('apps.collector.tasks.get_sftp_client', side_effect=Exception("connection refused"))
+    @patch('apps.collector.services.collection_service.get_sftp_client', side_effect=Exception("connection refused"))
     def test_creates_error_log_on_failure(self, mock_sftp_client):
         from apps.collector.tasks import run_collection
         run_collection()

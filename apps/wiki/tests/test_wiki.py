@@ -30,11 +30,11 @@ class WikiListViewTest(TestCase):
         WikiPage.objects.create(slug='faq', title='FAQ', content='Questions')
 
     def test_list_returns_200(self):
-        resp = self.client.get(reverse('wiki-list'))
+        resp = self.client.get(reverse('wiki:wiki-list'))
         self.assertEqual(resp.status_code, 200)
 
     def test_list_shows_all_pages(self):
-        resp = self.client.get(reverse('wiki-list'))
+        resp = self.client.get(reverse('wiki:wiki-list'))
         self.assertEqual(len(resp.context['pages']), 2)
 
 
@@ -48,13 +48,13 @@ class WikiDetailViewTest(TestCase):
         )
 
     def test_detail_returns_200(self):
-        resp = self.client.get(reverse('wiki-detail', args=['getting-started']))
+        resp = self.client.get(reverse('wiki:wiki-detail', args=['getting-started']))
         self.assertEqual(resp.status_code, 200)
 
     def test_detail_renders_markdown_to_html(self):
-        resp = self.client.get(reverse('wiki-detail', args=['getting-started']))
+        resp = self.client.get(reverse('wiki:wiki-detail', args=['getting-started']))
         self.assertIn('<h1>', resp.context['content_html'])
 
     def test_detail_404_on_unknown_slug(self):
-        resp = self.client.get(reverse('wiki-detail', args=['does-not-exist']))
+        resp = self.client.get(reverse('wiki:wiki-detail', args=['does-not-exist']))
         self.assertEqual(resp.status_code, 404)
