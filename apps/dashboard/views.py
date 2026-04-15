@@ -5,8 +5,9 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, DeleteView, ListView, TemplateView, UpdateView
 
-from apps.collector.models import CollectionLog
-from apps.players.models import Player
+from apps.collector.repositories.log_repository import CollectionLogRepository
+from apps.dashboard.services.dashboard_service import DashboardService
+from apps.players.repositories.player_repository import PlayerRepository
 from apps.wiki.models import WikiPage
 
 from .forms import WikiPageForm
@@ -23,8 +24,8 @@ class DashboardHomeView(StaffRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx['total_players'] = Player.objects.count()
-        ctx['last_log'] = CollectionLog.objects.first()  # ordered -timestamp by model Meta
+        service = DashboardService(PlayerRepository(), CollectionLogRepository())
+        ctx.update(service.get_summary())
 
         next_run = None
         try:
@@ -49,7 +50,7 @@ class WikiCreateView(StaffRequiredMixin, CreateView):
     model = WikiPage
     form_class = WikiPageForm
     template_name = 'dashboard/wiki_form.html'
-    success_url = reverse_lazy('dashboard-wiki-list')
+    success_url = reverse_lazy('dashboard:wiki-list')
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -64,7 +65,7 @@ class WikiEditView(StaffRequiredMixin, UpdateView):
     form_class = WikiPageForm
     template_name = 'dashboard/wiki_form.html'
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('dashboard-wiki-list')
+    success_url = reverse_lazy('dashboard:wiki-list')
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -78,7 +79,7 @@ class WikiDeleteView(StaffRequiredMixin, DeleteView):
     model = WikiPage
     template_name = 'dashboard/wiki_confirm_delete.html'
     slug_url_kwarg = 'slug'
-    success_url = reverse_lazy('dashboard-wiki-list')
+    success_url = reverse_lazy('dashboard:wiki-list')
 
 
 class CollectionLogView(StaffRequiredMixin, ListView):
@@ -86,7 +87,7 @@ class CollectionLogView(StaffRequiredMixin, ListView):
     context_object_name = 'logs'
 
     def get_queryset(self):
-        return CollectionLog.objects.all()[:50]
+        return DashboardService(PlayerRepository(), CollectionLogRepository()).get_logs(50)
 
 
 class PlayersListView(StaffRequiredMixin, ListView):
@@ -95,10 +96,8 @@ class PlayersListView(StaffRequiredMixin, ListView):
 
     def get_queryset(self):
         sort = self.request.GET.get('sort', '')
-        qs = Player.objects.select_related('stats').order_by('username')
-        if sort in _VALID_SORT_FIELDS:
-            qs = qs.order_by(f'-stats__{sort}')
-        return qs
+        sort_field = sort if sort in _VALID_SORT_FIELDS else None
+        return DashboardService(PlayerRepository(), CollectionLogRepository()).get_players(sort_field)
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -116,4 +115,4 @@ class TriggerCollectionView(StaffRequiredMixin, View):
             messages.success(request, "Collection completed successfully.")
         except Exception as e:
             messages.error(request, f"Collection failed: {e}")
-        return redirect('dashboard-logs')
+        return redirect('dashboard:logs')

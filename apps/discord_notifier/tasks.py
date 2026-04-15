@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 discord_scheduler = BackgroundScheduler()
 
 
-def post_all_rankings():
+def post_all_rankings() -> None:
     """
     For each ranking in RANKINGS:
     1. Query top 10 players
@@ -18,21 +18,20 @@ def post_all_rankings():
     """
     from django.utils import timezone
 
-    from apps.discord_notifier.models import DiscordPostedMessage
+    from apps.discord_notifier.repositories.message_repository import DiscordMessageRepository
     from apps.discord_notifier.screenshot import render_ranking_screenshot
     from apps.discord_notifier.webhook import delete_discord_message, send_ranking_image
-    from apps.players.models import PlayerStats
+    from apps.players.repositories.stats_repository import PlayerStatsRepository
     from apps.rankings.config import RANKINGS
     from apps.rankings.formatters import format_value
 
+    stats_repo = PlayerStatsRepository()
+    message_repo = DiscordMessageRepository()
     date_str = timezone.now().strftime('%d/%m/%Y · %H:%M')
 
     for r in RANKINGS:
         try:
-            top10 = list(
-                PlayerStats.objects.order_by(f'-{r["field"]}')
-                .select_related('player')[:10]
-            )
+            top10 = stats_repo.get_top_by_field(r['field'])
             players = [
                 {
                     'name': stat.player.username,
@@ -43,23 +42,18 @@ def post_all_rankings():
 
             png = render_ranking_screenshot(r, players, date_str)
 
-            try:
-                existing = DiscordPostedMessage.objects.get(ranking_id=r['id'])
+            existing = message_repo.get_by_ranking(r['id'])
+            if existing:
                 delete_discord_message(existing.message_id)
-            except DiscordPostedMessage.DoesNotExist:
-                pass
 
             message_id = send_ranking_image(png, f"ranking_{r['id']}.png")
             if message_id:
-                DiscordPostedMessage.objects.update_or_create(
-                    ranking_id=r['id'],
-                    defaults={'message_id': message_id},
-                )
+                message_repo.update_or_create(r['id'], message_id)
         except Exception as e:
             logger.error("Failed to post ranking %s: %s", r['id'], e)
 
 
-def schedule_discord_posts():
+def schedule_discord_posts() -> None:
     """Add daily job at DISCORD_RANKING_HOUR. Called from AppConfig.ready()."""
     if discord_scheduler.running:
         return

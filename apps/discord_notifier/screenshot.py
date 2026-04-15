@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 logger = logging.getLogger(__name__)
 
 
-def render_ranking_screenshot(ranking_config, players, date_str):
+def render_ranking_screenshot(ranking_config: dict, players: list[dict], date_str: str) -> bytes:
     """
     Render the discord_card.html template with given data,
     take a screenshot, and return the PNG bytes.

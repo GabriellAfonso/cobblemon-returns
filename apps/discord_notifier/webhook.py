@@ -6,7 +6,7 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 
-def send_ranking_image(png_bytes, filename):
+def send_ranking_image(png_bytes: bytes, filename: str) -> str | None:
     """POST image to Discord webhook. Returns message_id or None."""
     if not getattr(settings, 'DISCORD_WEBHOOK_URL', ''):
         logger.warning("DISCORD_WEBHOOK_URL not configured — skipping send")
@@ -23,7 +23,7 @@ def send_ranking_image(png_bytes, filename):
     return None
 
 
-def delete_discord_message(message_id):
+def delete_discord_message(message_id: str) -> None:
     """Delete a previously posted webhook message."""
     if not getattr(settings, 'DISCORD_WEBHOOK_URL', '') or not message_id:
         return
