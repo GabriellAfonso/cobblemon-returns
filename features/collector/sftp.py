@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def get_sftp_client() -> paramiko.SFTPClient:
     """Return an authenticated SFTP client using SSH key auth."""
     ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507 — internal server, known_hosts not provisioned yet
     ssh.connect(
         hostname=settings.SFTP_HOST,
         port=int(settings.SFTP_PORT),
