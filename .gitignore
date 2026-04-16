@@ -47,3 +47,4 @@ htmlcov/
 
 # Local planning notes
 plans/
+.claude/
