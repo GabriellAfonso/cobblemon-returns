@@ -1,12 +1,12 @@
-from .base import *
+from .base import *  # noqa: F403, F405
 
-SECRET_KEY = 'django-insecure-test-only'
+SECRET_KEY = "django-insecure-test-only"
 
 DEBUG = True
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": ":memory:",
     }
 }
 

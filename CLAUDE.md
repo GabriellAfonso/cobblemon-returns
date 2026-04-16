@@ -224,6 +224,26 @@ DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")  # default
 - Foco em: collector parsing, ranking ordering, discord payload, wiki rendering.
 - Um `tests/` por app. Sem necessidade de 100% de cobertura.
 
+### Executar os testes
+
+Sempre usar o Python do `wsl_venv`. Para rodar todos os testes:
+
+```bash
+wsl_venv/bin/python manage.py test .
+```
+
+As classes de teste têm tags `unit` ou `integration` para execução separada:
+
+```bash
+wsl_venv/bin/python manage.py test . --tag=unit         # 25 testes
+wsl_venv/bin/python manage.py test . --tag=integration  # 44 testes
+```
+
+- **`unit`** — lógica isolada (models, funções puras, chamadas externas mockadas)
+- **`integration`** — views via HTTP client e tasks com dependências do banco
+
+Todo `TestCase` novo deve ter `@tag('unit')` ou `@tag('integration')` antes da definição da classe.
+
 ---
 
 ## 10. Migrações
