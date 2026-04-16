@@ -40,3 +40,6 @@ htmlcov/
 
 # mypy
 .mypy_cache/
+
+# Python version file (local tooling)
+.python-version
