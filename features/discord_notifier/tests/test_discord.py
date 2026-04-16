@@ -1,8 +1,12 @@
 from unittest.mock import MagicMock, patch
 
-from django.test import TestCase, override_settings, tag
+from django.db import IntegrityError
+from django.test import RequestFactory, TestCase, override_settings, tag
 
 from features.discord_notifier.models import DiscordPostedMessage
+from features.discord_notifier.repositories.message_repository import (
+    DiscordMessageRepository,
+)
 from features.players.models import Player, PlayerStats
 
 WEBHOOK_SETTINGS = {
@@ -134,3 +138,80 @@ class PostAllRankingsTest(TestCase):
 
         post_all_rankings()
         self.assertEqual(DiscordPostedMessage.objects.count(), 0)
+
+
+@tag("unit")
+class DiscordPostedMessageModelTest(TestCase):
+    def test_str_representation(self):
+        msg = DiscordPostedMessage.objects.create(
+            ranking_id="hours", message_id="abc123"
+        )
+        self.assertEqual(str(msg), "hours → abc123")
+
+    def test_ranking_id_unique_constraint(self):
+        DiscordPostedMessage.objects.create(ranking_id="hours", message_id="first")
+        with self.assertRaises(IntegrityError):
+            DiscordPostedMessage.objects.create(ranking_id="hours", message_id="second")
+
+    def test_posted_at_is_set_on_create(self):
+        msg = DiscordPostedMessage.objects.create(
+            ranking_id="catches", message_id="xyz"
+        )
+        self.assertIsNotNone(msg.posted_at)
+
+
+@tag("unit")
+class DiscordMessageRepositoryTest(TestCase):
+    def setUp(self):
+        self.repo = DiscordMessageRepository()
+
+    def test_get_by_ranking_returns_existing(self):
+        DiscordPostedMessage.objects.create(ranking_id="hours", message_id="msg-1")
+        result = self.repo.get_by_ranking("hours")
+        self.assertIsNotNone(result)
+        self.assertEqual(result.message_id, "msg-1")
+
+    def test_get_by_ranking_returns_none_when_missing(self):
+        result = self.repo.get_by_ranking("does-not-exist")
+        self.assertIsNone(result)
+
+    def test_update_or_create_creates_new(self):
+        obj = self.repo.update_or_create("catches", "new-msg")
+        self.assertEqual(obj.ranking_id, "catches")
+        self.assertEqual(obj.message_id, "new-msg")
+        self.assertEqual(DiscordPostedMessage.objects.count(), 1)
+
+    def test_update_or_create_updates_existing(self):
+        DiscordPostedMessage.objects.create(ranking_id="catches", message_id="old-msg")
+        self.repo.update_or_create("catches", "new-msg")
+        self.assertEqual(DiscordPostedMessage.objects.count(), 1)
+        self.assertEqual(
+            DiscordPostedMessage.objects.get(ranking_id="catches").message_id, "new-msg"
+        )
+
+
+@tag("integration")
+class DiscordCardViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_discord_card_returns_200(self):
+        from features.discord_notifier.views import discord_card
+
+        request = self.factory.get("/")
+        resp = discord_card(request)
+        self.assertEqual(resp.status_code, 200)
+
+    def test_discord_card_renders_card_html(self):
+        from features.discord_notifier.views import discord_card
+
+        request = self.factory.get("/")
+        resp = discord_card(request)
+        self.assertIn(b"COBBLEMON", resp.content)
+
+    def test_discord_card_accepts_custom_ranking_id(self):
+        from features.discord_notifier.views import discord_card
+
+        request = self.factory.get("/")
+        resp = discord_card(request, ranking_id="catches")
+        self.assertEqual(resp.status_code, 200)

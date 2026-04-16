@@ -1,9 +1,11 @@
+import json
 from unittest.mock import MagicMock, patch
 
 from django.test import TestCase, override_settings, tag
 
 from features.collector.models import CollectionLog
-from features.collector.sftp import collect_player_data
+from features.collector.repositories.log_repository import CollectionLogRepository
+from features.collector.sftp import collect_player_data, read_json_file, read_usercache
 
 SFTP_SETTINGS = {
     "SFTP_HOST": "sftp.example.com",
@@ -171,3 +173,104 @@ class RunCollectionTest(TestCase):
         log = CollectionLog.objects.last()
         self.assertEqual(log.status, CollectionLog.STATUS_ERROR)
         self.assertIn("not configured", log.message)
+
+
+@tag("unit")
+class CollectionLogModelTest(TestCase):
+    def test_str_representation(self):
+        log = CollectionLog.objects.create(status="ok", players_updated=5)
+        self.assertIn("OK", str(log))
+        self.assertIn("5 players", str(log))
+
+    def test_timestamp_is_set_on_create(self):
+        log = CollectionLog.objects.create(status="ok")
+        self.assertIsNotNone(log.timestamp)
+
+    def test_default_players_updated_is_zero(self):
+        log = CollectionLog.objects.create(status="ok")
+        self.assertEqual(log.players_updated, 0)
+
+    def test_ordering_newest_first(self):
+        CollectionLog.objects.create(status="ok", players_updated=1)
+        CollectionLog.objects.create(status="error", players_updated=2)
+        logs = list(CollectionLog.objects.all())
+        self.assertEqual(logs[0].players_updated, 2)
+        self.assertEqual(logs[1].players_updated, 1)
+
+
+@tag("unit")
+class CollectionLogRepositoryTest(TestCase):
+    def setUp(self):
+        self.repo = CollectionLogRepository()
+
+    def test_create_log(self):
+        log = self.repo.create(status="ok", message="done", players_updated=3)
+        self.assertEqual(log.status, "ok")
+        self.assertEqual(log.message, "done")
+        self.assertEqual(log.players_updated, 3)
+
+    def test_get_latest_returns_most_recent(self):
+        self.repo.create(status="ok", players_updated=1)
+        self.repo.create(status="error", players_updated=2)
+        latest = self.repo.get_latest()
+        self.assertEqual(latest.players_updated, 2)
+
+    def test_get_latest_returns_none_when_empty(self):
+        self.assertIsNone(self.repo.get_latest())
+
+    def test_get_last_n_limits_results(self):
+        for i in range(10):
+            self.repo.create(status="ok", players_updated=i)
+        result = list(self.repo.get_last_n(5))
+        self.assertEqual(len(result), 5)
+
+
+@tag("unit")
+@override_settings(**SFTP_SETTINGS)
+class SftpHelpersTest(TestCase):
+    def _make_sftp_with_file(self, content: dict) -> MagicMock:
+        sftp = MagicMock()
+        mock_file = MagicMock()
+        mock_file.read.return_value = json.dumps(content).encode()
+        mock_file.__enter__ = lambda s: s
+        mock_file.__exit__ = MagicMock(return_value=False)
+        sftp.open.return_value = mock_file
+        return sftp
+
+    def test_read_json_file_returns_parsed_dict(self):
+        sftp = self._make_sftp_with_file({"key": "value"})
+        result = read_json_file(sftp, "/some/path.json")
+        self.assertEqual(result, {"key": "value"})
+
+    def test_read_json_file_returns_none_on_error(self):
+        sftp = MagicMock()
+        sftp.open.side_effect = FileNotFoundError
+        result = read_json_file(sftp, "/missing.json")
+        self.assertIsNone(result)
+
+    def test_read_usercache_returns_uuid_name_map(self):
+        cache = [
+            {"uuid": "uuid-1", "name": "Ash"},
+            {"uuid": "uuid-2", "name": "Misty"},
+        ]
+        sftp = self._make_sftp_with_file(cache)
+        result = read_usercache(sftp)
+        self.assertEqual(result["uuid-1"], "Ash")
+        self.assertEqual(result["uuid-2"], "Misty")
+
+    def test_read_usercache_returns_empty_on_missing_file(self):
+        sftp = MagicMock()
+        sftp.open.side_effect = FileNotFoundError
+        result = read_usercache(sftp)
+        self.assertEqual(result, {})
+
+    def test_read_usercache_skips_entries_without_uuid_or_name(self):
+        cache = [
+            {"uuid": "uuid-1", "name": "Ash"},
+            {"name": "NoUUID"},
+            {"uuid": "uuid-3"},
+        ]
+        sftp = self._make_sftp_with_file(cache)
+        result = read_usercache(sftp)
+        self.assertEqual(len(result), 1)
+        self.assertIn("uuid-1", result)
