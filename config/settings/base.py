@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "features.core",
+    "features.home",
     "features.players",
     "features.rankings",
     "features.collector",

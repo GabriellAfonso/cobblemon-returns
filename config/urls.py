@@ -11,7 +11,8 @@ def health(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("health/", health),
-    path("", include("features.rankings.urls")),
+    path("", include("features.home.urls")),
+    path("rankings/", include("features.rankings.urls")),
     path("players/", include("features.players.urls")),
     path("wiki/", include("features.wiki.urls")),
     path("dashboard/", include("features.dashboard.urls")),

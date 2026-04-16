@@ -39,7 +39,7 @@ class PublicViewsTest(TestCase):
         )
 
     def test_home_returns_200(self):
-        resp = self.client.get(reverse("rankings:home"))
+        resp = self.client.get(reverse("home:home"))
         self.assertEqual(resp.status_code, 200)
 
     def test_rankings_returns_200(self):
