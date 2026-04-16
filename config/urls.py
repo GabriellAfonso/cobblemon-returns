@@ -11,10 +11,10 @@ def health(request):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("health/", health),
-    path("", include("apps.rankings.urls")),
-    path("players/", include("apps.players.urls")),
-    path("wiki/", include("apps.wiki.urls")),
-    path("dashboard/", include("apps.dashboard.urls")),
-    path("collector/", include("apps.collector.urls")),
-    path("discord/", include("apps.discord_notifier.urls")),
+    path("", include("features.rankings.urls")),
+    path("players/", include("features.players.urls")),
+    path("wiki/", include("features.wiki.urls")),
+    path("dashboard/", include("features.dashboard.urls")),
+    path("collector/", include("features.collector.urls")),
+    path("discord/", include("features.discord_notifier.urls")),
 ] + staticfiles_urlpatterns()

@@ -16,12 +16,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "apps.players",
-    "apps.rankings",
-    "apps.collector",
-    "apps.discord_notifier",
-    "apps.wiki",
-    "apps.dashboard",
+    "features.players",
+    "features.rankings",
+    "features.collector",
+    "features.discord_notifier",
+    "features.wiki",
+    "features.dashboard",
 ]
 
 MIDDLEWARE = [
@@ -47,7 +47,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "apps.rankings.context_processors.site_globals",
+                "features.rankings.context_processors.site_globals",
             ],
         },
     },
@@ -56,7 +56,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -72,7 +74,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-TESTING = 'test' in sys.argv
+TESTING = "test" in sys.argv
 
 # Server
 SERVER_HOST = os.environ.get("SERVER_HOST", "")
@@ -94,5 +96,7 @@ COLLECTOR_INTERVAL_MINUTES = int(os.environ.get("COLLECTOR_INTERVAL_MINUTES", "1
 
 # Discord
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
-DISCORD_INVITE_URL = os.environ.get("DISCORD_INVITE_URL", "https://discord.gg/cyx2d2Vtey")
+DISCORD_INVITE_URL = os.environ.get(
+    "DISCORD_INVITE_URL", "https://discord.gg/cyx2d2Vtey"
+)
 DISCORD_RANKING_HOUR = int(os.environ.get("DISCORD_RANKING_HOUR", "20"))
