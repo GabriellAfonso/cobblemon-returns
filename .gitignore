@@ -43,3 +43,6 @@ htmlcov/
 
 # Python version file (local tooling)
 .python-version
+
+# Local planning notes
+plans/
