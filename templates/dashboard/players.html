@@ -1,42 +1,45 @@
 {% extends "dashboard/base_dashboard.html" %}
+{% load i18n %}
 
-{% block title %}Players — Dashboard{% endblock %}
+{% block title %}{% trans "Players" %} — Dashboard{% endblock %}
 
 {% block dashboard_content %}
 <div class="dash-header">
-  <div class="dash-title">Players</div>
-  <div class="dash-subtitle">{{ players|length }} player{{ players|length|pluralize }} — click a column to sort</div>
+  <div class="dash-title">{% trans "Players" %}</div>
+  <div class="dash-subtitle">
+    {% blocktrans count count=players|length %}{{ count }} player — click a column to sort{% plural %}{{ count }} players — click a column to sort{% endblocktrans %}
+  </div>
 </div>
 
 <div class="dash-table-wrap">
   <table class="dash-table">
     <thead>
       <tr>
-        <th>Username</th>
-        <th>Last Seen</th>
+        <th>{% trans "Username" %}</th>
+        <th>{% trans "Last Seen" %}</th>
         <th>
           <a href="?sort=play_time_ticks" class="sort-link {% if current_sort == 'play_time_ticks' %}active{% endif %}">
-            ⏱ Hours
+            ⏱ {% trans "Hours" %}
           </a>
         </th>
         <th>
           <a href="?sort=pokemons_caught" class="sort-link {% if current_sort == 'pokemons_caught' %}active{% endif %}">
-            🔴 Caught
+            🔴 {% trans "Caught" %}
           </a>
         </th>
         <th>
           <a href="?sort=pokedex_registered" class="sort-link {% if current_sort == 'pokedex_registered' %}active{% endif %}">
-            📕 Pokédex
+            📕 {% trans "Pokédex" %}
           </a>
         </th>
         <th>
           <a href="?sort=battles_won" class="sort-link {% if current_sort == 'battles_won' %}active{% endif %}">
-            ⚔️ Battles
+            ⚔️ {% trans "Battles" %}
           </a>
         </th>
         <th>
           <a href="?sort=cobbletcg_cards" class="sort-link {% if current_sort == 'cobbletcg_cards' %}active{% endif %}">
-            🃏 Cards
+            🃏 {% trans "Cards" %}
           </a>
         </th>
         <th>
@@ -61,11 +64,11 @@
         <td>{{ player.stats.cobbletcg_cards }}</td>
         <td>{{ player.stats.cobbledollars }}</td>
         {% else %}
-        <td colspan="6" style="color:var(--muted);font-size:13px">No stats</td>
+        <td colspan="6" style="color:var(--muted);font-size:13px">{% trans "No stats" %}</td>
         {% endif %}
       </tr>
       {% empty %}
-      <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:40px">No players yet.</td></tr>
+      <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:40px">{% trans "No players yet." %}</td></tr>
       {% endfor %}
     </tbody>
   </table>

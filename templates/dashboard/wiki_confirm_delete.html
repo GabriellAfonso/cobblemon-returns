@@ -1,28 +1,29 @@
 {% extends "dashboard/base_dashboard.html" %}
+{% load i18n %}
 
-{% block title %}Delete Wiki Page — Dashboard{% endblock %}
+{% block title %}{% trans "Delete Wiki Page" %} — Dashboard{% endblock %}
 
 {% block dashboard_content %}
 <div class="dash-header">
-  <div class="dash-title">Delete Wiki Page</div>
+  <div class="dash-title">{% trans "Delete Wiki Page" %}</div>
 </div>
 
 <div style="max-width:480px">
   <div style="background:rgba(255,77,106,0.08);border:1px solid rgba(255,77,106,0.25);border-radius:12px;padding:24px 28px;margin-bottom:24px">
     <div style="font-size:15px;color:var(--text);margin-bottom:8px">
-      Are you sure you want to delete:
+      {% trans "Are you sure you want to delete:" %}
     </div>
     <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:#FF4D6A">
       {{ object.title }}
     </div>
-    <div style="font-size:13px;color:var(--muted);margin-top:4px">Slug: {{ object.slug }}</div>
+    <div style="font-size:13px;color:var(--muted);margin-top:4px">{% trans "Slug:" %} {{ object.slug }}</div>
   </div>
 
   <form method="post">
     {% csrf_token %}
     <div style="display:flex;gap:10px">
-      <button type="submit" class="btn-dash btn-dash-danger">Yes, delete it</button>
-      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
+      <button type="submit" class="btn-dash btn-dash-danger">{% trans "Yes, delete it" %}</button>
+      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">{% trans "Cancel" %}</a>
     </div>
   </form>
 </div>

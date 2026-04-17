@@ -1,4 +1,5 @@
 {% extends "dashboard/base_dashboard.html" %}
+{% load i18n %}
 
 {% block title %}{{ form_title }} — Dashboard{% endblock %}
 
@@ -6,9 +7,9 @@
 <div class="dash-header" style="display:flex;align-items:center;justify-content:space-between">
   <div>
     <div class="dash-title">{{ form_title }}</div>
-    <div class="dash-subtitle">Write Markdown content below</div>
+    <div class="dash-subtitle">{% trans "Write Markdown content below" %}</div>
   </div>
-  <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">← Back to list</a>
+  <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">{% trans "← Back to list" %}</a>
 </div>
 
 <div class="dash-form">
@@ -16,7 +17,7 @@
     {% csrf_token %}
 
     <div class="form-group">
-      <label class="form-label" for="{{ form.title.id_for_label }}">Title</label>
+      <label class="form-label" for="{{ form.title.id_for_label }}">{% trans "Title" %}</label>
       <input type="text" name="title" id="{{ form.title.id_for_label }}"
              value="{{ form.title.value|default:'' }}"
              class="form-input" autocomplete="off"
@@ -27,7 +28,7 @@
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="{{ form.slug.id_for_label }}">Slug</label>
+      <label class="form-label" for="{{ form.slug.id_for_label }}">{% trans "Slug" %}</label>
       <input type="text" name="slug" id="{{ form.slug.id_for_label }}"
              value="{{ form.slug.value|default:'' }}"
              class="form-input" autocomplete="off">
@@ -37,7 +38,7 @@
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="{{ form.content.id_for_label }}">Content (Markdown)</label>
+      <label class="form-label" for="{{ form.content.id_for_label }}">{% trans "Content (Markdown)" %}</label>
       <textarea name="content" id="{{ form.content.id_for_label }}"
                 class="form-textarea">{{ form.content.value|default:'' }}</textarea>
       {% if form.content.errors %}
@@ -46,15 +47,15 @@
     </div>
 
     <div class="form-actions">
-      <button type="submit" class="btn-dash btn-dash-primary">💾 Save Page</button>
-      <button type="submit" name="_preview" value="1" class="btn-dash btn-dash-secondary">👁 Save & Preview</button>
-      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">Cancel</a>
+      <button type="submit" class="btn-dash btn-dash-primary">💾 {% trans "Save Page" %}</button>
+      <button type="submit" name="_preview" value="1" class="btn-dash btn-dash-secondary">👁 {% trans "Save & Preview" %}</button>
+      <a href="{% url 'dashboard:wiki-list' %}" class="btn-dash btn-dash-secondary">{% trans "Cancel" %}</a>
     </div>
   </form>
 
   {% if preview_html %}
   <div class="preview-wrap">
-    <div class="preview-label">Preview</div>
+    <div class="preview-label">{% trans "Preview" %}</div>
     <div class="preview-body">{{ preview_html|safe }}</div>
   </div>
   {% endif %}

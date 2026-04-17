@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}Rankings — Cobblemon Returns{% endblock %}
 
@@ -8,13 +8,13 @@
 {% block content %}
 <!-- ── HERO ── -->
 <div class="hero">
-  <div class="hero-eyebrow">Hall of Fame</div>
-  <h1>Rankings <span class="accent">Table</span></h1>
-  <p class="hero-sub">The best trainers on the server, updated regularly</p>
+  <div class="hero-eyebrow">{% trans "Hall of Fame" %}</div>
+  <h1>{% trans "Rankings" %} <span class="accent">{% trans "Table" %}</span></h1>
+  <p class="hero-sub">{% trans "The best trainers on the server, updated regularly" %}</p>
   {% if last_updated %}
   <div class="hero-meta">
     <span class="dot"></span>
-    Last updated: {{ last_updated|date:"d/m/Y" }} at {{ last_updated|date:"H:i" }}
+    {% trans "Last updated:" %} {{ last_updated|date:"d/m/Y" }} at {{ last_updated|date:"H:i" }}
   </div>
   {% endif %}
 </div>
@@ -39,7 +39,7 @@
           <span class="p-icon">{{ ranking.icon }}</span>
           <span class="p-label">{{ ranking.label }}</span>
         </div>
-        <span class="panel-count">Top {{ ranking.players|length }} players</span>
+        <span class="panel-count">{% blocktrans with count=ranking.players|length %}Top {{ count }} players{% endblocktrans %}</span>
       </div>
       <div class="ranking-list">
         {% for player in ranking.players %}
@@ -64,7 +64,7 @@
         </div>
         {% endwith %}
         {% empty %}
-        <p style="padding:20px;color:var(--muted);text-align:center;font-size:14px">No data yet.</p>
+        <p style="padding:20px;color:var(--muted);text-align:center;font-size:14px">{% trans "No data yet." %}</p>
         {% endfor %}
       </div>
     </div>

@@ -1,22 +1,23 @@
 {% extends "dashboard/base_dashboard.html" %}
+{% load i18n %}
 
 {% block title %}Dashboard — Cobblemon Returns{% endblock %}
 
 {% block dashboard_content %}
 <div class="dash-header">
-  <div class="dash-title">Dashboard</div>
-  <div class="dash-subtitle">Server overview and quick actions</div>
+  <div class="dash-title">{% trans "Dashboard" %}</div>
+  <div class="dash-subtitle">{% trans "Server overview and quick actions" %}</div>
 </div>
 
 <div class="stat-grid">
   <div class="stat-card">
-    <div class="stat-card-label">Total Players</div>
+    <div class="stat-card-label">{% trans "Total Players" %}</div>
     <div class="stat-card-value">{{ total_players }}</div>
-    <div class="stat-card-sub">registered</div>
+    <div class="stat-card-sub">{% trans "registered" %}</div>
   </div>
 
   <div class="stat-card">
-    <div class="stat-card-label">Last Collection</div>
+    <div class="stat-card-label">{% trans "Last Collection" %}</div>
     {% if last_log %}
     <div class="stat-card-value" style="font-size:16px;margin-top:4px">
       <span class="badge badge-{{ last_log.status }}">
@@ -26,29 +27,29 @@
     </div>
     <div class="stat-card-sub">{{ last_log.timestamp|date:"d M Y · H:i" }}</div>
     {% else %}
-    <div class="stat-card-value" style="font-size:14px;color:var(--muted)">Never run</div>
+    <div class="stat-card-value" style="font-size:14px;color:var(--muted)">{% trans "Never run" %}</div>
     {% endif %}
   </div>
 
   <div class="stat-card">
-    <div class="stat-card-label">Next Collection</div>
+    <div class="stat-card-label">{% trans "Next Collection" %}</div>
     {% if next_run %}
     <div class="stat-card-value" style="font-size:16px;margin-top:4px">{{ next_run|date:"H:i" }}</div>
     <div class="stat-card-sub">{{ next_run|date:"d M Y" }}</div>
     {% else %}
-    <div class="stat-card-value" style="font-size:14px;color:var(--muted)">Not scheduled</div>
+    <div class="stat-card-value" style="font-size:14px;color:var(--muted)">{% trans "Not scheduled" %}</div>
     {% endif %}
   </div>
 </div>
 
 <div class="dash-table-wrap" style="max-width:480px">
   <table class="dash-table">
-    <thead><tr><th>Section</th><th>Action</th></tr></thead>
+    <thead><tr><th>{% trans "Section" %}</th><th>{% trans "Action" %}</th></tr></thead>
     <tbody>
-      <tr><td>Players</td><td><a href="{% url 'dashboard:players' %}">View all →</a></td></tr>
-      <tr><td>Collection Logs</td><td><a href="{% url 'dashboard:logs' %}">View logs →</a></td></tr>
-      <tr><td>Wiki Pages</td><td><a href="{% url 'dashboard:wiki-list' %}">Manage →</a></td></tr>
-      <tr><td>New Wiki Page</td><td><a href="{% url 'dashboard:wiki-create' %}">Create →</a></td></tr>
+      <tr><td>{% trans "Players" %}</td><td><a href="{% url 'dashboard:players' %}">{% trans "View all →" %}</a></td></tr>
+      <tr><td>{% trans "Collection Logs" %}</td><td><a href="{% url 'dashboard:logs' %}">{% trans "View logs →" %}</a></td></tr>
+      <tr><td>{% trans "Wiki Pages" %}</td><td><a href="{% url 'dashboard:wiki-list' %}">{% trans "Manage →" %}</a></td></tr>
+      <tr><td>{% trans "New Wiki Page" %}</td><td><a href="{% url 'dashboard:wiki-create' %}">{% trans "Create →" %}</a></td></tr>
     </tbody>
   </table>
 </div>

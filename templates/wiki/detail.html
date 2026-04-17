@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}{{ object.title }} — Wiki{% endblock %}
 
@@ -7,11 +7,11 @@
 
 {% block content %}
 <div class="wiki-detail-wrap">
-  <a href="{% url 'wiki:wiki-list' %}" class="wiki-back">← Back to Wiki</a>
+  <a href="{% url 'wiki:wiki-list' %}" class="wiki-back">{% trans "← Back to Wiki" %}</a>
 
   <div class="wiki-header">
     <h1>{{ object.title }}</h1>
-    <div class="wiki-header-meta">Last updated: {{ object.updated_at|date:"d M Y · H:i" }}</div>
+    <div class="wiki-header-meta">{% trans "Last updated:" %} {{ object.updated_at|date:"d M Y · H:i" }}</div>
   </div>
 
   <article class="wiki-content">

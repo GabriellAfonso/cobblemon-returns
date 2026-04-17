@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'dashboard/css/dashboard.css' %}">
@@ -11,35 +11,35 @@
 
   <!-- SIDEBAR -->
   <nav class="sidebar">
-    <div class="sidebar-section">Overview</div>
+    <div class="sidebar-section">{% trans "Overview" %}</div>
     <a href="{% url 'dashboard:home' %}" class="sidebar-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-      <span class="s-icon">🏠</span> Home
+      <span class="s-icon">🏠</span> {% trans "Home" %}
     </a>
     <a href="{% url 'dashboard:players' %}" class="sidebar-link {% if request.resolver_match.url_name == 'players' %}active{% endif %}">
-      <span class="s-icon">👾</span> Players
+      <span class="s-icon">👾</span> {% trans "Players" %}
     </a>
     <a href="{% url 'dashboard:logs' %}" class="sidebar-link {% if request.resolver_match.url_name == 'logs' %}active{% endif %}">
-      <span class="s-icon">📋</span> Collection Logs
+      <span class="s-icon">📋</span> {% trans "Collection Logs" %}
     </a>
 
-    <div class="sidebar-section">Wiki</div>
+    <div class="sidebar-section">{% trans "Wiki" %}</div>
     <a href="{% url 'dashboard:wiki-list' %}" class="sidebar-link {% if 'wiki' in request.resolver_match.url_name %}active{% endif %}">
-      <span class="s-icon">📖</span> Manage Pages
+      <span class="s-icon">📖</span> {% trans "Manage Pages" %}
     </a>
     <a href="{% url 'dashboard:wiki-create' %}" class="sidebar-link">
-      <span class="s-icon">✏️</span> New Page
+      <span class="s-icon">✏️</span> {% trans "New Page" %}
     </a>
 
-    <div class="sidebar-section">Collector</div>
+    <div class="sidebar-section">{% trans "Collector" %}</div>
     <form method="post" action="{% url 'dashboard:trigger' %}" style="margin: 1px 8px;">
       {% csrf_token %}
       <button type="submit" class="sidebar-link" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;">
-        <span class="s-icon">⚡</span> Run Now
+        <span class="s-icon">⚡</span> {% trans "Run Now" %}
       </button>
     </form>
 
     <div class="sidebar-user">
-      Staff Panel
+      {% trans "Staff Panel" %}
       <strong>{{ request.user.username }}</strong>
     </div>
   </nav>

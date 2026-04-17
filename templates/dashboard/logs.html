@@ -1,16 +1,17 @@
 {% extends "dashboard/base_dashboard.html" %}
+{% load i18n %}
 
-{% block title %}Collection Logs — Dashboard{% endblock %}
+{% block title %}{% trans "Collection Logs" %} — Dashboard{% endblock %}
 
 {% block dashboard_content %}
 <div class="dash-header" style="display:flex;align-items:center;justify-content:space-between">
   <div>
-    <div class="dash-title">Collection Logs</div>
-    <div class="dash-subtitle">Last 50 entries</div>
+    <div class="dash-title">{% trans "Collection Logs" %}</div>
+    <div class="dash-subtitle">{% trans "Last 50 entries" %}</div>
   </div>
   <form method="post" action="{% url 'dashboard:trigger' %}">
     {% csrf_token %}
-    <button type="submit" class="btn-dash btn-dash-primary">⚡ Run Collection Now</button>
+    <button type="submit" class="btn-dash btn-dash-primary">⚡ {% trans "Run Collection Now" %}</button>
   </form>
 </div>
 
@@ -18,10 +19,10 @@
   <table class="dash-table">
     <thead>
       <tr>
-        <th>Timestamp</th>
-        <th>Status</th>
-        <th>Players Updated</th>
-        <th>Message</th>
+        <th>{% trans "Timestamp" %}</th>
+        <th>{% trans "Status" %}</th>
+        <th>{% trans "Players Updated" %}</th>
+        <th>{% trans "Message" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -40,7 +41,7 @@
         </td>
       </tr>
       {% empty %}
-      <tr><td colspan="4" style="text-align:center;color:var(--muted);padding:40px">No logs yet.</td></tr>
+      <tr><td colspan="4" style="text-align:center;color:var(--muted);padding:40px">{% trans "No logs yet." %}</td></tr>
       {% endfor %}
     </tbody>
   </table>

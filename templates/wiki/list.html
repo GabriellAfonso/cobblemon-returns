@@ -1,5 +1,5 @@
 {% extends "core/base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block title %}Wiki — Cobblemon Returns{% endblock %}
 
@@ -7,9 +7,9 @@
 
 {% block content %}
 <div class="wiki-hero">
-  <div class="wiki-hero-eyebrow">📖 Knowledge Base</div>
-  <h1>Server <span class="accent">Wiki</span></h1>
-  <p>Guides, mechanics, and everything you need to know.</p>
+  <div class="wiki-hero-eyebrow">📖 {% trans "Knowledge Base" %}</div>
+  <h1>{% trans "Server" %} <span class="accent">{% trans "Wiki" %}</span></h1>
+  <p>{% trans "Guides, mechanics, and everything you need to know." %}</p>
 </div>
 
 <div class="wiki-body">
@@ -18,13 +18,13 @@
     {% for page in pages %}
     <a href="{% url 'wiki:wiki-detail' page.slug %}" class="wiki-card">
       <div class="wiki-card-title">{{ page.title }}</div>
-      <div class="wiki-card-meta">Updated {{ page.updated_at|date:"d M Y" }}</div>
+      <div class="wiki-card-meta">{% trans "Updated" %} {{ page.updated_at|date:"d M Y" }}</div>
       <div class="wiki-card-arrow">→</div>
     </a>
     {% endfor %}
   </div>
   {% else %}
-  <div class="wiki-empty">No wiki pages yet.</div>
+  <div class="wiki-empty">{% trans "No wiki pages yet." %}</div>
   {% endif %}
 </div>
 {% endblock %}
