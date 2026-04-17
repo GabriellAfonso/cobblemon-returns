@@ -1,43 +1,45 @@
+from django.utils.translation import gettext_lazy as _
+
 RANKINGS = [
     {
         "id": "hours",
         "field": "play_time_ticks",
-        "label": "Hours Played",
+        "label": _("Hours Played"),
         "icon": "⏱️",
         "format": "hours",
     },
     {
         "id": "catches",
         "field": "pokemons_caught",
-        "label": "Pokémons Caught",
+        "label": _("Pokémons Caught"),
         "icon": "🔴",
         "format": "number",
     },
     {
         "id": "pokedex",
         "field": "pokedex_registered",
-        "label": "Pokédex Registered",
+        "label": _("Pokédex Registered"),
         "icon": "📕",
         "format": "number",
     },
     {
         "id": "cards",
         "field": "cobbletcg_cards",
-        "label": "CobbleTCG Cards",
+        "label": _("CobbleTCG Cards"),
         "icon": "🃏",
         "format": "number",
     },
     {
         "id": "battles",
         "field": "battles_won",
-        "label": "Battles Won",
+        "label": _("Battles Won"),
         "icon": "⚔️",
         "format": "number",
     },
     {
         "id": "money",
         "field": "cobbledollars",
-        "label": "CobbleDollars",
+        "label": _("CobbleDollars"),
         "icon": "💰",
         "format": "currency",
     },

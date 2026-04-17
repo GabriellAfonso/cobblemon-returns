@@ -1,6 +1,7 @@
 import mistune
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import (
@@ -127,7 +128,7 @@ class TriggerCollectionView(StaffRequiredMixin, View):
             from features.collector.tasks import run_collection
 
             run_collection()
-            messages.success(request, "Collection completed successfully.")
+            messages.success(request, _("Collection completed successfully."))
         except Exception as e:
-            messages.error(request, f"Collection failed: {e}")
+            messages.error(request, _("Collection failed: %s") % e)
         return redirect("dashboard:logs")

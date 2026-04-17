@@ -1,10 +1,11 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class CollectionLog(models.Model):
     STATUS_OK = "ok"
     STATUS_ERROR = "error"
-    STATUS_CHOICES = [(STATUS_OK, "OK"), (STATUS_ERROR, "Error")]
+    STATUS_CHOICES = [(STATUS_OK, _("OK")), (STATUS_ERROR, _("Error"))]
 
     timestamp = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
