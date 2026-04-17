@@ -1,0 +1,382 @@
+# Portuguese (Brazil) translations for Cobblemon Returns
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# base.html
+msgid "Home"
+msgstr "Início"
+
+msgid "Rankings"
+msgstr "Rankings"
+
+msgid "Wiki"
+msgstr "Wiki"
+
+msgid "Cobblemon Returns · Cobblemon Fabric Server · Made with ♥ by the community"
+msgstr "Cobblemon Returns · Servidor Cobblemon Fabric · Feito com ♥ pela comunidade"
+
+# home.html
+msgid "Cobblemon Fabric Server"
+msgstr "Servidor Cobblemon Fabric"
+
+msgid "Adventure, battles, and Pokémon in a Minecraft server built for the community."
+msgstr "Aventura, batalhas e Pokémon em um servidor Minecraft feito para a comunidade."
+
+msgid "Install Modpack"
+msgstr "Instalar Modpack"
+
+msgid "View Rankings"
+msgstr "Ver Rankings"
+
+msgid "Join Discord"
+msgstr "Entrar no Discord"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Players"
+msgstr "Jogadores"
+
+msgid "Version"
+msgstr "Versão"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Loading..."
+msgstr "Carregando..."
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Error"
+msgstr "Erro"
+
+msgid "Current Leaders"
+msgstr "Líderes Atuais"
+
+msgid "View all rankings →"
+msgstr "Ver todos os rankings →"
+
+msgid "No data yet — collector hasn't run."
+msgstr "Sem dados ainda — o coletor não foi executado."
+
+msgid "Quick Access"
+msgstr "Acesso Rápido"
+
+msgid "See who leads the server"
+msgstr "Veja quem lidera o servidor"
+
+msgid "Guides, items, and info"
+msgstr "Guias, itens e informações"
+
+msgid "Join our community"
+msgstr "Entre na nossa comunidade"
+
+msgid "Step-by-step install guide"
+msgstr "Guia de instalação passo a passo"
+
+msgid "Installer Download"
+msgstr "Download do Instalador"
+
+msgid "Windows Installer"
+msgstr "Instalador Windows"
+
+msgid "Google Drive · .exe"
+msgstr "Google Drive · .exe"
+
+msgid "Linux Installer"
+msgstr "Instalador Linux"
+
+msgid "Google Drive · .sh / .AppImage"
+msgstr "Google Drive · .sh / .AppImage"
+
+msgid "Recommended Launchers"
+msgstr "Launchers Recomendados"
+
+msgid "Official Launcher"
+msgstr "Launcher Oficial"
+
+msgid "Step by Step"
+msgstr "Passo a Passo"
+
+msgid "Download and open the installer."
+msgstr "Baixe e abra o instalador."
+
+msgid "Click <b>Install Modpack</b>."
+msgstr "Clique em <b>Instalar Modpack</b>."
+
+msgid "Choose the desired <b>installation profile</b>."
+msgstr "Escolha o <b>perfil de instalação</b> desejado."
+
+msgid "Click <b>Confirm</b> and wait."
+msgstr "Clique em <b>Confirmar</b> e aguarde."
+
+msgid "After installation, open <b>Minecraft</b> through your <b>configured launcher</b>."
+msgstr "Após a instalação, abra o <b>Minecraft</b> pelo seu <b>launcher configurado</b>."
+
+msgid "The installer <b>does not work with TLauncher</b>. Use <b>SK Launcher</b> or the <b>Official Launcher</b>."
+msgstr "O instalador <b>não funciona com o TLauncher</b>. Use o <b>SK Launcher</b> ou o <b>Launcher Oficial</b>."
+
+# rankings/page.html
+msgid "Hall of Fame"
+msgstr "Hall da Fama"
+
+msgid "Table"
+msgstr "Tabela"
+
+msgid "The best trainers on the server, updated regularly"
+msgstr "Os melhores treinadores do servidor, atualizado regularmente"
+
+msgid "Last updated:"
+msgstr "Última atualização:"
+
+msgid "Top {{ count }} players"
+msgstr "Top {{ count }} jogadores"
+
+msgid "No data yet."
+msgstr "Sem dados ainda."
+
+# wiki/list.html
+msgid "Knowledge Base"
+msgstr "Base de Conhecimento"
+
+msgid "Server"
+msgstr "Servidor"
+
+msgid "Guides, mechanics, and everything you need to know."
+msgstr "Guias, mecânicas e tudo que você precisa saber."
+
+msgid "Updated"
+msgstr "Atualizado"
+
+msgid "No wiki pages yet."
+msgstr "Nenhuma página na wiki ainda."
+
+# wiki/detail.html
+msgid "← Back to Wiki"
+msgstr "← Voltar para a Wiki"
+
+# dashboard/base_dashboard.html
+msgid "Overview"
+msgstr "Visão Geral"
+
+msgid "Collection Logs"
+msgstr "Logs de Coleta"
+
+msgid "Manage Pages"
+msgstr "Gerenciar Páginas"
+
+msgid "New Page"
+msgstr "Nova Página"
+
+msgid "Collector"
+msgstr "Coletor"
+
+msgid "Run Now"
+msgstr "Executar Agora"
+
+msgid "Staff Panel"
+msgstr "Painel Staff"
+
+# dashboard/home.html
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Server overview and quick actions"
+msgstr "Visão geral do servidor e ações rápidas"
+
+msgid "Total Players"
+msgstr "Total de Jogadores"
+
+msgid "registered"
+msgstr "cadastrados"
+
+msgid "Last Collection"
+msgstr "Última Coleta"
+
+msgid "Never run"
+msgstr "Nunca executado"
+
+msgid "Next Collection"
+msgstr "Próxima Coleta"
+
+msgid "Not scheduled"
+msgstr "Não agendado"
+
+msgid "Section"
+msgstr "Seção"
+
+msgid "Action"
+msgstr "Ação"
+
+msgid "View all →"
+msgstr "Ver todos →"
+
+msgid "View logs →"
+msgstr "Ver logs →"
+
+msgid "Wiki Pages"
+msgstr "Páginas da Wiki"
+
+msgid "Manage →"
+msgstr "Gerenciar →"
+
+msgid "New Wiki Page"
+msgstr "Nova Página Wiki"
+
+msgid "Create →"
+msgstr "Criar →"
+
+# dashboard/players.html
+msgid "%(count)s player — click a column to sort"
+msgstr "%(count)s jogador — clique em uma coluna para ordenar"
+
+msgid "%(count)s players — click a column to sort"
+msgstr "%(count)s jogadores — clique em uma coluna para ordenar"
+
+msgid "Username"
+msgstr "Usuário"
+
+msgid "Last Seen"
+msgstr "Último Acesso"
+
+msgid "Hours"
+msgstr "Horas"
+
+msgid "Caught"
+msgstr "Capturados"
+
+msgid "Pokédex"
+msgstr "Pokédex"
+
+msgid "Battles"
+msgstr "Batalhas"
+
+msgid "Cards"
+msgstr "Cartas"
+
+msgid "No stats"
+msgstr "Sem estatísticas"
+
+msgid "No players yet."
+msgstr "Nenhum jogador ainda."
+
+# dashboard/logs.html
+msgid "Last 50 entries"
+msgstr "Últimas 50 entradas"
+
+msgid "Run Collection Now"
+msgstr "Executar Coleta Agora"
+
+msgid "Timestamp"
+msgstr "Data/Hora"
+
+msgid "Players Updated"
+msgstr "Jogadores Atualizados"
+
+msgid "Message"
+msgstr "Mensagem"
+
+msgid "No logs yet."
+msgstr "Nenhum log ainda."
+
+# dashboard/wiki_list.html
+msgid "%(count)s page"
+msgstr "%(count)s página"
+
+msgid "%(count)s pages"
+msgstr "%(count)s páginas"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Slug"
+msgstr "Slug"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Delete"
+msgstr "Excluir"
+
+msgid "← Prev"
+msgstr "← Anterior"
+
+msgid "Next →"
+msgstr "Próxima →"
+
+# dashboard/wiki_form.html
+msgid "Write Markdown content below"
+msgstr "Escreva o conteúdo em Markdown abaixo"
+
+msgid "← Back to list"
+msgstr "← Voltar para a lista"
+
+msgid "Content (Markdown)"
+msgstr "Conteúdo (Markdown)"
+
+msgid "Save Page"
+msgstr "Salvar Página"
+
+msgid "Save & Preview"
+msgstr "Salvar e Visualizar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Preview"
+msgstr "Pré-visualização"
+
+# dashboard/wiki_confirm_delete.html
+msgid "Delete Wiki Page"
+msgstr "Excluir Página da Wiki"
+
+msgid "Are you sure you want to delete:"
+msgstr "Tem certeza que deseja excluir:"
+
+msgid "Slug:"
+msgstr "Slug:"
+
+msgid "Yes, delete it"
+msgstr "Sim, excluir"
+
+# Python — dashboard/views.py
+msgid "Collection completed successfully."
+msgstr "Coleta concluída com sucesso."
+
+msgid "Collection failed: %s"
+msgstr "Falha na coleta: %s"
+
+# Python — collector/models.py
+msgid "OK"
+msgstr "OK"
+
+# Python — rankings/config.py
+msgid "Hours Played"
+msgstr "Horas Jogadas"
+
+msgid "Pokémons Caught"
+msgstr "Pokémons Capturados"
+
+msgid "Pokédex Registered"
+msgstr "Pokédex Registrado"
+
+msgid "CobbleTCG Cards"
+msgstr "Cartas CobbleTCG"
+
+msgid "Battles Won"
+msgstr "Batalhas Vencidas"
+
+msgid "CobbleDollars"
+msgstr "CobbleDollars"
