@@ -28,6 +28,9 @@ jobs:
       - name: Security scan (bandit)
         run: bandit -r . -x wsl_venv,tests -lll
 
+      - name: Check pending migrations
+        run: python manage.py migrate --check
+
       - name: Run tests
         run: python manage.py test --verbosity=2
 
