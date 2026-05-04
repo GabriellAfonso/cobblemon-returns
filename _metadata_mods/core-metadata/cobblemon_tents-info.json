@@ -1,0 +1,15 @@
+{
+    "name": "Cobblemon: Tents",
+    "version": "1.0.3",
+    "dependencies": [
+        "Cloth Config API [lib]",
+        "Geckolib [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-tents",
+    "mod_wiki": "",
+    "description": "Adds Tents to Cobblemon",
+    "description_pt_br": "Adiciona Barracas ao Cobblemon",
+    "tags": [
+        "pokemon"
+    ]
+}

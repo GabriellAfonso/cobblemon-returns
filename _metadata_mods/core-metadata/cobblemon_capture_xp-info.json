@@ -1,0 +1,15 @@
+{
+    "name": "Cobblemon Capture XP",
+    "version": "1.3.0",
+    "dependencies": [
+        "cobblemon",
+        "Cobblemon Tim Core [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-capture-xp",
+    "mod_wiki": "",
+    "description": "Grants EXP for your team when you capture a wild Pokemon.",
+    "description_pt_br": "Concede EXP para seu time ao capturar um Pokémon selvagem.",
+    "tags": [
+        "pokemon"
+    ]
+}

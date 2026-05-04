@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon: Research Tasks",
+    "version": "2.0",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-research-tasks",
+    "mod_wiki": "",
+    "description": "Adds Research Tasks Similar To Pokemon: Legends Arceus to Cobblemon",
+    "description_pt_br": "Adiciona Tarefas de Pesquisa similares às de Pokémon: Legends Arceus ao Cobblemon",
+    "tags": [
+        "pokemon"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Mob Lassos",
+    "version": "21.1.1",
+    "dependencies": [
+        "PuzzlesLib [lib]",
+        "ForgeConfigAPIPort [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/mob-lassos",
+    "mod_wiki": "",
+    "description": "Mob Lassos adds some neat utilities when moving mobs: Now you can simply craft a lasso to transport most mobs elsewhere in your inventory! No leads or animal food required!",
+    "description_pt_br": "Mob Lassos adiciona utensílios para mover mobs: crie um laço para transportar a maioria dos mobs no inventário! Sem guias ou comida para animais!",
+    "tags": [
+        "quality_of_life"
+    ]
+}

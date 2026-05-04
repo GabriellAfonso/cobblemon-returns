@@ -1,0 +1,15 @@
+{
+    "name": "Traveler's Backpack",
+    "version": "10.1.34",
+    "dependencies": [
+        "Cardinal Components API [lib]",
+        "Cloth Config API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/travelersbackpack",
+    "mod_wiki": "https://github.com/Tiviacz1337/Travelers-Backpack/wiki",
+    "description": "Unique and upgradeable backpacks with customisation, Curios API/Trinkets integration and more!",
+    "description_pt_br": "Mochilas únicas e atualizáveis com personalização, integração com Curios API/Trinkets e muito mais!",
+    "tags": [
+        "quality_of_life"
+    ]
+}

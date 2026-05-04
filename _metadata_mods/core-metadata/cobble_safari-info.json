@@ -1,0 +1,14 @@
+{
+    "name": "CobbleSafari",
+    "version": "0.2.1",
+    "dependencies": [
+        "Cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblesafari",
+    "mod_wiki": "https://cobblesafari.maxigregrze.fr/",
+    "description": "Distortion World, The Sinnoh Underground... Cobblesafari adds new gameplay feature based on the mainline gameplay !",
+    "description_pt_br": "Mundo da Distorção, O Submundo de Sinnoh... Cobblesafari adiciona novas mecânicas de gameplay baseadas nos jogos principais!",
+    "tags": [
+        "pokemon"
+    ]
+}

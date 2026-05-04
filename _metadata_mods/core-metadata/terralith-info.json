@@ -1,0 +1,12 @@
+{
+    "name": "Terralith",
+    "version": "2.5.8",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/terralith",
+    "mod_wiki": "https://stardustlabs.miraheze.org/wiki/Terralith",
+    "description": "Explore almost 100 new biomes consisting of both realism and light fantasy, using just Vanilla blocks. Complete with several immersive structures to compliment the overhauled terrain.",
+    "description_pt_br": "Explore quase 100 novos biomas de realismo e fantasia leve, usando apenas blocos Vanilla. Com estruturas imersivas para complementar o terreno renovado.",
+    "tags": [
+        "worldgen"
+    ]
+}

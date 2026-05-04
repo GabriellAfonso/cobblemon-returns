@@ -1,0 +1,15 @@
+{
+    "name": "CobbledGacha",
+    "version": "3.0.3",
+    "dependencies": [
+        "cobblemon",
+        "Geckolib [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobbledgacha",
+    "mod_wiki": "https://docs.google.com/spreadsheets/d/1AKjqLy6S8leh_qAg_ATlUcj3T7uENHeOPuBYw7NitX8/edit?gid=611775764#gid=611775764",
+    "description": "Adds Cobblemon-centric gacha machines that drop awesome loot! Or maybe not?",
+    "description_pt_br": "Adiciona máquinas de gacha com foco em Cobblemon que entregam loot incrível! Ou talvez não?",
+    "tags": [
+        "pokemon"
+    ]
+}

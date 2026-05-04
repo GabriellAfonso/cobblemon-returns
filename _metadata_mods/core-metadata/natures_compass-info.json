@@ -1,0 +1,12 @@
+{
+    "name": "Nature's Compass",
+    "version": "2.2.7",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/natures-compass",
+    "mod_wiki": "",
+    "description": "Allows you to locate biomes anywhere in the world.",
+    "description_pt_br": "Permite localizar biomas em qualquer lugar do mundo.",
+    "tags": [
+        "quality_of_life"
+    ]
+}

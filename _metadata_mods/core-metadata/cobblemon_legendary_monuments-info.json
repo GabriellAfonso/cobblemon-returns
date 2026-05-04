@@ -1,0 +1,19 @@
+{
+    "name": "Cobblemon: Legendary Monuments",
+    "version": "7.8",
+    "dependencies": [
+        "Cobblemon",
+        "Chipped",
+        "Cobblemon: Mega Showdown",
+        "CobbleFurnies",
+        "TerraBlender [lib]",
+        "Accessories"
+    ],
+    "mod_url": "https://modrinth.com/mod/legendary-monuments",
+    "mod_wiki": "https://legendary-monuments.gitbook.io/legendary-monuments-wiki",
+    "description": "Adds special spawning methods for Legendaries and Mythicals",
+    "description_pt_br": "Adiciona métodos especiais de spawning para Pokémon Lendários e Míticos",
+    "tags": [
+        "pokemon"
+    ]
+}

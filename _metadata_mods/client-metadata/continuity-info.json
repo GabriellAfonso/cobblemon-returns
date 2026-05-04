@@ -1,0 +1,12 @@
+{
+    "name": "Continuity",
+    "version": "3.0.0",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/continuity",
+    "mod_wiki": "https://github.com/PepperCode1/Continuity/wiki",
+    "description": "A Minecraft mod that allows for efficient connected textures",
+    "description_pt_br": "Mod do Minecraft que permite texturas conectadas de forma eficiente",
+    "tags": [
+        "quality_of_life"
+    ]
+}

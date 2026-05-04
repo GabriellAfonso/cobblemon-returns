@@ -1,0 +1,15 @@
+{
+    "name": "Visual Workbench",
+    "version": "21.1.1",
+    "dependencies": [
+        "PuzzlesLib [lib]",
+        "ForgeConfigAPIPort [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/visual-workbench",
+    "mod_wiki": "",
+    "description": "Items stay inside of crafting tables and are also rendered on top. It's really fancy!",
+    "description_pt_br": "Os itens ficam dentro das bancadas de trabalho e são renderizados em cima delas. Muito chique!",
+    "tags": [
+        "quality_of_life"
+    ]
+}

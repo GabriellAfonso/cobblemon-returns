@@ -1,0 +1,12 @@
+{
+    "name": "Concurrent Chunk Management Engine",
+    "version": "0.3.0",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/c2me-fabric",
+    "mod_wiki": "",
+    "description": "A Fabric mod designed to improve the chunk performance of Minecraft.",
+    "description_pt_br": "Um mod Fabric projetado para melhorar o desempenho de geração de chunks no Minecraft.",
+    "tags": [
+        "performance"
+    ]
+}

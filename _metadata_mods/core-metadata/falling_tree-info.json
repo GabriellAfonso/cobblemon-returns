@@ -1,0 +1,12 @@
+{
+    "name": "FallingTree",
+    "version": "1.21.1.11",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/fallingtree",
+    "mod_wiki": "https://github.com/RakambdaOrg/FallingTree/wiki",
+    "description": "Break down your trees by only cutting one piece of it",
+    "description_pt_br": "Derrube árvores inteiras cortando apenas um bloco",
+    "tags": [
+        "quality_of_life"
+    ]
+}

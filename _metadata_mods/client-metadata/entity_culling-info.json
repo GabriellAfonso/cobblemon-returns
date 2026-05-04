@@ -1,0 +1,12 @@
+{
+    "name": "Entity Culling",
+    "version": "1.9.5",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/entityculling",
+    "mod_wiki": "",
+    "description": "Using async path-tracing to hide Block-/Entities that are not visible",
+    "description_pt_br": "Usa rastreamento de caminhos assíncrono para ocultar blocos e entidades que não estão visíveis",
+    "tags": [
+        "performance"
+    ]
+}

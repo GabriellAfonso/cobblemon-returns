@@ -1,0 +1,15 @@
+{
+    "name": "Cobblemon Catch Rate Display",
+    "version": "2.8.21",
+    "dependencies": [
+        "Cobblemon",
+        "Fabric Language Kotlin"
+    ],
+    "mod_url": "https://modrinth.com/mod/catch-rate-display",
+    "mod_wiki": "",
+    "description": "Real-time catch rate calculator for Cobblemon. Shows live percentages, ball comparisons, and status effects. 100% client-side. It works on any server.",
+    "description_pt_br": "Calculadora de taxa de captura em tempo real para Cobblemon. Mostra porcentagens ao vivo, comparação de Poké Bolas e efeitos de status. 100% client-side. Funciona em qualquer servidor.",
+    "tags": [
+        "pokemon"
+    ]
+}

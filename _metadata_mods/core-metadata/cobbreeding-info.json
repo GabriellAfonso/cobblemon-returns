@@ -1,0 +1,16 @@
+{
+    "name": "Cobbreeding",
+    "version": "2.2.1",
+    "dependencies": [
+        "cobblemon",
+        "Cloth Config API [lib]",
+        "Architectury API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobbreeding",
+    "mod_wiki": "",
+    "description": "A side-mod for Cobblemon to add Pokémon breeding early.",
+    "description_pt_br": "Mod auxiliar do Cobblemon para adicionar reprodução de Pokémon.",
+    "tags": [
+        "pokemon"
+    ]
+}

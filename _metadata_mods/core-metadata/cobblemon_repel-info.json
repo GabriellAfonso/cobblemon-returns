@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon Repel",
+    "version": "1.4",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-repel",
+    "mod_wiki": "",
+    "description": "New blocks that prevent Pokémon spawns in a radius",
+    "description_pt_br": "Novos blocos que impedem o spawn de Pokémon em um raio",
+    "tags": [
+        "pokemon"
+    ]
+}

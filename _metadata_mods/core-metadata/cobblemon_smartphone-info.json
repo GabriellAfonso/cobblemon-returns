@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon Smartphone",
+    "version": "1.0.7",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-smartphone",
+    "mod_wiki": "",
+    "description": "A smartphone with cobblemon integration for quick and portable functions like team healing, open your pc and your ender chest.",
+    "description_pt_br": "Smartphone com integração ao Cobblemon para funções rápidas como curar o time, abrir o PC e o baú do Ender.",
+    "tags": [
+        "pokemon"
+    ]
+}

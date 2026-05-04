@@ -1,0 +1,15 @@
+{
+    "name": "SimpleTMs",
+    "version": "2.3.3",
+    "dependencies": [
+        "cobblemon",
+        "Architectury API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/simpletms-tms-and-trs-for-cobblemon",
+    "mod_wiki": "",
+    "description": "This Minecraft mod is an expansion to the Cobblemon mod, integrating TMs (Technical Machines) and TRs (Technical Records) from the Pokémon universe.",
+    "description_pt_br": "Expansão do Cobblemon que integra TMs (Máquinas Técnicas) e TRs (Registros Técnicos) do universo Pokémon.",
+    "tags": [
+        "pokemon"
+    ]
+}

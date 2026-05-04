@@ -1,0 +1,14 @@
+{
+    "name": "Accessories",
+    "version": "1.1.0",
+    "dependencies": [
+        "owo [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/accessories",
+    "mod_wiki": "https://docs.wispforest.io/accessories/home",
+    "description": "An extendable and data-driven Accessory Mod for Minecraft",
+    "description_pt_br": "Um mod de acessórios extensível e orientado a dados para o Minecraft",
+    "tags": [
+        "quality_of_life"
+    ]
+}

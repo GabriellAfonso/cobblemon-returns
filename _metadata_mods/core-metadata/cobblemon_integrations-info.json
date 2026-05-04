@@ -1,0 +1,16 @@
+{
+    "name": "Cobblemon Integrations",
+    "version": "1.1.6",
+    "dependencies": [
+        "cobblemon",
+        "Fabric Language Kotlin [lib]",
+        "Forge Config API Port [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-integrations",
+    "mod_wiki": "",
+    "description": "Various mod integrations for Cobblemon.",
+    "description_pt_br": "Diversas integrações com outros mods para o Cobblemon.",
+    "tags": [
+        "pokemon"
+    ]
+}

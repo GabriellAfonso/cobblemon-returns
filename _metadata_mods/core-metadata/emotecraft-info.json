@@ -1,0 +1,12 @@
+{
+    "name": "Emotecraft",
+    "version": "2.4.12",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/plugin/emotecraft",
+    "mod_wiki": "https://docs.zigythebird.com/emotecraft/gettingstarted/",
+    "description": "Create your own emotes in Minecraft.",
+    "description_pt_br": "Crie suas próprias emotes no Minecraft.",
+    "tags": [
+        "roleplay"
+    ]
+}

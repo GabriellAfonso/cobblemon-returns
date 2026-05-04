@@ -1,0 +1,17 @@
+{
+    "name": "Radical Cobblemon Trainers",
+    "version": "0.18.1",
+    "dependencies": [
+        "cobblemon",
+        "Radical Cobblemon Trainers API [lib]",
+        "Forge Config API Port [lib]",
+        "Architectury API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/rctmod",
+    "mod_wiki": "",
+    "description": "Over 1500 unique and challenging trainers, from the Pokemon ROM hacks Radical Red (v3.02) and Unbound (v2.0.3.2) as well as the main series",
+    "description_pt_br": "Mais de 1500 treinadores únicos e desafiadores dos ROM hacks Radical Red (v3.02) e Unbound (v2.0.3.2), além da série principal",
+    "tags": [
+        "pokemon"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Cobblemon GTS (market)",
+    "version": "2.5.2",
+    "dependencies": [
+        "cobblemon",
+        "CobbleDollars"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-gts",
+    "mod_wiki": "https://github.com/bencrow11/GTS/wiki",
+    "description": "A Global Trading System mod for Cobblemon that allows selling of Pokemon and Items.",
+    "description_pt_br": "Sistema Global de Trocas para Cobblemon que permite vender Pokémon e Itens.",
+    "tags": [
+        "economy"
+    ]
+}

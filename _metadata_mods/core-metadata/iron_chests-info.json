@@ -1,0 +1,12 @@
+{
+    "name": "Iron Chests",
+    "version": "2.0.4",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/cyberanner-ironchest",
+    "mod_wiki": "",
+    "description": "Improved chests for Minecraft",
+    "description_pt_br": "Baús melhorados para o Minecraft",
+    "tags": [
+        "quality_of_life"
+    ]
+}

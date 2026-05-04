@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon SafePastures",
+    "version": "1.1.1",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-safepastures",
+    "mod_wiki": "",
+    "description": "Make your pastures safe! Decorate to your heart's desires without the worry of your pokemon getting in danger!",
+    "description_pt_br": "Deixe seus pastos seguros! Decore à vontade sem se preocupar com seus pokémon em perigo!",
+    "tags": [
+        "pokemon"
+    ]
+}

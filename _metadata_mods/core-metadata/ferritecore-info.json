@@ -1,0 +1,12 @@
+{
+    "name": "FerriteCore",
+    "version": "7.0.3",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/ferrite-core",
+    "mod_wiki": "",
+    "description": "Memory usage optimizations",
+    "description_pt_br": "Otimizações de uso de memória RAM",
+    "tags": [
+        "performance"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Navas ZA Megas",
+    "version": "1.7.3",
+    "dependencies": [
+        "cobblemon",
+        "Cobblemon: Mega Showdown",
+        "Accessories",
+        "Architectury API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/datapack/navas-zamega",
+    "mod_wiki": "",
+    "description": "Adds All Megas from Pokemon Legends ZA into Cobblemon!",
+    "description_pt_br": "Adiciona todas as Mega Evoluções de Pokémon Legends ZA ao Cobblemon!",
+    "tags": [
+        "pokemon"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon: CobbleStats",
+    "version": "1.9.2",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-cobblestats",
+    "mod_wiki": "",
+    "description": "Brings Showdown-like stat and terrain info to cobblemon",
+    "description_pt_br": "Traz informações de stats e terreno no estilo Showdown para o Cobblemon",
+    "tags": [
+        "pokemon"
+    ]
+}

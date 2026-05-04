@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon",
+    "version": "1.7.3",
+    "dependencies": [
+        "fabric_api"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon",
+    "mod_wiki": "https://wiki.cobblemon.com/index.php/Main_Page",
+    "description": "Adiciona Pokémon ao Minecraft como foco principal do gameplay.\nSubstitui a progressão tradicional por captura, treino e interação com criaturas.",
+    "description_pt_br": "Adiciona Pokémon ao Minecraft como foco principal do gameplay.\nSubstitui a progressão tradicional por captura, treino e interação com criaturas.",
+    "tags": [
+        "pokemon"
+    ]
+}

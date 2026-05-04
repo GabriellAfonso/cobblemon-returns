@@ -1,0 +1,12 @@
+{
+    "name": "Tom's Simple Storage Mod",
+    "version": "2.3.0",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/toms-storage",
+    "mod_wiki": "",
+    "description": "Simple vanilla style storage mod",
+    "description_pt_br": "Mod de armazenamento simples no estilo vanilla",
+    "tags": [
+        "quality_of_life"
+    ]
+}

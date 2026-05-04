@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon Move Dex",
+    "version": "1.2",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemonmovedex",
+    "mod_wiki": "",
+    "description": "Add the function of querying learnable Moves to Cobblemon's Pokedex.",
+    "description_pt_br": "Adiciona a função de consultar movimentos aprendíveis na Pokédex do Cobblemon.",
+    "tags": [
+        "pokemon"
+    ]
+}

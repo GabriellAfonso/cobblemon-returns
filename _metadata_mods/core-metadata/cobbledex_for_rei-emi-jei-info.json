@@ -1,0 +1,14 @@
+{
+    "name": "Cobbledex for REI/EMI/JEI",
+    "version": "1.50.22",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobbledex-rei-emi-jei",
+    "mod_wiki": "",
+    "description": "CobbleDex turns REI, JEI, or EMI into a full in-game Cobblemon reference. Click a Pokemon and inspect its spawns, evolutions, drops, moves, stats, forms, fossils, obtainment methods etc",
+    "description_pt_br": "O CobbleDex transforma REI, JEI ou EMI em uma referência completa de Cobblemon no jogo. Clique em um Pokémon e veja spawns, evoluções, drops, movimentos, stats, formas, fósseis e muito mais",
+    "tags": [
+        "pokemon"
+    ]
+}

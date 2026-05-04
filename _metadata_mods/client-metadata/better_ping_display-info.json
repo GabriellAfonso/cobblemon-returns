@@ -1,0 +1,12 @@
+{
+    "name": "Better Ping Display",
+    "version": "1.1.1",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/better-ping-display-fabric",
+    "mod_wiki": "",
+    "description": "Adds a configurable numerical ping display to the player list",
+    "description_pt_br": "Adiciona um display numérico de ping configurável à lista de jogadores",
+    "tags": [
+        "quality_of_life"
+    ]
+}

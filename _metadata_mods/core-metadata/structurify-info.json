@@ -1,0 +1,14 @@
+{
+    "name": "Structurify",
+    "version": "2.0.20",
+    "dependencies": [
+        "YetAnotherConfigLib [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/structurify",
+    "mod_wiki": "https://github.com/Faboslav/structurify/wiki",
+    "description": "A lightweight configuration mod that makes it easy and accessible to customize everything related to structures, eliminating the hassle of creating multiple datapacks.",
+    "description_pt_br": "Mod de configuração leve para personalizar tudo relacionado a estruturas, sem precisar criar múltiplos datapacks.",
+    "tags": [
+        "gameplay_control"
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Not Enough Animations",
+    "version": "1.12.0",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/not-enough-animations",
+    "mod_wiki": "",
+    "description": "Bringing first-person animations to the third-person",
+    "description_pt_br": "Traz animações da primeira pessoa para a terceira pessoa",
+    "tags": [
+        "quality_of_life"
+    ]
+}

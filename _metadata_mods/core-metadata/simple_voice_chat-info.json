@@ -1,0 +1,12 @@
+{
+    "name": "Simple Voice Chat",
+    "version": "2.6.16",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/plugin/simple-voice-chat",
+    "mod_wiki": "https://modrepo.de/minecraft/voicechat/wiki/installation",
+    "description": "A working voice chat in Minecraft!",
+    "description_pt_br": "Um chat de voz funcionando dentro do Minecraft!",
+    "tags": [
+        "roleplay"
+    ]
+}

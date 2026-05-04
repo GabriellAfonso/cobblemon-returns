@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon Pokenav",
+    "version": "2.3.3",
+    "dependencies": [
+        "cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/mod/cobblemon-pokenav",
+    "mod_wiki": "https://github.com/gatekeep06/cobblenav/wiki",
+    "description": "The Cobblenav mod is inspired by the item and related mechanics featured in the games Pokémon RSE and Pokémon ORAS",
+    "description_pt_br": "O mod Cobblenav é inspirado no item e mecânicas dos jogos Pokémon RSE e Pokémon ORAS",
+    "tags": [
+        "pokemon"
+    ]
+}

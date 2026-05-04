@@ -1,0 +1,14 @@
+{
+    "name": "Cobblemon Journey Mounts",
+    "version": "1.7.2",
+    "dependencies": [
+        "Cobblemon"
+    ],
+    "mod_url": "https://modrinth.com/datapack/cobblemon-journey-mounts",
+    "mod_wiki": "",
+    "description": "More Cobblemon Mounts for Cobblemon 1.7",
+    "description_pt_br": "Mais montarias do Cobblemon para o Cobblemon 1.7",
+    "tags": [
+        "pokemon"
+    ]
+}

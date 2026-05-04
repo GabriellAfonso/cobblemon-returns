@@ -1,0 +1,12 @@
+{
+    "name": "Xaero's Minimap",
+    "version": "25.3.10",
+    "dependencies": [],
+    "mod_url": "https://modrinth.com/mod/xaeros-minimap",
+    "mod_wiki": "",
+    "description": "Displays a map of the nearby world terrain, players, mobs, entities in the corner of your screen. Lets you create waypoints which help you find the locations you've marked.",
+    "description_pt_br": "Exibe um mapa do terreno próximo, jogadores, mobs e entidades no canto da tela. Crie waypoints para marcar locais importantes.",
+    "tags": [
+        "quality_of_life"
+    ]
+}

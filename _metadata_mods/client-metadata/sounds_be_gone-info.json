@@ -1,0 +1,14 @@
+{
+    "name": "Sounds Be Gone!",
+    "version": "1.3.5",
+    "dependencies": [
+        "Cloth Config API [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/soundsbegone",
+    "mod_wiki": "",
+    "description": "Allows you to disable specific sounds you don't like. Perfect for people with Misophonia!",
+    "description_pt_br": "Permite desativar sons específicos que você não gosta. Perfeito para pessoas com Misofonia!",
+    "tags": [
+        "quality_of_life"
+    ]
+}

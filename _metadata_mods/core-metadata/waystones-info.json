@@ -1,0 +1,14 @@
+{
+    "name": "Waystones",
+    "version": "21.1.30",
+    "dependencies": [
+        "balm [lib]"
+    ],
+    "mod_url": "https://modrinth.com/mod/waystones",
+    "mod_wiki": "https://mods.twelveiterations.com/minecraft/waystones",
+    "description": "Teleport back to activated waystones. For Survival, Adventure or Servers.",
+    "description_pt_br": "Teletransporte de volta a pedras de caminho ativadas. Para Survival, Aventura ou Servidores.",
+    "tags": [
+        "quality_of_life"
+    ]
+}
