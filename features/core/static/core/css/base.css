@@ -138,6 +138,7 @@ nav {
   display: flex; align-items: center; height: 64px; gap: 0;
 }
 
+.logo-link { display: flex; align-items: center; text-decoration: none; }
 .logo-icon { width: 36px; height: 36px; flex-shrink: 0; margin-right: 12px; }
 
 .logo-text {

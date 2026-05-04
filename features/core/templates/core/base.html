@@ -20,8 +20,10 @@
 
 <nav>
   <div class="nav-inner">
-    <img class="logo-icon" src="{% static 'core/images/favicon.ico' %}" alt="Cobblemon Returns">
-    <div class="logo-text">COBBLEMON <span>RETURNS</span></div>
+    <a href="{% url 'home:home' %}" class="logo-link">
+      <img class="logo-icon" src="{% static 'core/images/favicon.ico' %}" alt="Cobblemon Returns">
+      <div class="logo-text">COBBLEMON <span>RETURNS</span></div>
+    </a>
     <div class="nav-divider"></div>
     <ul class="nav-links">
       <li><a href="{% url 'home:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>🏠 {% trans "Home" %}</a></li>
