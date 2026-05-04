@@ -13,7 +13,7 @@ Um projeto feito por diversão para um grupo de amigos.
 
 | Camada | Tecnologia |
 |---|---|
-| Backend | Python 3.12 + Django 5 |
+| Backend | Python 3.14 + Django 6 |
 | Banco de dados | SQLite |
 | Agendador | APScheduler |
 | Coleta de dados | Paramiko (SFTP) + nbtlib (NBT) |
@@ -37,11 +37,14 @@ Acesse http://localhost:8000/
 ## Estrutura do projeto
 
 ```
-apps/
+core/                 # Settings, URLs, WSGI, templates base
+features/
 ├── players/          # Modelos Player + PlayerStats
 ├── rankings/         # Views + config de rankings
 ├── collector/        # Coleta via SFTP + APScheduler
 ├── discord_notifier/ # Screenshot com Playwright + webhook
 ├── wiki/             # Modelo WikiPage + views Markdown
+├── home/             # Página inicial
+├── mods/             # Página de mods
 └── dashboard/        # Painel exclusivo para staff
 ```

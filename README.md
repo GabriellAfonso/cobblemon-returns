@@ -13,7 +13,7 @@ A fun side project made for a small group of friends.
 
 | Layer | Technology |
 |---|---|
-| Backend | Python 3.12 + Django 5 |
+| Backend | Python 3.14 + Django 6 |
 | Database | SQLite |
 | Scheduler | APScheduler |
 | Data collection | Paramiko (SFTP) + nbtlib (NBT) |
@@ -37,11 +37,14 @@ Open http://localhost:8000/
 ## Project Structure
 
 ```
-apps/
+core/                 # Settings, URLs, WSGI, base templates
+features/
 ├── players/          # Player + PlayerStats models
 ├── rankings/         # Views + RANKINGS config
 ├── collector/        # SFTP collection + APScheduler
 ├── discord_notifier/ # Playwright screenshot + webhook
 ├── wiki/             # WikiPage model + Markdown views
+├── home/             # Home page
+├── mods/             # Mods page
 └── dashboard/        # Staff panel
 ```
