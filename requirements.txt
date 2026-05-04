@@ -1,4 +1,5 @@
 django>=5.2
+psycopg2-binary>=2.9
 
 # dev
 ruff>=0.11.4
