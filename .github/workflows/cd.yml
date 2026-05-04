@@ -23,10 +23,7 @@ jobs:
             cd ${{ secrets.VPS_APP_PATH }}
             git pull origin master
             docker compose -f docker-compose.prod.yml up --build -d
-
-      - name: Health check
-        run: |
-          sleep 15
-          curl --fail --retry 5 --retry-delay 5 \
-            http://${{ secrets.VPS_HOST }}:8000/cobblemon-returns/health/ \
-            || (echo "Health check failed" && exit 1)
+            sleep 15
+            docker exec cobblemon-returns-prod curl --fail --retry 5 --retry-delay 5 \
+              http://localhost:8000/health/ \
+              || (echo "Health check failed" && exit 1)
