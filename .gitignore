@@ -12,6 +12,7 @@ db_dev.sqlite3
 /static/
 /staticfiles/
 /media/
+wsl_venv
 
 # Environment
 .env
