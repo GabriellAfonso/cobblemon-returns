@@ -246,7 +246,103 @@ Todo `TestCase` novo deve ter `@tag('unit')` ou `@tag('integration')` antes da d
 
 ---
 
-## 10. Migrações
+## 10. Pipeline de Qualidade — Pre-commit + CI/CD
+
+### Visão Geral
+
+O projeto tem três camadas de verificação automática, em ordem de execução:
+
+```
+dev faz commit
+      ↓
+  pre-commit  (local — roda na máquina do dev)
+      ↓ push para qualquer branch
+  CI          (GitHub Actions — obrigatório, ninguém escapa)
+      ↓ somente se CI verde E branch = master
+  CD          (GitHub Actions — deploy automático no VPS)
+```
+
+---
+
+### Pre-commit (`.pre-commit-config.yaml`)
+
+Roda automaticamente antes de cada `git commit` local, se instalado.
+
+**Hooks configurados:**
+- `ruff --fix` — lint com autocorreção
+- `ruff-format` — formatação de código
+- `bandit` — scan de vulnerabilidades comuns
+
+**Instalar uma vez no projeto:**
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+**Rodar manualmente em todos os arquivos:**
+```bash
+pre-commit run --all-files
+```
+
+> O pre-commit é opcional por dev. O CI repete as mesmas verificações como garantia obrigatória.
+
+---
+
+### CI — Continuous Integration (`.github/workflows/ci.yml`)
+
+Roda em todo `push` e `pull_request`, em qualquer branch.
+
+**Etapas em ordem:**
+1. `ruff check` — lint (sem autocorreção)
+2. `bandit` — security scan
+3. `python manage.py migrate --check` — falha se houver migração não aplicada
+4. `python manage.py test` — suite completa de testes
+5. `docker build` — valida que a imagem builda (só roda se etapas anteriores passarem)
+
+**Variáveis de ambiente necessárias no CI:**
+```
+DJANGO_SETTINGS_MODULE=config.settings.test
+SECRET_KEY=qualquer-valor-nao-usado-em-producao
+```
+
+---
+
+### CD — Continuous Delivery (`.github/workflows/cd.yml`)
+
+Roda **somente** quando o CI passa com sucesso no branch `master` (via `workflow_run`).
+
+**Etapas:**
+1. SSH no VPS
+2. `git pull origin master`
+3. `docker compose up --build -d`
+4. Health check: `GET /cobblemon-returns/health/` — falha o deploy se o app não subir
+
+**Secrets necessários no GitHub (`Settings → Secrets`):**
+
+| Secret | Valor |
+|--------|-------|
+| `VPS_HOST` | IP ou domínio do servidor |
+| `VPS_USER` | usuário SSH |
+| `VPS_SSH_KEY` | chave privada SSH (conteúdo do arquivo) |
+| `VPS_APP_PATH` | caminho absoluto do projeto no VPS |
+
+---
+
+### Adaptando para um novo projeto Django
+
+1. Copiar `.pre-commit-config.yaml`, `.github/workflows/ci.yml` e `.github/workflows/cd.yml`
+2. Ajustar em `ci.yml`:
+   - `python-version` conforme o projeto
+   - `DJANGO_SETTINGS_MODULE` para o settings de teste
+3. Ajustar em `cd.yml`:
+   - URL do health check para o subpath correto do projeto
+4. Cadastrar os 4 secrets no GitHub
+5. Garantir que o projeto tem uma rota `/health/` que retorna `200 OK`
+6. Rodar `pre-commit install` localmente após clonar
+
+---
+
+## 11. Migrações
 
 - Nunca edite uma migração já aplicada em produção.
 - Migrações geradas pelo Django (`makemigrations`), não escritas à mão, salvo data migrations.
@@ -254,7 +350,7 @@ Todo `TestCase` novo deve ter `@tag('unit')` ou `@tag('integration')` antes da d
 
 ---
 
-## 11. Como o Claude Deve se Comportar
+## 12. Como o Claude Deve se Comportar
 
 ### Faça:
 - **Sempre apresente o plano e aguarde confirmação antes de implementar** (ver seção 3).
@@ -273,7 +369,7 @@ Todo `TestCase` novo deve ter `@tag('unit')` ou `@tag('integration')` antes da d
 
 ---
 
-## 12. Notas Específicas do Projeto
+## 13. Notas Específicas do Projeto
 
 ### Rankings Config Pattern
 Adicionar um novo ranking = adicionar um dict à lista em `apps/rankings/config.py`. Nada mais.
