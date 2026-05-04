@@ -15,9 +15,9 @@ DATABASES = {
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
-
+CSRF_TRUSTED_ORIGINS = "gabrielafonso.com.br"
 FORCE_SCRIPT_NAME = "/cobblemon-returns"
 USE_X_FORWARDED_HOST = True
-STATIC_URL = "/cobblemon-returns/static/"
-STATIC_ROOT = "/data/static/"
+CSRF_COOKIE_PATH = "/cobblemon-returns/"
+SESSION_COOKIE_PATH = "/cobblemon-returns/"
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
