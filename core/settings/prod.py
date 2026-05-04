@@ -15,7 +15,7 @@ DATABASES = {
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
-CSRF_TRUSTED_ORIGINS = "gabrielafonso.com.br"
+CSRF_TRUSTED_ORIGINS = [f"https://{h}" for h in ALLOWED_HOSTS if h]
 FORCE_SCRIPT_NAME = "/cobblemon-returns"
 USE_X_FORWARDED_HOST = True
 CSRF_COOKIE_PATH = "/cobblemon-returns/"
