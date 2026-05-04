@@ -1,15 +1,16 @@
 name: CD
 
 on:
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows: ["CI"]
+    branches: [master]
+    types: [completed]
 
 jobs:
   deploy:
     name: Deploy to VPS
     runs-on: ubuntu-latest
-    needs: []
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Deploy via SSH
@@ -20,12 +21,12 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd ${{ secrets.VPS_APP_PATH }}
-            git pull
-            docker-compose up --build -d
+            git pull origin master
+            docker compose up --build -d
 
       - name: Health check
         run: |
           sleep 15
           curl --fail --retry 5 --retry-delay 5 \
-            http://${{ secrets.VPS_HOST }}:8000/health/ \
+            http://${{ secrets.VPS_HOST }}:8000/cobblemon-returns/health/ \
             || (echo "Health check failed" && exit 1)
