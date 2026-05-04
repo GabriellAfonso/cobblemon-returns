@@ -79,9 +79,10 @@ TIME_ZONE = "America/Sao_Paulo"
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = "/static/"
-STATIC_ROOT = "/static/"
-MEDIA_URL = "/media/"
+STATIC_URL = "/cobblemon-returns/static/"
+STATIC_ROOT = BASE_DIR / "static"
+
+MEDIA_URL = "/cobblemon-returns/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
