@@ -1,0 +1,118 @@
+{% extends "core/base.html" %}
+{% load static i18n %}
+
+{% block title %}Mods — Cobblemon Returns{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'mods/css/mods.css' %}">{% endblock %}
+
+{% block content %}
+
+<!-- ── HERO ── -->
+<div class="mods-hero">
+  <div class="mods-hero-eyebrow">{% trans "Modpack" %}</div>
+  <h1><span class="accent">Mods</span></h1>
+  <p class="mods-hero-sub">{% trans "All mods used on the server, organized by category" %}</p>
+</div>
+
+<!-- ── BODY ── -->
+<div class="mods-page-body">
+  <div class="mods-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="mods-sidebar">
+      <div class="sidebar-title">{% trans "Categories" %}</div>
+      {% for cat in categories %}
+      <a href="?category={{ cat.id }}{% if current_tag %}&tag={{ current_tag }}{% endif %}"
+         class="category-btn {% if current_category == cat.id %}active{% endif %}">
+        <span class="cat-icon">{{ cat.icon }}</span>
+        {{ cat.label }}
+      </a>
+      {% endfor %}
+
+      <div class="sidebar-divider"></div>
+
+      <div class="sidebar-title">Tags</div>
+      <a href="?category={{ current_category }}"
+         class="category-btn {% if not current_tag %}active{% endif %}">
+        <span class="cat-icon">🏷️</span> {% trans "All" %}
+      </a>
+      {% for tag in tags %}
+      <a href="?category={{ current_category }}&tag={{ tag.id }}"
+         class="category-btn {% if current_tag == tag.id %}active{% endif %}">
+        <span class="cat-icon">{{ tag.icon }}</span> {{ tag.label }}
+      </a>
+      {% endfor %}
+    </aside>
+
+    <!-- ── MOD LIST ── -->
+    <div class="mods-main">
+      <p class="mods-count">
+        <span>{{ mods|length }}</span> {% trans "mods found" %}
+      </p>
+
+      {% for mod in mods %}
+      <div class="mod-card">
+
+        <!-- Thumbnail -->
+        <div class="mod-thumb-box">
+          {% if mod.thumbnail %}
+          <img src="{{ mod.thumbnail.url }}" alt="{{ mod.name }}" loading="lazy">
+          {% else %}
+          <span class="mod-thumb-placeholder">🧩</span>
+          {% endif %}
+        </div>
+
+        <!-- Info -->
+        <div class="mod-info">
+          <div class="mod-header">
+            <span class="mod-name">{{ mod.name }}</span>
+            <span class="mod-version">v{{ mod.version }}</span>
+          </div>
+
+          {% get_current_language as lang %}
+          <p class="mod-description">
+            {% if lang == "pt-br" and mod.description_pt_br %}{{ mod.description_pt_br }}{% else %}{{ mod.description }}{% endif %}
+          </p>
+
+          {% if mod.tags %}
+          <div class="mod-tags">
+            {% for t in mod.tags %}
+            {% for tag_def in tags %}{% if tag_def.id == t %}<span class="mod-tag mod-tag--{{ t }}">{{ tag_def.label }}</span>{% endif %}{% endfor %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if mod.dependencies %}
+          <div class="mod-deps">
+            {% for dep in mod.dependencies %}
+            <span class="dep-tag">{{ dep }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="mod-links">
+            {% if mod.mod_url %}
+            <a href="{{ mod.mod_url }}" target="_blank" rel="noopener noreferrer" class="mod-link mod-link-page">
+              ↗ {% trans "Mod Page" %}
+            </a>
+            {% endif %}
+            {% if mod.mod_wiki %}
+            <a href="{{ mod.mod_wiki }}" target="_blank" rel="noopener noreferrer" class="mod-link mod-link-wiki">
+              📖 {% trans "Wiki" %}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+      {% empty %}
+      <div class="mods-empty">
+        {% trans "No mods found in this category." %}
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

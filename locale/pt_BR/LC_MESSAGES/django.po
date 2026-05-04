@@ -380,3 +380,25 @@ msgstr "Batalhas Vencidas"
 
 msgid "CobbleDollars"
 msgstr "CobbleDollars"
+
+# mods/list.html
+msgid "Modpack"
+msgstr "Modpack"
+
+msgid "List"
+msgstr "Lista"
+
+msgid "All mods used on the server, organized by category"
+msgstr "Todos os mods usados no servidor, organizados por categoria"
+
+msgid "Categories"
+msgstr "Categorias"
+
+msgid "mods found"
+msgstr "mods encontrados"
+
+msgid "Mod Page"
+msgstr "Página do Mod"
+
+msgid "No mods found in this category."
+msgstr "Nenhum mod encontrado nesta categoria."

@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
 <title>{% block title %}Cobblemon Returns{% endblock %}</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
 <style>
 .lang-switcher{display:flex;gap:2px}
@@ -28,6 +27,7 @@
       <li><a href="{% url 'home:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>🏠 {% trans "Home" %}</a></li>
       <li><a href="{% url 'rankings:rankings' %}" {% if 'ranking' in request.resolver_match.url_name %}class="active"{% endif %}>🏆 {% trans "Rankings" %}</a></li>
       <li><a href="{% url 'wiki:wiki-list' %}" {% if request.resolver_match.app_name == 'wiki' %}class="active"{% endif %}>📖 {% trans "Wiki" %}</a></li>
+      <li><a href="{% url 'mods:mods-list' %}" {% if request.resolver_match.app_name == 'mods' %}class="active"{% endif %}>🧩 {% trans "Mods" %}</a></li>
     </ul>
     <div class="nav-actions">
       <form action="{% url 'set_language' %}" method="post" class="lang-switcher">
