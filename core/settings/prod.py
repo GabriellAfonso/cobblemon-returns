@@ -20,4 +20,6 @@ FORCE_SCRIPT_NAME = "/cobblemon-returns"
 USE_X_FORWARDED_HOST = True
 CSRF_COOKIE_PATH = "/cobblemon-returns/"
 SESSION_COOKIE_PATH = "/cobblemon-returns/"
+CSRF_COOKIE_NAME = "cobblemon_csrftoken"
+SESSION_COOKIE_NAME = "cobblemon_sessionid"
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
