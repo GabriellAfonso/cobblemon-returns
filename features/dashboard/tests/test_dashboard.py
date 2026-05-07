@@ -35,12 +35,11 @@ class StaffRequiredTest(TestCase):
         self.assertEqual(resp.status_code, 302)
         self.assertIn("/admin/login/", resp["Location"])
 
-    def test_non_staff_redirected_to_login(self):
+    def test_non_staff_gets_403(self):
         _regular_user()
         self.client.login(username="regular", password="pass")
         resp = self.client.get(reverse("dashboard:home"))
-        self.assertEqual(resp.status_code, 302)
-        self.assertIn("/admin/login/", resp["Location"])
+        self.assertEqual(resp.status_code, 403)
 
     def test_staff_can_access(self):
         _staff_user()
