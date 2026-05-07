@@ -1,6 +1,7 @@
 import os
 
 from django.db import models
+from django.utils.text import slugify
 
 
 def _thumbnail_upload_path(instance: "Mod", filename: str) -> str:
@@ -23,7 +24,7 @@ class Mod(models.Model):
     mod_url = models.URLField()
     mod_wiki = models.URLField(blank=True)
     dependencies = models.JSONField(default=list, blank=True)
-    tags = models.JSONField(default=list)
+    tags = models.JSONField(default=list, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     thumbnail = models.ImageField(
         upload_to=_thumbnail_upload_path, blank=True, null=True
@@ -38,6 +39,8 @@ class Mod(models.Model):
         return f"{self.name} ({self.category})"
 
     def save(self, *args, **kwargs) -> None:
+        if not self.slug:
+            self.slug = slugify(self.name)
         if self.pk:
             try:
                 old = Mod.objects.get(pk=self.pk)
