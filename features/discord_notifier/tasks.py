@@ -32,7 +32,7 @@ def post_all_rankings() -> None:
 
     stats_repo = PlayerStatsRepository()
     message_repo = DiscordMessageRepository()
-    date_str = timezone.now().strftime("%d/%m/%Y · %H:%M")
+    date_str = timezone.localtime().strftime("%d/%m/%Y · %H:%M")
 
     for r in RANKINGS:
         try:
@@ -49,9 +49,9 @@ def post_all_rankings() -> None:
 
             existing = message_repo.get_by_ranking(r["id"])
             if existing:
-                delete_discord_message(existing.message_id)
+                delete_discord_message(existing.message_id, r)
 
-            message_id = send_ranking_image(png, f"ranking_{r['id']}.png")
+            message_id = send_ranking_image(png, f"ranking_{r['id']}.png", r)
             if message_id:
                 message_repo.update_or_create(r["id"], message_id)
         except Exception as e:
