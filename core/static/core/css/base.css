@@ -163,6 +163,8 @@ nav {
 .nav-links a:hover { color: var(--white); background: var(--surface); }
 .nav-links a.active { color: var(--purple); background: rgba(200,80,240,0.1); }
 .nav-icon { width: 16px; height: 16px; object-fit: contain; display: block; }
+.nav-links a.active .nav-icon--home { filter: invert(40%) sepia(80%) saturate(500%) hue-rotate(250deg) brightness(110%); }
+.nav-links a:hover .nav-icon--home { filter: brightness(0) invert(1); }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 
