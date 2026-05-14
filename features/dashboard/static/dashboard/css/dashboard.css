@@ -67,6 +67,8 @@
 .dash-table tr:hover td { background: rgba(255,255,255,0.02); }
 .dash-table a { color: var(--cyan); text-decoration: none; }
 .dash-table a:hover { text-decoration: underline; }
+.btn-link { background: none; border: none; padding: 0; color: var(--cyan); font: inherit; cursor: pointer; }
+.btn-link:hover { text-decoration: underline; }
 
 /* ── STAT CARDS ── */
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 28px; }

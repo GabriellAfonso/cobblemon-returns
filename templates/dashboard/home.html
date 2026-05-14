@@ -50,6 +50,15 @@
       <tr><td>{% trans "Collection Logs" %}</td><td><a href="{% url 'dashboard:logs' %}">{% trans "View logs →" %}</a></td></tr>
       <tr><td>{% trans "Wiki Pages" %}</td><td><a href="{% url 'dashboard:wiki-list' %}">{% trans "Manage →" %}</a></td></tr>
       <tr><td>{% trans "New Wiki Page" %}</td><td><a href="{% url 'dashboard:wiki-create' %}">{% trans "Create →" %}</a></td></tr>
+      <tr>
+        <td>{% trans "Discord Rankings" %}</td>
+        <td>
+          <form method="post" action="{% url 'dashboard:trigger-discord-rankings' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="btn-link">{% trans "Post now →" %}</button>
+          </form>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

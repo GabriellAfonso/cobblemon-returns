@@ -5,6 +5,7 @@ from .views import (
     DashboardHomeView,
     PlayersListView,
     TriggerCollectionView,
+    TriggerDiscordRankingsView,
     WikiCreateView,
     WikiDeleteView,
     WikiEditView,
@@ -22,4 +23,9 @@ urlpatterns = [
     path("logs/", CollectionLogView.as_view(), name="logs"),
     path("players/", PlayersListView.as_view(), name="players"),
     path("trigger-collection/", TriggerCollectionView.as_view(), name="trigger"),
+    path(
+        "trigger-discord-rankings/",
+        TriggerDiscordRankingsView.as_view(),
+        name="trigger-discord-rankings",
+    ),
 ]

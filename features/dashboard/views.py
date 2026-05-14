@@ -132,3 +132,15 @@ class TriggerCollectionView(StaffRequiredMixin, View):
         except Exception as e:
             messages.error(request, _("Collection failed: %s") % e)
         return redirect("dashboard:logs")
+
+
+class TriggerDiscordRankingsView(StaffRequiredMixin, View):
+    def post(self, request):
+        try:
+            from features.discord_notifier.tasks import post_all_rankings
+
+            post_all_rankings()
+            messages.success(request, _("Rankings posted to Discord successfully."))
+        except Exception as e:
+            messages.error(request, _("Failed to post rankings to Discord: %s") % e)
+        return redirect("dashboard:home")
