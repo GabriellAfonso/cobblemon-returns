@@ -162,6 +162,7 @@ nav {
 }
 .nav-links a:hover { color: var(--white); background: var(--surface); }
 .nav-links a.active { color: var(--purple); background: rgba(200,80,240,0.1); }
+.nav-icon { width: 16px; height: 16px; object-fit: contain; display: block; }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 

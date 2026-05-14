@@ -24,7 +24,7 @@
       <span>⬇️</span> {% trans "Install Modpack" %}
     </button>
     <a href="{% url 'rankings:rankings' %}" class="btn-secondary">
-      <span>🏆</span> {% trans "View Rankings" %}
+      <span><img src="{% static 'rankings/images/ranking_icon.png' %}" alt="" class="btn-icon"></span> {% trans "View Rankings" %}
     </a>
     <a href="{{ DISCORD_INVITE_URL }}" target="_blank" class="btn-discord-hero">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
 <!-- ── TOP LEADERS ── -->
 <div class="section">
   <div class="section-header">
-    <div class="section-title">🏆 {% trans "Current Leaders" %}</div>
+    <div class="section-title"><img src="{% static 'rankings/images/ranking_icon.png' %}" alt="" class="section-title-icon"> {% trans "Current Leaders" %}</div>
     <a href="{% url 'rankings:rankings' %}" class="section-link">{% trans "View all rankings →" %}</a>
   </div>
   <div class="leaders-grid">
@@ -88,7 +88,7 @@
   </div>
   <div class="quick-grid">
     <a href="{% url 'rankings:rankings' %}" class="quick-card">
-      <div class="quick-icon purple">🏆</div>
+      <div class="quick-icon purple"><img src="{% static 'rankings/images/ranking_icon.png' %}" alt="" class="quick-icon-img"></div>
       <div class="quick-info">
         <div class="quick-title">{% trans "Rankings" %}</div>
         <div class="quick-desc">{% trans "See who leads the server" %}</div>

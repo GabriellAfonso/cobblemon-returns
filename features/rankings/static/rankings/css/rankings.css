@@ -52,12 +52,13 @@
 .tab-btn:hover { background: var(--surface2); color: var(--text); border-color: var(--border-bright); }
 .tab-btn.active { background: rgba(200,80,240,0.12); border-color: rgba(200,80,240,0.5); color: var(--purple); box-shadow: 0 0 20px rgba(200,80,240,0.1); }
 .tab-btn .tab-emoji { font-size: 16px; }
-
+.tab-btn .tab-icon-img { width: 18px; height: 18px; object-fit: contain; display: block; }
 /* ── RANKING PANEL ── */
 .ranking-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; backdrop-filter: blur(10px); }
 .panel-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
 .panel-title { display: flex; align-items: center; gap: 12px; font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 0.5px; }
 .panel-title .p-icon { font-size: 20px; line-height: 1; }
+.panel-title .p-icon-img { width: 24px; height: 24px; object-fit: contain; display: block; }
 .panel-title .p-label { color: var(--purple); }
 .panel-count { font-size: 13px; color: var(--muted); font-weight: 500; }
 .tab-content { display: none; }

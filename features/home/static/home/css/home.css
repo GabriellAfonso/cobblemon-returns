@@ -87,6 +87,7 @@
   transition: all 0.2s;
 }
 .btn-secondary:hover { background: var(--surface2); border-color: var(--purple); color: var(--white); transform: translateY(-2px); }
+.btn-icon { width: 18px; height: 18px; object-fit: contain; display: block; }
 
 .btn-discord-hero {
   display: inline-flex; align-items: center; gap: 10px;
@@ -128,7 +129,8 @@
 /* ── SECTIONS ── */
 .section { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 0 24px 80px; }
 .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-.section-title { font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; color: var(--white); letter-spacing: 0.5px; }
+.section-title { font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; color: var(--white); letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+.section-title-icon { width: 20px; height: 20px; object-fit: contain; display: block; }
 .section-link { font-size: 14px; font-weight: 600; color: var(--purple); text-decoration: none; letter-spacing: 0.3px; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
 .section-link:hover { gap: 10px; }
 
@@ -157,6 +159,7 @@
 .quick-card:hover { background: var(--surface2); border-color: var(--border-bright); transform: translateX(4px); }
 .quick-icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 22px; }
 .quick-icon.purple { background: rgba(200,80,240,0.12); }
+.quick-icon-img { width: 26px; height: 26px; object-fit: contain; display: block; }
 .quick-icon.cyan   { background: rgba(0,180,216,0.12); }
 .quick-icon.discord { background: rgba(88,101,242,0.12); }
 .quick-icon.green  { background: rgba(61,219,133,0.12); }

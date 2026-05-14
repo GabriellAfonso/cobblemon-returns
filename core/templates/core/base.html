@@ -27,7 +27,7 @@
     <div class="nav-divider"></div>
     <ul class="nav-links">
       <li><a href="{% url 'home:home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>🏠 {% trans "Home" %}</a></li>
-      <li><a href="{% url 'rankings:rankings' %}" {% if 'ranking' in request.resolver_match.url_name %}class="active"{% endif %}>🏆 {% trans "Rankings" %}</a></li>
+      <li><a href="{% url 'rankings:rankings' %}" {% if 'ranking' in request.resolver_match.url_name %}class="active"{% endif %}><img src="{% static 'rankings/images/ranking_icon.png' %}" alt="" class="nav-icon"> {% trans "Rankings" %}</a></li>
       <li><a href="{% url 'wiki:wiki-list' %}" {% if request.resolver_match.app_name == 'wiki' %}class="active"{% endif %}>📖 {% trans "Wiki" %}</a></li>
       <li><a href="{% url 'mods:mods-list' %}" {% if request.resolver_match.app_name == 'mods' %}class="active"{% endif %}>🧩 {% trans "Mods" %}</a></li>
     </ul>
