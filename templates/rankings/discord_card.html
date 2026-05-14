@@ -27,7 +27,7 @@
 body {
   background: var(--bg);
   font-family: 'Rajdhani', sans-serif;
-  width: 500px;
+  width: 520px;
   overflow: hidden;
 }
 
@@ -62,7 +62,9 @@ body {
   position: relative; z-index: 1;
 }
 
-.icon-wrap { width: 44px; height: 44px; flex-shrink: 0; }
+.icon-wrap { width: 44px; height: 44px; flex-shrink: 0; display:flex; align-items:center; justify-content:center; }
+.icon-wrap img { width: 44px; height: 44px; object-fit: contain; }
+.icon-emoji { font-size: 36px; line-height: 1; }
 
 .header-text { flex: 1; }
 
@@ -121,21 +123,14 @@ body {
 <div class="card">
   <div class="card-header">
     <div class="icon-wrap">
-      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
-        <path d="M22 4L37 13V31L22 40L7 31V13L22 4Z" fill="#111122" stroke="rgba(200,80,240,0.3)" stroke-width="0.8"/>
-        <path d="M22 6L35 14V22H9V14L22 6Z" fill="#C850F0" opacity="0.9"/>
-        <path d="M9 22V30L22 38L35 30V22H9Z" fill="#8890A8" opacity="0.8"/>
-        <rect x="8" y="20.5" width="28" height="3" fill="#0a0a15" rx="0.5"/>
-        <circle cx="22" cy="22" r="5" fill="#0a0a15" stroke="#111" stroke-width="1"/>
-        <circle cx="22" cy="22" r="2.8" fill="#C850F0" opacity="0.75"/>
-        <path d="M5 16 Q3 22 5 28" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <path d="M39 16 Q41 22 39 28" stroke="#00B4D8" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <polygon points="4,13 8,16 4,19" fill="#00B4D8"/>
-        <polygon points="40,25 36,28 40,31" fill="#00B4D8"/>
-      </svg>
+      {% if ranking.icon_data_uri %}
+      <img src="{{ ranking.icon_data_uri }}" alt="{{ ranking.label }}">
+      {% else %}
+      <span class="icon-emoji">{{ ranking.icon }}</span>
+      {% endif %}
     </div>
     <div class="header-text">
-      <div class="header-category">🏆 {{ ranking.icon }} RANKING</div>
+      <div class="header-category">RANKING</div>
       <div class="header-title">{{ ranking.label|upper }}</div>
     </div>
     <div class="header-date">{{ date }}</div>
