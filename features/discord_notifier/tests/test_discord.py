@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import ANY, MagicMock, patch
 
 from django.db import IntegrityError
 from django.test import RequestFactory, TestCase, override_settings, tag
@@ -29,7 +29,7 @@ class SendRankingImageTest(TestCase):
         mock_post.return_value = MagicMock(ok=True, json=lambda: {"id": "999888777"})
         from features.discord_notifier.webhook import send_ranking_image
 
-        result = send_ranking_image(b"fake-png", "test.png")
+        result = send_ranking_image(b"fake-png", "test.png", {})
         self.assertEqual(result, "999888777")
 
     @patch("features.discord_notifier.webhook.requests.post")
@@ -37,7 +37,7 @@ class SendRankingImageTest(TestCase):
         mock_post.return_value = MagicMock(ok=True, json=lambda: {"id": "111"})
         from features.discord_notifier.webhook import send_ranking_image
 
-        send_ranking_image(b"fake-png", "ranking_hours.png")
+        send_ranking_image(b"fake-png", "ranking_hours.png", {})
         called_url = mock_post.call_args[0][0]
         self.assertIn("?wait=true", called_url)
 
@@ -48,14 +48,14 @@ class SendRankingImageTest(TestCase):
         )
         from features.discord_notifier.webhook import send_ranking_image
 
-        result = send_ranking_image(b"fake-png", "test.png")
+        result = send_ranking_image(b"fake-png", "test.png", {})
         self.assertIsNone(result)
 
     def test_returns_none_when_webhook_url_empty(self):
         with self.settings(DISCORD_WEBHOOK_URL=""):
             from features.discord_notifier.webhook import send_ranking_image
 
-            result = send_ranking_image(b"fake-png", "test.png")
+            result = send_ranking_image(b"fake-png", "test.png", {})
         self.assertIsNone(result)
 
 
@@ -66,7 +66,7 @@ class DeleteDiscordMessageTest(TestCase):
     def test_delete_calls_correct_url(self, mock_delete):
         from features.discord_notifier.webhook import delete_discord_message
 
-        delete_discord_message("abc123")
+        delete_discord_message("abc123", {})
         called_url = mock_delete.call_args[0][0]
         self.assertIn("/messages/abc123", called_url)
 
@@ -74,7 +74,7 @@ class DeleteDiscordMessageTest(TestCase):
     def test_delete_skips_when_no_message_id(self, mock_delete):
         from features.discord_notifier.webhook import delete_discord_message
 
-        delete_discord_message(None)
+        delete_discord_message(None, {})
         mock_delete.assert_not_called()
 
 
@@ -125,7 +125,7 @@ class PostAllRankingsTest(TestCase):
         from features.discord_notifier.tasks import post_all_rankings
 
         post_all_rankings()
-        mock_delete.assert_any_call("old-msg-id")
+        mock_delete.assert_any_call("old-msg-id", ANY)
 
     @patch(
         "features.discord_notifier.screenshot.render_ranking_screenshot",
@@ -196,22 +196,22 @@ class DiscordCardViewTest(TestCase):
         self.factory = RequestFactory()
 
     def test_discord_card_returns_200(self):
-        from features.discord_notifier.views import discord_card
+        from features.discord_notifier.views import discord_card_preview
 
         request = self.factory.get("/")
-        resp = discord_card(request)
+        resp = discord_card_preview(request, ranking_id="hours")
         self.assertEqual(resp.status_code, 200)
 
     def test_discord_card_renders_card_html(self):
-        from features.discord_notifier.views import discord_card
+        from features.discord_notifier.views import discord_card_preview
 
         request = self.factory.get("/")
-        resp = discord_card(request)
+        resp = discord_card_preview(request, ranking_id="hours")
         self.assertIn(b"COBBLEMON", resp.content)
 
     def test_discord_card_accepts_custom_ranking_id(self):
-        from features.discord_notifier.views import discord_card
+        from features.discord_notifier.views import discord_card_preview
 
         request = self.factory.get("/")
-        resp = discord_card(request, ranking_id="catches")
+        resp = discord_card_preview(request, ranking_id="catches")
         self.assertEqual(resp.status_code, 200)
