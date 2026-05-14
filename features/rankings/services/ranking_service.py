@@ -19,6 +19,7 @@ class RankingService:
                         "id": r["id"],
                         "label": r["label"],
                         "icon": r["icon"],
+                        "icon_img": r["icon_img"],
                         "player_name": top.player.username,
                         "value": format_value(getattr(top, r["field"]), r["format"]),
                     }

@@ -23,8 +23,8 @@ msgstr "Cobblemon Returns · Servidor Cobblemon Fabric · Feito com ♥ pela com
 msgid "Cobblemon Fabric Server"
 msgstr "Servidor Cobblemon Fabric"
 
-msgid "Adventure, battles, and Pokémon in a Minecraft server built for the community."
-msgstr "Aventura, batalhas e Pokémon em um servidor Minecraft feito para a comunidade."
+msgid "Adventure and battles with your friends."
+msgstr "Aventura e batalhas com seus amigos."
 
 msgid "Install Modpack"
 msgstr "Instalar Modpack"
@@ -83,47 +83,47 @@ msgstr "Entre na nossa comunidade"
 msgid "Step-by-step install guide"
 msgstr "Guia de instalação passo a passo"
 
-msgid "Installer Download"
-msgstr "Download do Instalador"
+msgid "Downloads"
+msgstr "Downloads"
 
-msgid "Windows Installer"
-msgstr "Instalador Windows"
+msgid "Google Drive · .zip"
+msgstr "Google Drive · .zip"
 
-msgid "Google Drive · .exe"
-msgstr "Google Drive · .exe"
+msgid "Launcher"
+msgstr "Launcher"
 
-msgid "Linux Installer"
-msgstr "Instalador Linux"
+msgid "Prism Launcher (Official)"
+msgstr "Prism Launcher (Oficial)"
 
-msgid "Google Drive · .sh / .AppImage"
-msgstr "Google Drive · .sh / .AppImage"
-
-msgid "Recommended Launchers"
-msgstr "Launchers Recomendados"
-
-msgid "Official Launcher"
-msgstr "Launcher Oficial"
+msgid "Prism Launcher (Cracked)"
+msgstr "Prism Launcher (Pirata)"
 
 msgid "Step by Step"
 msgstr "Passo a Passo"
 
-msgid "Download and open the installer."
-msgstr "Baixe e abra o instalador."
+msgid "Download and install <b>Prism Launcher</b>."
+msgstr "Baixe e instale o <b>Prism Launcher</b>."
 
-msgid "Click <b>Install Modpack</b>."
-msgstr "Clique em <b>Instalar Modpack</b>."
+msgid "Open Prism and log in with an <b>offline account</b> (any nickname)."
+msgstr "Abra o Prism e faça login com uma <b>conta offline</b> (apelido de sua escolha)."
 
-msgid "Choose the desired <b>installation profile</b>."
-msgstr "Escolha o <b>perfil de instalação</b> desejado."
+msgid "Download the modpack .zip file."
+msgstr "Baixe o arquivo .zip do modpack."
 
-msgid "Click <b>Confirm</b> and wait."
-msgstr "Clique em <b>Confirmar</b> e aguarde."
+msgid "In Prism, click <b>Add Instance → Import</b> and select the .zip."
+msgstr "No Prism, clique em <b>Adicionar Instância → Importar</b> e selecione o .zip."
 
-msgid "After installation, open <b>Minecraft</b> through your <b>configured launcher</b>."
-msgstr "Após a instalação, abra o <b>Minecraft</b> pelo seu <b>launcher configurado</b>."
+msgid "Wait for installation and click <b>OK</b>."
+msgstr "Aguarde a instalação e clique em <b>OK</b>."
 
-msgid "The installer <b>does not work with TLauncher</b>. Use <b>SK Launcher</b> or the <b>Official Launcher</b>."
-msgstr "O instalador <b>não funciona com o TLauncher</b>. Use o <b>SK Launcher</b> ou o <b>Launcher Oficial</b>."
+msgid "Click Play and enjoy! 🎮"
+msgstr "Clique em Play e bom jogo! 🎮"
+
+msgid "<b>Have original Minecraft?</b> Use the <b>Official Prism Launcher</b> and log in with your Microsoft account. <b>No original Minecraft?</b> Use the <b>Cracked Prism Launcher</b> and play with an offline account."
+msgstr "<b>Tem o Minecraft original?</b> Use o <b>Prism Launcher Oficial</b> e faça login com sua conta Microsoft. <b>Não tem o Minecraft original?</b> Use a versão <b>pirata</b> do Prism Launcher e jogue com conta offline."
+
+msgid "We recommend allocating at least <b>8 GB of RAM</b> to Minecraft. In Prism, go to <b>Instance Settings → Java</b> and increase the max value."
+msgstr "Recomendamos alocar pelo menos <b>8 GB de RAM</b> para o Minecraft. No Prism, vá em <b>Configurações da Instância → Java</b> e aumente o valor máximo."
 
 # rankings/page.html
 msgid "Hall of Fame"

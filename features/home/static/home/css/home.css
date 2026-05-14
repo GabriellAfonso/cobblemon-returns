@@ -145,6 +145,7 @@
 .leader-card:hover { background: var(--surface2); border-color: rgba(200,80,240,0.3); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(200,80,240,0.1); }
 .leader-cat { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
 .leader-cat .cat-icon { font-size: 16px; }
+.cat-icon-img { width: 18px; height: 18px; object-fit: contain; display: block; }
 .leader-name { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .leader-value { font-size: 14px; font-weight: 600; color: var(--cyan); }
 .leader-badge { font-size: 22px; margin-left: auto; }
