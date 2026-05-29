@@ -87,13 +87,9 @@ def collect_player_data(sftp: paramiko.SFTPClient, uuid: str) -> dict[str, int]:
         sftp, f"{settings.COBBLEMON_DATA_PATH}/{shard}/{uuid}.json"
     )
     data["battles_won"] = (cobblemon_data or {}).get("battleWins", 0)
-
-    # Caught pokemon — counted from per-pokemon files in storage directory
-    try:
-        pokemon_dir = f"{settings.COBBLEMON_DATA_PATH}/pokemon/{shard}/{uuid}"
-        data["pokemons_caught"] = len(sftp.listdir(pokemon_dir))
-    except Exception:
-        data["pokemons_caught"] = 0
+    data["pokemons_caught"] = (
+        (cobblemon_data or {}).get("advancementData", {}).get("totalCaptureCount", 0)
+    )
 
     # Pokédex — sharded NBT: world/pokedex/{shard}/{uuid}.nbt
     # speciesRecords has one entry per species registered
