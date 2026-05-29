@@ -37,8 +37,11 @@ def _make_sftp(
             content = stats_json or {
                 "stats": {"minecraft:custom": {"minecraft:play_time": 72000}}
             }
-        elif path.endswith("/data.json"):
-            content = cobblemon_json or {"caughtPokemon": 150, "battleWins": 42}
+        elif "/cobblemon" in path:
+            content = cobblemon_json or {
+                "battleWins": 42,
+                "advancementData": {"totalCaptureCount": pokemon_count},
+            }
         elif path.endswith(".json"):
             content = economy_json or {"balance": 1000}
         else:
@@ -116,7 +119,7 @@ class CollectPlayerDataTest(TestCase):
         self.assertEqual(result["cobbletcg_cards"], 0)
         self.assertEqual(result["cobbledollars"], 0)
 
-    def test_pokemon_count_from_directory(self):
+    def test_pokemon_count_from_advancement_data(self):
         sftp = _make_sftp(pokemon_count=12)
         result = collect_player_data(sftp, "test-uuid")
         self.assertEqual(result["pokemons_caught"], 12)
