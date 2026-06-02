@@ -95,23 +95,23 @@ msgstr "Launcher"
 msgid "Prism Launcher (Official)"
 msgstr "Prism Launcher (Oficial)"
 
-msgid "Prism Launcher (Cracked)"
-msgstr "Prism Launcher (Pirata)"
+msgid "PineconeMC (Cracked)"
+msgstr "PineconeMC (Pirata)"
 
 msgid "Step by Step"
 msgstr "Passo a Passo"
 
-msgid "Download and install <b>Prism Launcher</b>."
-msgstr "Baixe e instale o <b>Prism Launcher</b>."
+msgid "Download and install <b>PineconeMC</b>."
+msgstr "Baixe e instale o <b>PineconeMC</b>."
 
-msgid "Open Prism and log in with an <b>offline account</b> (any nickname)."
-msgstr "Abra o Prism e faça login com uma <b>conta offline</b> (apelido de sua escolha)."
+msgid "Open PineconeMC and log in with an <b>offline account</b> (any nickname)."
+msgstr "Abra o PineconeMC e faça login com uma <b>conta offline</b> (apelido de sua escolha)."
 
 msgid "Download the modpack .zip file."
 msgstr "Baixe o arquivo .zip do modpack."
 
-msgid "In Prism, click <b>Add Instance → Import</b> and select the .zip."
-msgstr "No Prism, clique em <b>Adicionar Instância → Importar</b> e selecione o .zip."
+msgid "In PineconeMC, click <b>Add Instance → Import</b> and select the .zip."
+msgstr "No PineconeMC, clique em <b>Adicionar Instância → Importar</b> e selecione o .zip."
 
 msgid "Wait for installation and click <b>OK</b>."
 msgstr "Aguarde a instalação e clique em <b>OK</b>."
@@ -119,11 +119,11 @@ msgstr "Aguarde a instalação e clique em <b>OK</b>."
 msgid "Click Play and enjoy! 🎮"
 msgstr "Clique em Play e bom jogo! 🎮"
 
-msgid "<b>Have original Minecraft?</b> Use the <b>Official Prism Launcher</b> and log in with your Microsoft account. <b>No original Minecraft?</b> Use the <b>Cracked Prism Launcher</b> and play with an offline account."
-msgstr "<b>Tem o Minecraft original?</b> Use o <b>Prism Launcher Oficial</b> e faça login com sua conta Microsoft. <b>Não tem o Minecraft original?</b> Use a versão <b>pirata</b> do Prism Launcher e jogue com conta offline."
+msgid "<b>Have original Minecraft?</b> Use the <b>Official Prism Launcher</b> and log in with your Microsoft account. <b>No original Minecraft?</b> Use <b>PineconeMC</b> and play with an offline account."
+msgstr "<b>Tem o Minecraft original?</b> Use o <b>Prism Launcher Oficial</b> e faça login com sua conta Microsoft. <b>Não tem o Minecraft original?</b> Use o <b>PineconeMC</b> e jogue com conta offline."
 
-msgid "We recommend allocating at least <b>8 GB of RAM</b> to Minecraft. In Prism, go to <b>Instance Settings → Java</b> and increase the max value."
-msgstr "Recomendamos alocar pelo menos <b>8 GB de RAM</b> para o Minecraft. No Prism, vá em <b>Configurações da Instância → Java</b> e aumente o valor máximo."
+msgid "We recommend allocating at least <b>8 GB of RAM</b> to Minecraft. In PineconeMC, go to <b>Instance Settings → Java</b> and increase the max value."
+msgstr "Recomendamos alocar pelo menos <b>8 GB de RAM</b> para o Minecraft. No PineconeMC, vá em <b>Configurações da Instância → Java</b> e aumente o valor máximo."
 
 # rankings/page.html
 msgid "Hall of Fame"
