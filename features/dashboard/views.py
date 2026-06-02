@@ -24,7 +24,6 @@ _VALID_SORT_FIELDS = {
     "play_time_ticks",
     "pokemons_caught",
     "pokedex_registered",
-    "cobbletcg_cards",
     "battles_won",
     "cobbledollars",
 }

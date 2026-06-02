@@ -38,11 +38,6 @@
           </a>
         </th>
         <th>
-          <a href="?sort=cobbletcg_cards" class="sort-link {% if current_sort == 'cobbletcg_cards' %}active{% endif %}">
-            🃏 {% trans "Cards" %}
-          </a>
-        </th>
-        <th>
           <a href="?sort=cobbledollars" class="sort-link {% if current_sort == 'cobbledollars' %}active{% endif %}">
             💰 $$$
           </a>
@@ -61,14 +56,13 @@
         <td>{{ player.stats.pokemons_caught }}</td>
         <td>{{ player.stats.pokedex_registered }}</td>
         <td>{{ player.stats.battles_won }}</td>
-        <td>{{ player.stats.cobbletcg_cards }}</td>
         <td>{{ player.stats.cobbledollars }}</td>
         {% else %}
-        <td colspan="6" style="color:var(--muted);font-size:13px">{% trans "No stats" %}</td>
+        <td colspan="5" style="color:var(--muted);font-size:13px">{% trans "No stats" %}</td>
         {% endif %}
       </tr>
       {% empty %}
-      <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:40px">{% trans "No players yet." %}</td></tr>
+      <tr><td colspan="7" style="text-align:center;color:var(--muted);padding:40px">{% trans "No players yet." %}</td></tr>
       {% endfor %}
     </tbody>
   </table>

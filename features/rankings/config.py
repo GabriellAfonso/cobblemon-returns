@@ -29,15 +29,6 @@ RANKINGS = [
         "webhook_env": "DISCORD_WEBHOOK_POKEDEX",
     },
     {
-        "id": "cards",
-        "field": "cobbletcg_cards",
-        "label": _("CobbleTCG Cards"),
-        "icon": "🃏",
-        "icon_img": "rankings/images/tcg_icon.jpg",
-        "format": "number",
-        "webhook_env": "DISCORD_WEBHOOK_CARDS",
-    },
-    {
         "id": "battles",
         "field": "battles_won",
         "label": _("Battles Won"),

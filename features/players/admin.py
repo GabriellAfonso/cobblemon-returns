@@ -16,7 +16,6 @@ class PlayerStatsAdmin(admin.ModelAdmin):
         "play_time_ticks",
         "pokemons_caught",
         "pokedex_registered",
-        "cobbletcg_cards",
         "battles_won",
         "cobbledollars",
         "updated_at",

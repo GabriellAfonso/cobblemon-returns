@@ -22,7 +22,6 @@ class PlayerStats(models.Model):
     play_time_ticks = models.BigIntegerField(default=0)
     pokemons_caught = models.IntegerField(default=0)
     pokedex_registered = models.IntegerField(default=0)
-    cobbletcg_cards = models.IntegerField(default=0)
     battles_won = models.IntegerField(default=0)
     cobbledollars = models.IntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)

@@ -52,7 +52,6 @@ class RankingsViewTest(TestCase):
             play_time_ticks=72000,
             pokemons_caught=100,
             pokedex_registered=50,
-            cobbletcg_cards=20,
             battles_won=30,
             cobbledollars=5000,
         )
@@ -62,7 +61,6 @@ class RankingsViewTest(TestCase):
             play_time_ticks=36000,
             pokemons_caught=80,
             pokedex_registered=40,
-            cobbletcg_cards=15,
             battles_won=20,
             cobbledollars=3000,
         )
@@ -72,7 +70,6 @@ class RankingsViewTest(TestCase):
             play_time_ticks=14400,
             pokemons_caught=60,
             pokedex_registered=30,
-            cobbletcg_cards=10,
             battles_won=10,
             cobbledollars=1000,
         )
@@ -139,7 +136,6 @@ class RankingServiceTest(TestCase):
             play_time_ticks=300,
             pokemons_caught=100,
             pokedex_registered=50,
-            cobbletcg_cards=20,
             battles_won=30,
             cobbledollars=5000,
         )
@@ -149,7 +145,6 @@ class RankingServiceTest(TestCase):
             play_time_ticks=200,
             pokemons_caught=80,
             pokedex_registered=40,
-            cobbletcg_cards=15,
             battles_won=20,
             cobbledollars=3000,
         )
@@ -159,7 +154,6 @@ class RankingServiceTest(TestCase):
             play_time_ticks=100,
             pokemons_caught=60,
             pokedex_registered=30,
-            cobbletcg_cards=10,
             battles_won=10,
             cobbledollars=1000,
         )

@@ -88,7 +88,6 @@ class PostAllRankingsTest(TestCase):
             play_time_ticks=72000,
             pokemons_caught=50,
             pokedex_registered=30,
-            cobbletcg_cards=10,
             battles_won=20,
             cobbledollars=1000,
         )

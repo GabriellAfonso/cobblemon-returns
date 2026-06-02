@@ -15,7 +15,6 @@ SFTP_SETTINGS = {
     "MINECRAFT_WORLD_PATH": "/world",
     "COBBLEMON_DATA_PATH": "/cobblemon",
     "COBBLE_ECONOMY_PATH": "/economy",
-    "COBBLE_TCG_PATH": "/tcg",
     "COLLECTOR_INTERVAL_MINUTES": 15,
 }
 
@@ -25,7 +24,6 @@ def _make_sftp(
     cobblemon_json=None,
     economy_json=None,
     pokemon_count=5,
-    tcg_count=3,
 ):
     """Build a MagicMock SFTP client with configurable file responses."""
     import json
@@ -55,9 +53,7 @@ def _make_sftp(
 
     sftp.open.side_effect = fake_open
     sftp.listdir.side_effect = lambda path: (
-        [f"{i}.json" for i in range(pokemon_count)]
-        if "pokemon" in path
-        else [f"card{i}.json" for i in range(tcg_count)]
+        [f"{i}.json" for i in range(pokemon_count)] if "pokemon" in path else []
     )
     return sftp
 
@@ -72,7 +68,6 @@ class CollectPlayerDataTest(TestCase):
             "play_time_ticks",
             "pokemons_caught",
             "pokedex_registered",
-            "cobbletcg_cards",
             "battles_won",
             "cobbledollars",
         }
@@ -116,7 +111,6 @@ class CollectPlayerDataTest(TestCase):
         self.assertEqual(result["pokemons_caught"], 0)
         self.assertEqual(result["pokedex_registered"], 0)
         self.assertEqual(result["battles_won"], 0)
-        self.assertEqual(result["cobbletcg_cards"], 0)
         self.assertEqual(result["cobbledollars"], 0)
 
     def test_pokemon_count_from_advancement_data(self):
@@ -139,7 +133,6 @@ class RunCollectionTest(TestCase):
             "play_time_ticks": 1000,
             "pokemons_caught": 5,
             "pokedex_registered": 3,
-            "cobbletcg_cards": 2,
             "battles_won": 1,
             "cobbledollars": 500,
         }

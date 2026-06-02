@@ -114,7 +114,4 @@ def collect_player_data(sftp: paramiko.SFTPClient, uuid: str) -> dict[str, int]:
     economy_data = read_json_file(sftp, f"{settings.COBBLE_ECONOMY_PATH}/{uuid}.json")
     data["cobbledollars"] = int((economy_data or {}).get("cobbledollars", 0))
 
-    # CobbleTCG — addon not installed yet
-    data["cobbletcg_cards"] = 0
-
     return data

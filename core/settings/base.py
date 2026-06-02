@@ -102,7 +102,6 @@ SFTP_KEY_PATH = os.environ.get("SFTP_KEY_PATH", "/run/secrets/sftp_key")
 MINECRAFT_WORLD_PATH = os.environ.get("MINECRAFT_WORLD_PATH", "")
 COBBLEMON_DATA_PATH = os.environ.get("COBBLEMON_DATA_PATH", "")
 COBBLE_ECONOMY_PATH = os.environ.get("COBBLE_ECONOMY_PATH", "")
-COBBLE_TCG_PATH = os.environ.get("COBBLE_TCG_PATH", "")
 
 # Collector
 COLLECTOR_INTERVAL_MINUTES = int(os.environ.get("COLLECTOR_INTERVAL_MINUTES", "15"))

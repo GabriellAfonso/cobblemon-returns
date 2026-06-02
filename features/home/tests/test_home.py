@@ -20,7 +20,6 @@ class HomeViewTest(TestCase):
             play_time_ticks=72000,
             pokemons_caught=100,
             pokedex_registered=50,
-            cobbletcg_cards=20,
             battles_won=30,
             cobbledollars=5000,
         )
@@ -62,7 +61,6 @@ class HomeViewTest(TestCase):
             play_time_ticks=36000,
             pokemons_caught=200,
             pokedex_registered=10,
-            cobbletcg_cards=5,
             battles_won=5,
             cobbledollars=1000,
         )

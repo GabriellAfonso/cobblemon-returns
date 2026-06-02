@@ -32,7 +32,6 @@ class PlayerStatsModelTest(TestCase):
         self.assertEqual(stats.play_time_ticks, 0)
         self.assertEqual(stats.pokemons_caught, 0)
         self.assertEqual(stats.pokedex_registered, 0)
-        self.assertEqual(stats.cobbletcg_cards, 0)
         self.assertEqual(stats.battles_won, 0)
         self.assertEqual(stats.cobbledollars, 0)
 

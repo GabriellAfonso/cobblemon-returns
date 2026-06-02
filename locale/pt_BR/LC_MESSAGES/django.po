@@ -260,9 +260,6 @@ msgstr "Pokédex"
 msgid "Battles"
 msgstr "Batalhas"
 
-msgid "Cards"
-msgstr "Cartas"
-
 msgid "No stats"
 msgstr "Sem estatísticas"
 
@@ -371,9 +368,6 @@ msgstr "Pokémons Capturados"
 
 msgid "Pokédex Registered"
 msgstr "Pokédex Registrado"
-
-msgid "CobbleTCG Cards"
-msgstr "Cartas CobbleTCG"
 
 msgid "Battles Won"
 msgstr "Batalhas Vencidas"

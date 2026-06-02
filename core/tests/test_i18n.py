@@ -46,7 +46,6 @@ class HomePageI18nTest(TestCase):
             play_time_ticks=72000,
             pokemons_caught=100,
             pokedex_registered=50,
-            cobbletcg_cards=20,
             battles_won=30,
             cobbledollars=5000,
         )

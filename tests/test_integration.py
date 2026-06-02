@@ -30,7 +30,6 @@ class PublicViewsTest(TestCase):
             play_time_ticks=72000,
             pokemons_caught=100,
             pokedex_registered=50,
-            cobbletcg_cards=20,
             battles_won=30,
             cobbledollars=5000,
         )
@@ -46,10 +45,10 @@ class PublicViewsTest(TestCase):
         resp = self.client.get(reverse("rankings:rankings"))
         self.assertEqual(resp.status_code, 200)
 
-    def test_rankings_has_all_six_sections(self):
+    def test_rankings_has_all_sections(self):
         resp = self.client.get(reverse("rankings:rankings"))
         self.assertEqual(len(resp.context["rankings"]), len(RANKINGS))
-        self.assertEqual(len(resp.context["rankings"]), 6)
+        self.assertEqual(len(resp.context["rankings"]), 5)
 
     def test_wiki_list_returns_200(self):
         resp = self.client.get(reverse("wiki:wiki-list"))
@@ -76,7 +75,6 @@ class DiscordCardTemplateTest(TestCase):
             play_time_ticks=144000,
             pokemons_caught=200,
             pokedex_registered=100,
-            cobbletcg_cards=40,
             battles_won=60,
             cobbledollars=10000,
         )
