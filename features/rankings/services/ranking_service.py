@@ -29,10 +29,10 @@ class RankingService:
     def get_full_rankings(self) -> tuple[list[dict], datetime.datetime | None]:
         rankings = []
         for r in RANKINGS:
-            top10 = self.stats_repo.get_top_by_field(r["field"])
-            max_val = getattr(top10[0], r["field"]) if top10 else 1
+            ranked = self.stats_repo.get_top_by_field(r["field"], n=None)
+            max_val = getattr(ranked[0], r["field"]) if ranked else 1
             players = []
-            for stat in top10:
+            for stat in ranked:
                 raw = getattr(stat, r["field"])
                 players.append(
                     {

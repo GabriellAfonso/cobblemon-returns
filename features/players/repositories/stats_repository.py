@@ -9,10 +9,11 @@ class PlayerStatsRepository:
             PlayerStats.objects.order_by(f"-{field}").select_related("player").first()
         )
 
-    def get_top_by_field(self, field: str, n: int = 10) -> list[PlayerStats]:
-        return list(
-            PlayerStats.objects.order_by(f"-{field}").select_related("player")[:n]
-        )
+    def get_top_by_field(self, field: str, n: int | None = 10) -> list[PlayerStats]:
+        qs = PlayerStats.objects.order_by(f"-{field}").select_related("player")
+        if n is not None:
+            qs = qs[:n]
+        return list(qs)
 
     def get_last_updated(self) -> datetime.datetime | None:
         return (
