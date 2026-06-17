@@ -375,6 +375,15 @@ msgstr "Batalhas Vencidas"
 msgid "CobbleDollars"
 msgstr "CobbleDollars"
 
+msgid "Deaths"
+msgstr "Mortes"
+
+msgid "Distance Traveled"
+msgstr "Distância Percorrida"
+
+msgid "Poké Balls Thrown"
+msgstr "Poké Balls Lançadas"
+
 # mods/list.html
 msgid "Modpack"
 msgstr "Modpack"
