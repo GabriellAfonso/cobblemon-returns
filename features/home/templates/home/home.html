@@ -69,7 +69,7 @@
   </div>
   <div class="leaders-grid">
     {% for leader in leaders %}
-    <a href="{% url 'rankings:rankings' %}" class="leader-card">
+    <a href="{% url 'rankings:rankings' %}?r={{ leader.id }}" class="leader-card">
       <div class="leader-cat"><img src="{% static leader.icon_img %}" alt="" class="cat-icon-img">{{ leader.label }}</div>
       <div class="leader-name">{{ leader.player_name }}</div>
       <div class="leader-value">{{ leader.value }}</div>

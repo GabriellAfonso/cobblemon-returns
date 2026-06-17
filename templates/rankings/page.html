@@ -24,7 +24,7 @@
 
   <div class="tabs-header">
     {% for ranking in rankings %}
-    <button class="tab-btn {% if forloop.first %}active{% endif %}"
+    <button class="tab-btn {% if ranking.id == selected %}active{% endif %}"
             onclick="switchTab('{{ ranking.id }}', this)">
       <span class="tab-emoji">
         {% if ranking.icon_img %}<img src="{% static ranking.icon_img %}" alt="{{ ranking.label }}" class="tab-icon-img">
@@ -36,7 +36,7 @@
 
   <div class="ranking-panel">
     {% for ranking in rankings %}
-    <div id="tab-{{ ranking.id }}" class="tab-content {% if forloop.first %}active{% endif %}">
+    <div id="tab-{{ ranking.id }}" class="tab-content {% if ranking.id == selected %}active{% endif %}">
       <div class="panel-header">
         <div class="panel-title">
           <span class="p-icon">

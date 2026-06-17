@@ -11,4 +11,8 @@ class RankingsView(TemplateView):
         ctx = super().get_context_data(**kwargs)
         service = RankingService(PlayerStatsRepository())
         ctx["rankings"], ctx["last_updated"] = service.get_full_rankings()
+
+        ids = [r["id"] for r in ctx["rankings"]]
+        requested = self.request.GET.get("r")
+        ctx["selected"] = requested if requested in ids else (ids[0] if ids else None)
         return ctx
