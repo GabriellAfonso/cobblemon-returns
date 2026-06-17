@@ -54,6 +54,9 @@ class RankingsViewTest(TestCase):
             pokedex_registered=50,
             battles_won=30,
             cobbledollars=5000,
+            deaths=15,
+            distance_cm=3_000_000,
+            pokeballs_thrown=300,
         )
         _make_player(
             "uuid-2",
@@ -63,6 +66,9 @@ class RankingsViewTest(TestCase):
             pokedex_registered=40,
             battles_won=20,
             cobbledollars=3000,
+            deaths=10,
+            distance_cm=2_000_000,
+            pokeballs_thrown=200,
         )
         _make_player(
             "uuid-3",
@@ -72,6 +78,9 @@ class RankingsViewTest(TestCase):
             pokedex_registered=30,
             battles_won=10,
             cobbledollars=1000,
+            deaths=5,
+            distance_cm=1_000_000,
+            pokeballs_thrown=100,
         )
 
     def test_rankings_returns_200(self):
@@ -138,6 +147,9 @@ class RankingServiceTest(TestCase):
             pokedex_registered=50,
             battles_won=30,
             cobbledollars=5000,
+            deaths=15,
+            distance_cm=3_000_000,
+            pokeballs_thrown=300,
         )
         _make_player(
             "uuid-2",
@@ -147,6 +159,9 @@ class RankingServiceTest(TestCase):
             pokedex_registered=40,
             battles_won=20,
             cobbledollars=3000,
+            deaths=10,
+            distance_cm=2_000_000,
+            pokeballs_thrown=200,
         )
         _make_player(
             "uuid-3",
@@ -156,6 +171,9 @@ class RankingServiceTest(TestCase):
             pokedex_registered=30,
             battles_won=10,
             cobbledollars=1000,
+            deaths=5,
+            distance_cm=1_000_000,
+            pokeballs_thrown=100,
         )
 
     def test_get_home_leaders_returns_one_per_category(self):

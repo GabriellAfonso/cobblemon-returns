@@ -48,7 +48,6 @@ class PublicViewsTest(TestCase):
     def test_rankings_has_all_sections(self):
         resp = self.client.get(reverse("rankings:rankings"))
         self.assertEqual(len(resp.context["rankings"]), len(RANKINGS))
-        self.assertEqual(len(resp.context["rankings"]), 5)
 
     def test_wiki_list_returns_200(self):
         resp = self.client.get(reverse("wiki:wiki-list"))

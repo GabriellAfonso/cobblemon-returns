@@ -37,8 +37,10 @@ def _make_sftp(
             }
         elif "/cobblemon" in path:
             content = cobblemon_json or {
-                "totalPvPBattleVictoryCount": 42,
-                "advancementData": {"totalCaptureCount": pokemon_count},
+                "advancementData": {
+                    "totalPvPBattleVictoryCount": 42,
+                    "totalCaptureCount": pokemon_count,
+                },
             }
         elif path.endswith(".json"):
             content = economy_json or {"balance": 1000}
@@ -70,6 +72,9 @@ class CollectPlayerDataTest(TestCase):
             "pokedex_registered",
             "battles_won",
             "cobbledollars",
+            "deaths",
+            "distance_cm",
+            "pokeballs_thrown",
         }
         self.assertEqual(set(result.keys()), expected_keys)
 
