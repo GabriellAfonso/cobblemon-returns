@@ -73,23 +73,22 @@ def collect_player_data(sftp: paramiko.SFTPClient, uuid: str) -> dict[str, int]:
     stats_file = read_json_file(
         sftp, f"{settings.MINECRAFT_WORLD_PATH}/stats/{uuid}.json"
     )
-    if stats_file:
-        data["play_time_ticks"] = (
-            stats_file.get("stats", {})
-            .get("minecraft:custom", {})
-            .get("minecraft:play_time", 0)
-        )
-    else:
-        data["play_time_ticks"] = 0
+    custom_stats = (stats_file or {}).get("stats", {}).get("minecraft:custom", {})
+    data["play_time_ticks"] = custom_stats.get("minecraft:play_time", 0)
+    data["deaths"] = custom_stats.get("minecraft:deaths", 0)
+    data["pokeballs_thrown"] = custom_stats.get("scoremons:pokeball_thrown", 0)
+    # Sum every movement stat (stored in centimeters, e.g. walk/sprint/swim/fly/boat).
+    data["distance_cm"] = sum(
+        v for k, v in custom_stats.items() if k.endswith("_one_cm")
+    )
 
     # Cobblemon player data — sharded: cobblemonplayerdata/{shard}/{uuid}.json
     cobblemon_data = read_json_file(
         sftp, f"{settings.COBBLEMON_DATA_PATH}/{shard}/{uuid}.json"
     )
-    data["battles_won"] = (cobblemon_data or {}).get("totalPvPBattleVictoryCount", 0)
-    data["pokemons_caught"] = (
-        (cobblemon_data or {}).get("advancementData", {}).get("totalCaptureCount", 0)
-    )
+    advancement_data = (cobblemon_data or {}).get("advancementData", {})
+    data["battles_won"] = advancement_data.get("totalPvPBattleVictoryCount", 0)
+    data["pokemons_caught"] = advancement_data.get("totalCaptureCount", 0)
 
     # Pokédex — sharded NBT: world/pokedex/{shard}/{uuid}.nbt
     # speciesRecords has one entry per species registered

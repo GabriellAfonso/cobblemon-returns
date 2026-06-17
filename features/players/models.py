@@ -24,6 +24,9 @@ class PlayerStats(models.Model):
     pokedex_registered = models.IntegerField(default=0)
     battles_won = models.IntegerField(default=0)
     cobbledollars = models.IntegerField(default=0)
+    deaths = models.IntegerField(default=0)
+    distance_cm = models.BigIntegerField(default=0)
+    pokeballs_thrown = models.IntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:

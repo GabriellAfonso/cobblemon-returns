@@ -6,5 +6,8 @@ def format_value(value: int, format_type: str) -> str:
         return f"{hours:,}h"
     elif format_type == "currency":
         return f"₡ {value:,}"
+    elif format_type == "km":  # value stored in centimeters
+        km = value / 100_000
+        return f"{km:,.1f} km"
     else:  # number
         return f"{value:,}"
