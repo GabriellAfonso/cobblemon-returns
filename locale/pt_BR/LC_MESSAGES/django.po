@@ -16,8 +16,8 @@ msgstr "Rankings"
 msgid "Wiki"
 msgstr "Wiki"
 
-msgid "Cobblemon Returns · Cobblemon Fabric Server · Made with ♥ by the community"
-msgstr "Cobblemon Returns · Servidor Cobblemon Fabric · Feito com ♥ pela comunidade"
+msgid "Cobblemon Returns · Cobblemon Fabric Server"
+msgstr "Cobblemon Returns · Servidor Cobblemon Fabric"
 
 # home.html
 msgid "Cobblemon Fabric Server"
