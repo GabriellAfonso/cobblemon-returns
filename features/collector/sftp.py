@@ -86,7 +86,7 @@ def collect_player_data(sftp: paramiko.SFTPClient, uuid: str) -> dict[str, int]:
     cobblemon_data = read_json_file(
         sftp, f"{settings.COBBLEMON_DATA_PATH}/{shard}/{uuid}.json"
     )
-    data["battles_won"] = (cobblemon_data or {}).get("battleWins", 0)
+    data["battles_won"] = (cobblemon_data or {}).get("totalPvPBattleVictoryCount", 0)
     data["pokemons_caught"] = (
         (cobblemon_data or {}).get("advancementData", {}).get("totalCaptureCount", 0)
     )

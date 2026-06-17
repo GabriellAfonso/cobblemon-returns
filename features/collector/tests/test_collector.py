@@ -37,7 +37,7 @@ def _make_sftp(
             }
         elif "/cobblemon" in path:
             content = cobblemon_json or {
-                "battleWins": 42,
+                "totalPvPBattleVictoryCount": 42,
                 "advancementData": {"totalCaptureCount": pokemon_count},
             }
         elif path.endswith(".json"):
