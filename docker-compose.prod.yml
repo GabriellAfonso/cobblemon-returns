@@ -23,7 +23,6 @@ services:
     volumes:
       - ./static/:/app/static/
       - ./media/:/app/media/
-      - ~/.ssh/id_rsa:/run/secrets/sftp_key:ro
     depends_on:
       cobblemon_db:
         condition: service_healthy

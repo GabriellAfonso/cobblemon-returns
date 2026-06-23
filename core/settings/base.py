@@ -96,7 +96,7 @@ SERVER_HOST = os.environ.get("SERVER_HOST", "")
 SFTP_HOST = os.environ.get("SFTP_HOST", "")
 SFTP_PORT = os.environ.get("SFTP_PORT", "22")
 SFTP_USER = os.environ.get("SFTP_USER", "")
-SFTP_KEY_PATH = os.environ.get("SFTP_KEY_PATH", "/run/secrets/sftp_key")
+SFTP_PASSWORD = os.environ.get("SFTP_PASSWORD", "")
 
 # Minecraft file paths
 MINECRAFT_WORLD_PATH = os.environ.get("MINECRAFT_WORLD_PATH", "")

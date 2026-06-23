@@ -11,7 +11,7 @@ SFTP_SETTINGS = {
     "SFTP_HOST": "sftp.example.com",
     "SFTP_PORT": "22",
     "SFTP_USER": "user",
-    "SFTP_KEY_PATH": "/tmp/key",
+    "SFTP_PASSWORD": "testpassword",
     "MINECRAFT_WORLD_PATH": "/world",
     "COBBLEMON_DATA_PATH": "/cobblemon",
     "COBBLE_ECONOMY_PATH": "/economy",
