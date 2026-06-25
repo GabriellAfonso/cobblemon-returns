@@ -36,9 +36,9 @@ class BaseTemplateTest(TestCase):
         html = self._render_base()
         self.assertIn(reverse("rankings:rankings"), html)
 
-    def test_base_nav_has_wiki_link(self):
+    def test_base_nav_has_no_wiki_link(self):
         html = self._render_base()
-        self.assertIn(reverse("wiki:wiki-list"), html)
+        self.assertNotIn(reverse("wiki:wiki-list"), html)
 
     def test_base_has_footer(self):
         html = self._render_base()
