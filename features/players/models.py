@@ -5,6 +5,10 @@ class Player(models.Model):
     uuid = models.CharField(max_length=36, primary_key=True)
     username = models.CharField(max_length=32)
     last_seen = models.DateTimeField(null=True, blank=True)
+    hidden = models.BooleanField(
+        default=False,
+        help_text="Hide this player from public rankings (e.g. admin accounts).",
+    )
 
     class Meta:
         ordering = ["username"]

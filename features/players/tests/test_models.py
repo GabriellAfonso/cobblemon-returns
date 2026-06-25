@@ -152,3 +152,15 @@ class PlayerStatsRepositoryTest(TestCase):
         self.repo.update_or_create(player, {"pokemons_caught": 999})
         player.stats.refresh_from_db()
         self.assertEqual(player.stats.pokemons_caught, 999)
+
+    def test_get_leader_by_field_excludes_hidden(self):
+        Player.objects.filter(uuid="uuid-1").update(hidden=True)
+        leader = self.repo.get_leader_by_field("play_time_ticks")
+        self.assertEqual(leader.player.username, "Misty")
+
+    def test_get_top_by_field_excludes_hidden(self):
+        Player.objects.filter(uuid="uuid-1").update(hidden=True)
+        result = self.repo.get_top_by_field("play_time_ticks")
+        usernames = [s.player.username for s in result]
+        self.assertNotIn("Ash", usernames)
+        self.assertEqual(usernames, ["Misty", "Brock"])

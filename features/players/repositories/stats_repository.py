@@ -6,11 +6,18 @@ from features.players.models import Player, PlayerStats
 class PlayerStatsRepository:
     def get_leader_by_field(self, field: str) -> PlayerStats | None:
         return (
-            PlayerStats.objects.order_by(f"-{field}").select_related("player").first()
+            PlayerStats.objects.filter(player__hidden=False)
+            .order_by(f"-{field}")
+            .select_related("player")
+            .first()
         )
 
     def get_top_by_field(self, field: str, n: int | None = 10) -> list[PlayerStats]:
-        qs = PlayerStats.objects.order_by(f"-{field}").select_related("player")
+        qs = (
+            PlayerStats.objects.filter(player__hidden=False)
+            .order_by(f"-{field}")
+            .select_related("player")
+        )
         if n is not None:
             qs = qs[:n]
         return list(qs)

@@ -5,7 +5,9 @@ from .models import Player, PlayerStats
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ("uuid", "username", "last_seen")
+    list_display = ("uuid", "username", "last_seen", "hidden")
+    list_filter = ("hidden",)
+    list_editable = ("hidden",)
     search_fields = ("username", "uuid")
 
 
