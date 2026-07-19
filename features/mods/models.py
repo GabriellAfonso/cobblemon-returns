@@ -17,6 +17,7 @@ class Mod(models.Model):
     ]
 
     slug = models.SlugField(unique=True)
+    modrinth_id = models.CharField(max_length=20, blank=True, db_index=True)
     name = models.CharField(max_length=200)
     version = models.CharField(max_length=50)
     description = models.TextField()
@@ -49,3 +50,26 @@ class Mod(models.Model):
             except Mod.DoesNotExist:
                 pass
         super().save(*args, **kwargs)
+
+
+class PackwizSnapshot(models.Model):
+    """Singleton snapshot of the parsed packwiz pack state.
+
+    Stored as a model (not cache) because no CACHES backend is configured and the
+    dashboard needs a persistent ``updated_at`` to show "atualizado há X".
+    """
+
+    data = models.JSONField(default=dict, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Packwiz Snapshot"
+        verbose_name_plural = "Packwiz Snapshot"
+
+    def __str__(self) -> str:
+        return f"PackwizSnapshot (updated {self.updated_at:%Y-%m-%d %H:%M})"
+
+    @classmethod
+    def load(cls) -> "PackwizSnapshot":
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
