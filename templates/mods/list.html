@@ -58,7 +58,7 @@
           {% if mod.thumbnail %}
           <img src="{{ mod.thumbnail.url }}" alt="{{ mod.name }}" loading="lazy">
           {% else %}
-          <span class="mod-thumb-placeholder">🧩</span>
+          <img src="{% static 'mods/images/_default-thumb.svg' %}" alt="{{ mod.name }}" loading="lazy">
           {% endif %}
         </div>
 
