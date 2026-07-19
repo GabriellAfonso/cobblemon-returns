@@ -22,6 +22,11 @@
       <span class="s-icon">📋</span> {% trans "Collection Logs" %}
     </a>
 
+    <div class="sidebar-section">{% trans "Mods" %}</div>
+    <a href="{% url 'dashboard:packwiz' %}" class="sidebar-link {% if 'packwiz' in request.resolver_match.url_name %}active{% endif %}">
+      <span class="s-icon">📦</span> {% trans "Packwiz" %}
+    </a>
+
     <div class="sidebar-section">{% trans "Wiki" %}</div>
     <a href="{% url 'dashboard:wiki-list' %}" class="sidebar-link {% if 'wiki' in request.resolver_match.url_name %}active{% endif %}">
       <span class="s-icon">📖</span> {% trans "Manage Pages" %}

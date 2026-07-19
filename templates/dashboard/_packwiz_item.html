@@ -1,0 +1,12 @@
+{% load static i18n %}
+<div class="pw-card" title="{{ item.name }}">
+  <div class="pw-thumb">
+    {% if item.thumbnail_url %}
+    <img src="{{ item.thumbnail_url }}" alt="{{ item.name }}" loading="lazy">
+    {% else %}
+    <img src="{% static 'mods/images/_default-thumb.svg' %}" alt="" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="pw-card-name">{{ item.name }}</div>
+  {% if item.version %}<div class="pw-card-meta">v{{ item.version }}</div>{% endif %}
+</div>

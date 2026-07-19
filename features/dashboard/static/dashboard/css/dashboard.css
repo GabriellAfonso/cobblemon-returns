@@ -167,3 +167,48 @@
   .dash-table th, .dash-table td { padding: 10px 12px; font-size: 13px; }
   .form-textarea { min-height: 200px; }
 }
+
+/* --- Packwiz tab --- */
+.pw-actions { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.pw-btn {
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  border-radius: 8px; padding: 9px 16px; font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.pw-btn:hover { background: var(--surface2); border-color: var(--border-bright); }
+.pw-btn-primary { background: rgba(0,180,216,0.12); border-color: rgba(0,180,216,0.35); color: var(--cyan); }
+.pw-btn-primary:hover { background: rgba(0,180,216,0.2); }
+
+.pw-empty, .pw-stat-grid { margin-bottom: 26px; }
+.pw-empty { color: var(--muted); padding: 30px; text-align: center; border: 1px dashed var(--border); border-radius: 12px; }
+.pw-stat-grid { grid-template-columns: repeat(4, 1fr); }
+
+.pw-section { margin: 0 0 28px; }
+.pw-details > summary { cursor: pointer; list-style: none; }
+.pw-details > summary::-webkit-details-marker { display: none; }
+.pw-details > summary::before { content: "▸ "; color: var(--muted); }
+.pw-details[open] > summary::before { content: "▾ "; }
+.pw-section-title {
+  font-size: 14px; font-weight: 700; color: var(--white); margin: 0 0 4px;
+  display: flex; align-items: baseline; gap: 8px;
+}
+.pw-section-title span { font-size: 12px; font-weight: 500; color: var(--muted); }
+.pw-removed  { color: var(--red); }
+.pw-jar      { color: var(--gold); }
+.pw-synced   { color: var(--green); }
+.pw-section-hint { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
+
+.pw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.pw-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
+}
+.pw-thumb { width: 48px; height: 48px; }
+.pw-thumb img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+.pw-card-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; word-break: break-word; }
+.pw-card-meta { font-size: 11px; color: var(--muted); }
+
+@media (max-width: 640px) {
+  .pw-stat-grid { grid-template-columns: 1fr 1fr; }
+  .pw-grid { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+}

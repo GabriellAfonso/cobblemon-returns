@@ -1,0 +1,72 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Packwiz" %} — Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="dash-header">
+  <div class="dash-title">{% trans "Packwiz" %}</div>
+  <div class="dash-subtitle">
+    {% if last_updated %}
+      {% blocktrans with when=last_updated|timesince %}Snapshot updated {{ when }} ago{% endblocktrans %}
+    {% else %}
+      {% trans "No snapshot yet — refresh to load the pack." %}
+    {% endif %}
+  </div>
+</div>
+
+<div class="pw-actions">
+  <form method="post" action="{% url 'dashboard:packwiz-refresh' %}" style="display:inline">
+    {% csrf_token %}
+    <button type="submit" class="pw-btn">🔄 {% trans "Refresh snapshot" %}</button>
+  </form>
+  <form method="post" action="{% url 'dashboard:packwiz-sync' %}" style="display:inline">
+    {% csrf_token %}
+    <button type="submit" class="pw-btn pw-btn-primary">⬇️ {% trans "Sync mods (Modrinth)" %}</button>
+  </form>
+</div>
+
+{% if not has_snapshot %}
+  <div class="pw-empty">{% trans "Click “Refresh snapshot” to fetch the current packwiz state from GitHub." %}</div>
+{% else %}
+
+<div class="stat-grid pw-stat-grid">
+  <div class="stat-card"><div class="stat-card-label">🟢 {% trans "Synced" %}</div><div class="stat-card-value">{{ overview.synced|length }}</div></div>
+  <div class="stat-card"><div class="stat-card-label">🟠 {% trans "Jar / Manual" %}</div><div class="stat-card-value">{{ overview.jar|length }}</div></div>
+  <div class="stat-card"><div class="stat-card-label">🔴 {% trans "Removed" %}</div><div class="stat-card-value">{{ overview.removed|length }}</div></div>
+  <div class="stat-card"><div class="stat-card-label">⚪ {% trans "Pack-only" %}</div><div class="stat-card-value">{{ overview.pack_only|length }}</div></div>
+</div>
+
+{% if overview.removed %}
+<section class="pw-section">
+  <h3 class="pw-section-title pw-removed">🔴 {% trans "Removed from pack" %} <span>({{ overview.removed|length }})</span></h3>
+  <p class="pw-section-hint">{% trans "On the site but no longer in the packwiz — review or remove." %}</p>
+  <div class="pw-grid">{% for item in overview.removed %}{% include "dashboard/_packwiz_item.html" %}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if overview.jar %}
+<section class="pw-section">
+  <h3 class="pw-section-title pw-jar">🟠 {% trans "Jar / Manual" %} <span>({{ overview.jar|length }})</span></h3>
+  <p class="pw-section-hint">{% trans "In the pack as a raw .jar or CurseForge — your modified mods, need manual entry." %}</p>
+  <div class="pw-grid">{% for item in overview.jar %}{% include "dashboard/_packwiz_item.html" %}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if overview.synced %}
+<section class="pw-section">
+  <h3 class="pw-section-title pw-synced">🟢 {% trans "Synced" %} <span>({{ overview.synced|length }})</span></h3>
+  <div class="pw-grid">{% for item in overview.synced %}{% include "dashboard/_packwiz_item.html" %}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if overview.pack_only %}
+<details class="pw-section pw-details">
+  <summary class="pw-section-title pw-packonly">⚪ {% trans "In pack, not on site" %} <span>({{ overview.pack_only|length }})</span></summary>
+  <p class="pw-section-hint">{% trans "Libraries/APIs and other pack files not catalogued on the site. Usually ignore." %}</p>
+  <div class="pw-grid">{% for item in overview.pack_only %}{% include "dashboard/_packwiz_item.html" %}{% endfor %}</div>
+</details>
+{% endif %}
+
+{% endif %}
+{% endblock %}

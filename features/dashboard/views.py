@@ -143,3 +143,53 @@ class TriggerDiscordRankingsView(StaffRequiredMixin, View):
         except Exception as e:
             messages.error(request, _("Failed to post rankings to Discord: %s") % e)
         return redirect("dashboard:home")
+
+
+class PackwizOverviewView(StaffRequiredMixin, TemplateView):
+    template_name = "dashboard/packwiz.html"
+
+    def get_context_data(self, **kwargs):
+        from features.mods.models import Mod, PackwizSnapshot
+        from features.mods.services import packwiz_service
+
+        ctx = super().get_context_data(**kwargs)
+        snapshot = PackwizSnapshot.load()
+        entries = packwiz_service.snapshot_entries(snapshot)
+        mods = list(Mod.objects.all())
+        overview = packwiz_service.classify_pack(entries, mods)
+
+        ctx["overview"] = overview
+        ctx["has_snapshot"] = bool(entries)
+        ctx["last_updated"] = snapshot.updated_at if snapshot.pk else None
+        return ctx
+
+
+class PackwizRefreshView(StaffRequiredMixin, View):
+    def post(self, request):
+        from features.mods.services import packwiz_service
+
+        try:
+            packwiz_service.refresh_snapshot()
+            messages.success(request, _("Packwiz snapshot updated."))
+        except Exception as e:
+            messages.error(request, _("Failed to update packwiz snapshot: %s") % e)
+        return redirect("dashboard:packwiz")
+
+
+class PackwizSyncView(StaffRequiredMixin, View):
+    def post(self, request):
+        import threading
+
+        from django.core.management import call_command
+
+        def _run():
+            call_command("sync_from_packwiz")
+
+        threading.Thread(target=_run, daemon=True).start()
+        messages.info(
+            request,
+            _(
+                "Mod sync started in the background. Refresh in a moment to see results."
+            ),
+        )
+        return redirect(request.META.get("HTTP_REFERER") or "dashboard:packwiz")

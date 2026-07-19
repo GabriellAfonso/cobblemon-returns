@@ -59,6 +59,16 @@
           </form>
         </td>
       </tr>
+      <tr>
+        <td>{% trans "Mods (Packwiz)" %}</td>
+        <td>
+          <a href="{% url 'dashboard:packwiz' %}">{% trans "Overview →" %}</a>
+          <form method="post" action="{% url 'dashboard:packwiz-sync' %}" style="display:inline;margin-left:10px">
+            {% csrf_token %}
+            <button type="submit" class="btn-link">{% trans "Sync now →" %}</button>
+          </form>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
