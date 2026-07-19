@@ -112,3 +112,14 @@ DISCORD_INVITE_URL = os.environ.get(
     "DISCORD_INVITE_URL", "https://discord.gg/cyx2d2Vtey"
 )
 DISCORD_RANKING_HOUR = int(os.environ.get("DISCORD_RANKING_HOUR", "20"))
+
+# Packwiz / Modrinth
+PACKWIZ_REPO = os.environ.get(
+    "PACKWIZ_REPO", "GabriellAfonso/cobblemon-returns-modpack"
+)
+PACKWIZ_BRANCH = os.environ.get("PACKWIZ_BRANCH", "master")
+MODRINTH_API = os.environ.get("MODRINTH_API", "https://api.modrinth.com/v2")
+MODRINTH_USER_AGENT = os.environ.get(
+    "MODRINTH_USER_AGENT",
+    "GabriellAfonso/cobblemon-returns (gabriellafonso.dev@gmail.com)",
+)
